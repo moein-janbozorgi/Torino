@@ -1,0 +1,49 @@
+.container p {
+  font-family: "Vazir";
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+.container h1 {
+  font-family: "Vazir";
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--color-text);
+  margin-top: -10px;
+}
+
+@media (max-width: 390px) {
+  .container {
+    text-align: center;
+    min-height: 100vh;
+  }
+
+  .container h1 {
+    margin-top: -10px;
+  }
+}
+
+@media (min-width: 391px) and (max-width: 1920px) {
+  .container {
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 40px auto;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+
+  .container img {
+    width: 550px;
+    height: 550px;
+  }
+
+  .container h1 {
+    font-size: 36px;
+  }
+
+  .container p {
+    font-size: 24px;
+  }
+}

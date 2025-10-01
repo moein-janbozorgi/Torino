@@ -1,0 +1,20 @@
+:root {
+  --color-primary: #28a745;
+  --color-secondary: #10411b;
+  --color-complementry: #009eca;
+  --color-text: #282828;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
