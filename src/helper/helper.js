@@ -7,4 +7,9 @@ const toPersianNumber = (num) => {
     .join("");
 };
 
-export { toPersianNumber };
+function convertToRial(dollarPrice, exchangeRate = 103) {
+  const rialPrice = dollarPrice * exchangeRate;
+  return rialPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+export { toPersianNumber, convertToRial };

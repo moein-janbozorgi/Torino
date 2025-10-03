@@ -1,7 +1,6 @@
-import Header from "@/components/modules/Header";
-import Footer from "@/components/modules/footer"
-
-
+import Header from "@/layout/Header";
+import Footer from "@/layout/footer";
+import Providers from "./providers";
 
 export default function RootLayout({ children }) {
   return (
@@ -14,9 +13,11 @@ export default function RootLayout({ children }) {
         precedence="default"
       />
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

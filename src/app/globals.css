@@ -5,16 +5,8 @@
   --color-text: #282828;
 }
 
-html, body {
-  height: 100%;
+* {
+  padding: 0;
   margin: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-footer {
-  margin-top: auto;
+  box-sizing: border-box;
 }

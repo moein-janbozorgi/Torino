@@ -4,11 +4,12 @@
   }
 
   .header {
-    display: flex;
+     display: flex; 
     justify-content: space-between;
-    padding: 10px 25px;
-    align-items: center;
+    padding: 10px 32px 10px 10px;
+    align-items: center; 
   }
+  
 
   .overlay {
     position: fixed;
@@ -55,7 +56,7 @@
   }
 }
 
-@media (min-width: 391px) and (max-width: 1920px) {
+@media (min-width: 391px) and (max-width: 1440px) {
   .header {
     display: none;
   }
@@ -114,10 +115,11 @@
     color: #1ea34a;
     font-size: 14px;
     font-weight: 600;
-    padding: 0.4rem 0.9rem;
+    padding: 0.3rem 0.8rem;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-left: 16px;
   }
 
   .authbtn:hover {
