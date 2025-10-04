@@ -1,0 +1,285 @@
+@media (max-width: 390px) {
+  .overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.3s ease;
+    z-index: 10;
+  }
+
+  .modal {
+    position: relative;
+    background: #ffffff;
+    border-radius: 20px;
+    width: 350px;
+    margin-left: 10px;
+    text-align: center;
+    animation: popUp 0.3s ease;
+  }
+
+  .closeBtn {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .closeBtn:hover {
+    opacity: 1;
+  }
+
+  .modal h1 {
+    font-family: "Vazir";
+    font-weight: 600;
+    font-size: 22px;
+    color: #282828;
+    margin-top: 25px;
+  }
+
+  .inner {
+    padding: 30px 30px 30px 30px;
+  }
+
+  .modal p {
+    font-family: "Vazir";
+    font-weight: 400;
+    font-size: 14px;
+    color: #282828;
+  }
+
+  .modal input:focus {
+    outline: none;
+    border-color: #21633a;
+  }
+
+  .error {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #e53e3e !important;
+    text-align: center;
+  }
+
+  .modal button {
+    font-family: "Vazir";
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 1rem;
+    margin-bottom: 10px;
+    width: 95%;
+    height: 3.4rem;
+    border: 1px solid #166534;
+    border-radius: 6px;
+    background: #28a745;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .modal button:hover {
+    background: #6eff9e;
+    color: #fff;
+  }
+
+  .modal button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .resend span {
+    font-family: "Vazir";
+    font-weight: 300;
+    font-size: 13px;
+    color: #282828;
+  }
+
+  .resend div p {
+    font-family: "Vazir";
+    font-weight: 300;
+    font-size: 13px !important;
+    color: #282828;
+  }
+
+  .resend div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes popUp {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .resend {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 391px) and (max-width: 1440px) {
+  .overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.3s ease;
+    z-index: 10;
+  }
+
+  .modal {
+    position: relative;
+    background: #ffffff;
+    border-radius: 20px;
+    width: 561px;
+    margin-left: 10px;
+    text-align: center;
+    animation: popUp 0.3s ease;
+  }
+
+  .closeBtn {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .closeBtn:hover {
+    opacity: 1;
+  }
+
+  .modal h1 {
+    font-family: "Vazir";
+    font-weight: 600;
+    font-size: 22px;
+    color: #282828;
+    margin-top: 25px;
+  }
+
+  .inner {
+    padding: 30px;
+  }
+
+  .modal p {
+    font-family: "Vazir";
+    font-weight: 400;
+    font-size: 14px;
+    color: #282828;
+  }
+
+  .modal input:focus {
+    outline: none;
+    border-color: #21633a;
+  }
+
+  .error {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #e53e3e !important;
+    text-align: center;
+   
+  }
+
+  .modal button {
+    font-family: "Vazir";
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 1rem;
+    margin-bottom: 10px;
+    width: 95%;
+    height: 3.4rem;
+    border: 1px solid #166534;
+    border-radius: 6px;
+    background: #28a745;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .modal button:hover {
+    background: #6eff9e;
+    color: #fff;
+  }
+
+  .modal button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .resend span {
+    font-family: "Vazir";
+    font-weight: 300;
+    font-size: 13px;
+    color: #282828;
+  }
+
+  .resend div p {
+    font-family: "Vazir";
+    font-weight: 300;
+    font-size: 13px !important;
+    color: #282828;
+  }
+
+  .resend div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes popUp {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .resend {
+    display: flex;
+    justify-content: center;
+  }
+
+}

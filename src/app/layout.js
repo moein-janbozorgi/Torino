@@ -1,6 +1,7 @@
 import Header from "@/layout/Header";
 import Footer from "@/layout/footer";
 import Providers from "./providers";
+import { ToastContainer } from "react-toastify";
 
 export default function RootLayout({ children }) {
   return (
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <Footer />
+          <ToastContainer position="top-center" />
         </Providers>
       </body>
     </html>

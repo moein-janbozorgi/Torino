@@ -5,10 +5,15 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/Header.module.css";
 import { useState } from "react";
+import LoginModal from "@/components/modules/LoginModal";
+import OtpModal from "@/components/modules/OtpModal";
 
 export default function Header() {
   const pathname = usePathname();
   const [hamburger, setHamburger] = useState(false);
+  const [on, setIsOn] = useState(false);
+  const [otp, setOtp] = useState(false);
+  const [phone, setPhone] = useState("");
 
   const links = [
     { href: "/", label: "صفحه اصلی" },
@@ -32,6 +37,7 @@ export default function Header() {
           width={40}
           height={40}
           alt="arrow"
+          onClick={() => setIsOn((s) => !s)}
         />
       </div>
       {hamburger ? (
@@ -116,7 +122,7 @@ export default function Header() {
               ))}
             </ul>
           </div>
-          <button className={styles.authbtn}>
+          <button className={styles.authbtn} onClick={() => setIsOn((s) => !s)}>
             <Image
               src="/images/profile.png"
               width={24}
@@ -129,6 +135,12 @@ export default function Header() {
           </button>
         </div>
       </div>
+      {on ? (
+        <LoginModal setIsOn={setIsOn} setOtp={setOtp} setPhone={setPhone} />
+      ) : null}
+      {otp ? (
+        <OtpModal otp={otp} setOtp={setOtp} phone={phone} setIsOn={setIsOn} />
+      ) : null}
     </header>
   );
 }

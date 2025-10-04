@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import HomePage from "@/components/tempelates/HomePage";
 import { fetchAllTour } from "@/hooks/queries";
 import { dehydrate, QueryClient } from "@tanstack/react-query";

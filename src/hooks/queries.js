@@ -21,3 +21,5 @@ export const useGetAllTour = () => {
     throw new Error("data faild in fetching");
   }
 };
+
+
