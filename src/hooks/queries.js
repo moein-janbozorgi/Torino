@@ -13,13 +13,13 @@ export const fetchAllTour = async () => {
 };
 
 export const useGetAllTour = () => {
-  try {
-    const queryFn = () => api.get("/tour");
-    const queryKey = ["all-tour"];
-    return useQuery({ queryFn, queryKey });
-  } catch (error) {
-    throw new Error("data faild in fetching");
-  }
+  const queryFn = () => api.get("/tour");
+  const queryKey = ["all-tour"];
+  return useQuery({ queryFn, queryKey });
 };
 
-
+export const useGetUserInfo = () => {
+  const queryFn = () => api.get("/user/profile");
+  const queryKey = ["user-data"];
+  return useQuery({ queryFn, queryKey });
+};

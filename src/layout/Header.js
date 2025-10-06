@@ -4,9 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/Header.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginModal from "@/components/modules/LoginModal";
 import OtpModal from "@/components/modules/OtpModal";
+import { getCookie } from "@/utils/cookieHelper";
+import { useGetUserInfo } from "@/hooks/queries";
+import UserProfile from "@/atoms/userProfile";
 
 export default function Header() {
   const pathname = usePathname();
@@ -14,6 +17,12 @@ export default function Header() {
   const [on, setIsOn] = useState(false);
   const [otp, setOtp] = useState(false);
   const [phone, setPhone] = useState("");
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const t = getCookie("accessToken");
+    setToken(t);
+  }, []);
 
   const links = [
     { href: "/", label: "صفحه اصلی" },
@@ -22,23 +31,29 @@ export default function Header() {
     { href: "/contact", label: "تماس با ما" },
   ];
 
+  const { data } = useGetUserInfo();
+
   return (
-    <header>
+    <header className={styles.topheader}>
       <div className={styles.header}>
-        <Image
-          src="/images/hamburger.png"
-          width={20}
-          height={16}
-          alt="menu"
-          onClick={() => setHamburger((s) => !s)}
-        />
-        <Image
-          src="/images/loginarrow.png"
-          width={40}
-          height={40}
-          alt="arrow"
-          onClick={() => setIsOn((s) => !s)}
-        />
+        <div>
+          <Image
+            src="/images/hamburger.png"
+            width={22}
+            height={18}
+            alt="menu"
+            onClick={() => setHamburger((s) => !s)}
+          />
+        </div>
+        <div>
+          <Image
+            src="/images/loginarrow.png"
+            width={40}
+            height={40}
+            alt="arrow"
+            onClick={() => setIsOn((s) => !s)}
+          />
+        </div>
       </div>
       {hamburger ? (
         <>
@@ -91,50 +106,49 @@ export default function Header() {
           </div>
         </>
       ) : null}
-
-      <div className={styles.headerwrapper}>
-        <div className={styles.webheader}>
-          <div className={styles.rightGroup}>
-            <Image
-              src="/images/Torino-logo.png"
-              width={100}
-              height={30}
-              alt="torino-img"
-            />
-            <ul>
-              {links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={
-                      link.href === "/"
-                        ? pathname === "/"
-                          ? styles.activeLink
-                          : styles.link
-                        : pathname.startsWith(link.href)
+      <div className={styles.webheader}>
+        <div className={styles.rightGroup}>
+          <Image
+            src="/images/Torino-logo.png"
+            width={100}
+            height={30}
+            alt="torino-img"
+          />
+          <ul>
+            {links.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={
+                    link.href === "/"
+                      ? pathname === "/"
                         ? styles.activeLink
                         : styles.link
-                    }
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <button className={styles.authbtn} onClick={() => setIsOn((s) => !s)}>
-            <Image
-              src="/images/profile.png"
-              width={24}
-              height={24}
-              alt="profile-img"
-            />
-            <span className="text">ورود</span>
-            <span className="divider">|</span>
-            <span className="text">ثبت نام</span>
-          </button>
+                      : pathname.startsWith(link.href)
+                      ? styles.activeLink
+                      : styles.link
+                  }
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        <button className={styles.authbtn} onClick={() => setIsOn((s) => !s)}>
+          <Image
+            src="/images/profile.png"
+            width={24}
+            height={24}
+            alt="profile-img"
+          />
+          <span className="text">ورود</span>
+          <span className="divider">|</span>
+          <span className="text">ثبت نام</span>
+        </button>
       </div>
+
       {on ? (
         <LoginModal setIsOn={setIsOn} setOtp={setOtp} setPhone={setPhone} />
       ) : null}

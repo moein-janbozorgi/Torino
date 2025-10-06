@@ -4,15 +4,16 @@ import styles from "@/styles/LoginModal.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
-import { phoneCheker, toPersianNumber } from "@/helper/helper";
+import {toPersianNumber } from "@/helper/helper";
 import { useLogin } from "@/hooks/mutations";
+import { phoneCheker } from "@/helper/validations";
 
 function LoginModal({ setIsOn, setOtp, setPhone }) {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm({ resolver: yupResolver(phoneCheker) });
+  } = useForm({ resolver: yupResolver(phoneCheker)});
 
   const { mutate } = useLogin(() => {
     setIsOn((s) => !s);
@@ -41,7 +42,7 @@ function LoginModal({ setIsOn, setOtp, setPhone }) {
             <h1>ورود به تورینو</h1>
             <p>شماره موبایل خود را وارد کنید</p>
             <input
-              type="number"
+              type="text"
               placeholder={toPersianNumber("4253***0912")}
               {...register("mobile")}
             />

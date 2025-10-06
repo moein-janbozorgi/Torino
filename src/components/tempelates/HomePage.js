@@ -17,7 +17,7 @@ function HomePage() {
       <Tours data={data} isLoading={isLoading} />
       <Call />
       <Whytorino />
-      <Last />|
+      <Last />
     </>
   );
 }

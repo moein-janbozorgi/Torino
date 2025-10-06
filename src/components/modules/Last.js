@@ -43,7 +43,7 @@ function Last() {
           <div>
             <p>رضایت کاربران</p>
             <span>
-              رضایت بیش از {toPersianNumber(10)} هزار کاربر از تور های ما{" "}
+              رضایت بیش از {toPersianNumber(10)} هزار کاربر از تور های ما
             </span>
           </div>
         </div>

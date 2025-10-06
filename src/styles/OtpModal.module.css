@@ -1,5 +1,4 @@
-@media (max-width: 390px) {
-  .overlay {
+.overlay {
     position: fixed;
     inset: 0;
     width: 100%;
@@ -18,7 +17,6 @@
     background: #ffffff;
     border-radius: 20px;
     width: 350px;
-    margin-left: 10px;
     text-align: center;
     animation: popUp 0.3s ease;
   }
@@ -138,9 +136,9 @@
     display: flex;
     justify-content: center;
   }
-}
 
-@media (min-width: 391px) and (max-width: 1440px) {
+
+@media (min-width: 1440px) {
   .overlay {
     position: fixed;
     inset: 0;

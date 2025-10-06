@@ -27,8 +27,7 @@ function Tours({ data, isLoading }) {
   }
 
   const displayedTours = isMobile && !showAll ? data?.slice(0, 4) : data;
-
-  console.log(data);
+  console.log(displayedTours);
   return (
     <div className={styles.container}>
       <h1>همه تور ها</h1>

@@ -3,6 +3,11 @@ import Footer from "@/layout/footer";
 import Providers from "./providers";
 import { ToastContainer } from "react-toastify";
 
+export const metadata = {
+  title: "Torino",
+  description: "تورینو وب‌سایت گردشگری",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">

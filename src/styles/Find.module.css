@@ -1,31 +1,35 @@
-@media (max-width: 390px) {
-  .select {
-    margin: 0 30px;
-  }
-
-  .text {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    justify-content: center;
-  }
-
-  .text p {
-    font-family: "Vazir";
-    font-weight: 600;
-    font-size: 16px;
-    color: #595959;
-  }
-
-  .text span {
-    font-family: "Vazir";
-    font-weight: 600;
-    font-size: 16px;
-    color: #28a745;
-  }
+.container {
+  width: 100%;
+  margin: 60px auto 30px;
+  box-sizing: border-box;
 }
 
-@media (min-width: 391px) and (max-width: 1440px) {
+ .select {
+  width: 100%;
+ }
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  justify-content: center;
+}
+
+.text p {
+  font-family: "Vazir";
+  font-weight: 600;
+  font-size: 16px;
+  color: #595959;
+}
+
+.text span {
+  font-family: "Vazir";
+  font-weight: 600;
+  font-size: 16px;
+  color: #28a745;
+}
+
+@media (min-width: 1440px) {
   .select {
     width: 1200px;
     margin: 0 auto;

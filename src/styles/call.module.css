@@ -1,9 +1,8 @@
-@media (max-width: 390px) {
-  .container {
+   .container {
     width: 327px;
     font-family: "Vazir";
-    margin: 70px 30px;
-  }
+    margin: 70px auto;
+  
 
   .main {
     position: relative;
@@ -103,7 +102,7 @@
   }
 }
 
-@media (min-width: 391px) and (max-width: 1440px) {
+@media (min-width: 1440px) {
   .container {
     width: 1200px;
     margin: 80px auto;

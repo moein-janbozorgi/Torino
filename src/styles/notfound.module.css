@@ -1,37 +1,35 @@
-@media (max-width: 390px) {
-  .container {
-    text-align: center;
-    min-height: 100vh;
-  }
-
-  .container a {
-    text-decoration: none;
-    background: #d8ffe1;
-    padding: 10px 20px;
-    border-radius: 16px;
-    font-family: "Vazir";
-    font-weight: 400;
-    font-size: 20px;
-    color: #28a745;
-    transition: 0.1s all ease-in;
-  }
-
-  .container a:hover {
-    background-color: #6eff9e;
-    color: #fff;
-  }
-
-  .container h1 {
-    font-family: "Vazir";
-    font-weight: 600;
-    font-size: 24px;
-    color: var(--color-text);
-    margin-top: -10px;
-    margin-bottom: 30px;
-  }
+.container {
+  text-align: center;
+  min-height: 100vh;
 }
 
-@media (min-width: 391px) and (max-width: 1440px) {
+.container a {
+  text-decoration: none;
+  background: #d8ffe1;
+  padding: 10px 20px;
+  border-radius: 16px;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 20px;
+  color: #28a745;
+  transition: 0.1s all ease-in;
+}
+
+.container a:hover {
+  background-color: #6eff9e;
+  color: #fff;
+}
+
+.container h1 {
+  font-family: "Vazir";
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--color-text);
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 1440px) {
   .container {
     display: flex;
     align-items: center;

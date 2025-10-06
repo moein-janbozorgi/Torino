@@ -1,5 +1,4 @@
-@media (max-width: 390px) {
-  .overlay {
+.overlay {
     position: fixed;
     inset: 0;
     width: 100%;
@@ -18,7 +17,6 @@
     background: #ffffff;
     border-radius: 20px;
     width: 350px;
-    margin-left: 10px;
     text-align: center;
     animation: popUp 0.3s ease;
   }
@@ -37,8 +35,8 @@
   }
 
   .form {
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
 
   .modal h1 {
@@ -47,7 +45,6 @@
     font-size: 22px;
     margin-bottom: 40px;
     color: #282828;
-
   }
 
   .inner {
@@ -129,9 +126,9 @@
       transform: scale(1);
     }
   }
-}
 
-@media (min-width: 391px) and (max-width: 1440px) {
+
+@media (min-width: 1440px) {
   .overlay {
     position: fixed;
     inset: 0;

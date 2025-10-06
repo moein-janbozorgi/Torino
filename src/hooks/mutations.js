@@ -1,5 +1,5 @@
 import { api } from "@/configs/config";
-import { setCookie } from "@/utils/cookie";
+import { setCookie } from "@/utils/cookieHelper";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
@@ -9,8 +9,8 @@ export const useLogin = (onSuccessCallback) => {
   return useMutation({
     mutationFn,
     onSuccess: (response) => {
-      toast.success("شماره با موفقیت ثبت شد", {
-        autoClose: 1000,
+      toast.success(`کد تایید شما ${response.code}`, {
+        autoClose: 3000,
       });
       if (onSuccessCallback) onSuccessCallback(response.data);
     },

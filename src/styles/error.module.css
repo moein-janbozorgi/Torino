@@ -13,18 +13,12 @@
   margin-top: -10px;
 }
 
-@media (max-width: 390px) {
-  .container {
-    text-align: center;
-    min-height: 100vh;
-  }
-
-  .container h1 {
-    margin-top: -10px;
-  }
+.container {
+  text-align: center;
+  min-height: 100vh;
 }
 
-@media (min-width: 391px) and (max-width: 1440px) {
+@media (min-width: 1440px) {
   .container {
     width: 1200px;
     display: flex;

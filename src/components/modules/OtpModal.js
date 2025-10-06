@@ -1,7 +1,8 @@
 "use client";
 
-import { otpCheker, toPersianNumber } from "@/helper/helper";
-import { useLogin, useResend, useSendOtp } from "@/hooks/mutations";
+import { toPersianNumber } from "@/helper/helper";
+import { otpCheker } from "@/helper/validations";
+import { useResend, useSendOtp } from "@/hooks/mutations";
 import styles from "@/styles/OtpModal.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
@@ -86,9 +87,9 @@ function OtpModal({ setOtp, phone, setIsOn }) {
                 justifyContent: "center",
                 gap: "5px",
               }}
-              renderSeparator={
+              renderSeparator={() => (
                 <span style={{ width: "10px", display: "inline-block" }}></span>
-              }
+              )}
               renderInput={(props) => (
                 <input
                   {...props}
