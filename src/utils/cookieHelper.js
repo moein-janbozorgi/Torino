@@ -1,3 +1,7 @@
+"use client";
+
+import Cookies from "js-cookie";
+
 const setCookie = (tokens) => {
   document.cookie = `accessToken=${tokens.accessToken}; max-age=${
     1 * 24 * 60 * 160
@@ -16,16 +20,19 @@ function getCookie(name) {
 
 const getNewTookens = async () => {
   const refreshToken = getCookie("refreshToken");
-  if (!refreshToken) return;
+  if (!refreshToken) return null;
 
   try {
-    const response = await api.post("/auth/check-refresh-token", {
-      refreshToken,
-    });
-    return { response };
+    const { data } = await api.post("/auth/refresh-token", { refreshToken });
+    api.defaults.headers.common["Authorization"] = `Bearer ${data.accessToken}`;
+    return data.accessToken;
   } catch (error) {
-    return { error };
+    return null;
   }
 };
 
-export { setCookie, getCookie, getNewTookens };
+const removeCookie = (name) => {
+  Cookies.remove(name, { path: "/" });
+};
+
+export { setCookie, getCookie, getNewTookens, removeCookie };

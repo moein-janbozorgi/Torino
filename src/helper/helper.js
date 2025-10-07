@@ -13,4 +13,4 @@ function convertToRial(dollarPrice, exchangeRate = 103) {
   return rialPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export {toPersianNumber, convertToRial };
+export {convertToRial };

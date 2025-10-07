@@ -17,12 +17,7 @@ export default function Header() {
   const [on, setIsOn] = useState(false);
   const [otp, setOtp] = useState(false);
   const [phone, setPhone] = useState("");
-  const [token, setToken] = useState(null);
-
-  useEffect(() => {
-    const t = getCookie("accessToken");
-    setToken(t);
-  }, []);
+ 
 
   const links = [
     { href: "/", label: "صفحه اصلی" },
@@ -31,9 +26,9 @@ export default function Header() {
     { href: "/contact", label: "تماس با ما" },
   ];
 
-  const { data } = useGetUserInfo();
+  const { data: user } = useGetUserInfo();
 
-  console.log(data);
+  console.log(user);
 
   return (
     <header className={styles.topheader}>
@@ -47,8 +42,8 @@ export default function Header() {
             onClick={() => setHamburger((s) => !s)}
           />
         </div>
-        {token === null ? null : token ? (
-          <UserProfile data={data} />
+        {user ? (
+          <UserProfile data={user} />
         ) : (
           <div>
             <Image
@@ -141,8 +136,8 @@ export default function Header() {
             ))}
           </ul>
         </div>
-        {token === null ? null : token ? (
-          <UserProfile data={data} />
+        {user ? (
+          <UserProfile data={user} />
         ) : (
           <button className={styles.authbtn} onClick={() => setIsOn((s) => !s)}>
             <Image

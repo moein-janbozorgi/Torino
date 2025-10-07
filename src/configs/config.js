@@ -8,13 +8,9 @@ const api = axios.create({
   },
 });
 
-api.interceptors.response.use(
-  (response) => response.data,
-  (error) => Promise.reject(error)
-);
-
 api.interceptors.request.use((config) => {
   const token = getCookie("accessToken");
+
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -22,20 +18,21 @@ api.interceptors.request.use((config) => {
 });
 
 api.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response.data,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (error.response?.status === 401 ||error.response?.status === 403 && !originalRequest._retry) {
       originalRequest._retry = true;
-
-      const res = await getNewTookens();
-      if (!res?.response) return;
-      setCookie(res.response.data);
-
-      return api(originalRequest);
+      const newAccessToken = await getNewTookens();
+      if (newAccessToken) {
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        api.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${newAccessToken}`;
+        return api(originalRequest);
+      }
     }
+    return Promise.reject(error);
   }
 );
 

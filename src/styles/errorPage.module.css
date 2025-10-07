@@ -16,6 +16,7 @@
 .container {
   text-align: center;
   min-height: 100vh;
+  margin-top: 60px;
 }
 
 @media (min-width: 1440px) {

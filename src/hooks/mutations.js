@@ -1,8 +1,8 @@
 import { api } from "@/configs/config";
-import { toPersianNumber } from "@/helper/helper";
-import { setCookie } from "@/utils/cookieHelper";
+import { removeCookie, setCookie } from "@/utils/cookieHelper";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const useLogin = (onSuccessCallback) => {
   const mutationFn = (data) => api.post("/auth/send-otp", data);
@@ -10,7 +10,7 @@ export const useLogin = (onSuccessCallback) => {
   return useMutation({
     mutationFn,
     onSuccess: (response) => {
-      toast.success(`کد تایید شما ${toPersianNumber(response.code)}`, {
+      toast.success(`کد تایید شما ${response.code}`, {
         autoClose: 3000,
       });
       if (onSuccessCallback) onSuccessCallback(response.data);
@@ -22,15 +22,19 @@ export const useLogin = (onSuccessCallback) => {
 };
 
 export const useSendOtp = (onSuccessCallback) => {
+  const queryClient = useQueryClient();
   const mutationFn = (data) => api.post("/auth/check-otp", data);
 
   return useMutation({
     mutationFn,
     onSuccess: (response) => {
       setCookie(response);
+
       toast.success("شما با موفقیت وارد شدید", {
         autoClose: 1000,
       });
+
+      queryClient.invalidateQueries(["user-data"]);
 
       if (onSuccessCallback) onSuccessCallback(response.data);
     },
@@ -45,7 +49,6 @@ export const useResend = () => {
 
   return useMutation({
     mutationFn,
-    mutationFn,
     onSuccess: () => {
       toast.success("کد تایید دوباره ارسال شد", { autoClose: 1000 });
     },
@@ -53,4 +56,16 @@ export const useResend = () => {
       toast.error("ارسال مجدد کد با خطا مواجه شد", { autoClose: 1000 });
     },
   });
+};
+
+export const useLogout = () => {
+  const queryClient = useQueryClient();
+  const handleLogout = () => {
+    removeCookie("accessToken");
+    api.defaults.headers.common["Authorization"];
+    queryClient.setQueryData(["user-data"], null);
+    queryClient.invalidateQueries(["user-data"]);
+    toast.success("شما با موفقیت خارج شدید");
+  };
+  return handleLogout;
 };

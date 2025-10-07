@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/styles/error.module.css";
+import styles from "@/styles/errorPage.module.css";
 import Image from "next/image";
 
 export default function GlobalError() {

@@ -1,12 +1,53 @@
 .container {
   width: 100%;
-  margin: 60px auto 30px;
+  margin: 60px auto 50px;
   box-sizing: border-box;
+  padding: 0 1.5rem 0 1.5rem;
 }
 
- .select {
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topinput {
+  display: flex;
+}
+
+.topinput input {
+  width: 46%;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid #00000026;
+  text-align: center;
+  outline: none;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #00000080;
+}
+
+.searchBtn {
+  width: 328px;
+  height: 47px;
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.topinput input:first-child {
+  margin-left: 16.5px;
+}
+
+.select {
   width: 100%;
- }
+  box-sizing: border-box;
+}
 
 .text {
   display: flex;

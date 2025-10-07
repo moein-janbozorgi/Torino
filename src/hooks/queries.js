@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "@/configs/config";
 
 export const fetchAllTour = async () => {
@@ -19,7 +19,19 @@ export const useGetAllTour = () => {
 };
 
 export const useGetUserInfo = () => {
-  const queryFn = () => api.get("/user/profile");
-  const queryKey = ["user-data"];
-  return useQuery({ queryFn, queryKey });
+  const queryFn = async () => {
+    try {
+      const res = await api.get("/user/profile");
+      return res;
+    } catch {
+      return null;
+    }
+  };
+  return useQuery({
+    queryKey: ["user-data"],
+    queryFn,
+    staleTime: 0,
+    cachetime: 0,
+    retry: false,
+  });
 };
