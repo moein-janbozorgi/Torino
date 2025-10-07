@@ -2,6 +2,8 @@ import Header from "@/layout/Header";
 import Footer from "@/layout/footer";
 import Providers from "./providers";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "@/styles/toastStyle.module.css";
 
 export const metadata = {
   title: "Torino",
@@ -23,7 +25,14 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <Footer />
-          <ToastContainer position="top-center" />
+          <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            rtl={true}
+            theme="light"
+            toastClassName={styles.customToast}
+            progressClassName={styles.customProgress}
+          />
         </Providers>
       </body>
     </html>

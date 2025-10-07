@@ -33,6 +33,8 @@ export default function Header() {
 
   const { data } = useGetUserInfo();
 
+  console.log(data);
+
   return (
     <header className={styles.topheader}>
       <div className={styles.header}>
@@ -45,15 +47,19 @@ export default function Header() {
             onClick={() => setHamburger((s) => !s)}
           />
         </div>
-        <div>
-          <Image
-            src="/images/loginarrow.png"
-            width={40}
-            height={40}
-            alt="arrow"
-            onClick={() => setIsOn((s) => !s)}
-          />
-        </div>
+        {token === null ? null : token ? (
+          <UserProfile data={data} />
+        ) : (
+          <div>
+            <Image
+              src="/images/loginarrow.png"
+              width={40}
+              height={40}
+              alt="arrow"
+              onClick={() => setIsOn((s) => !s)}
+            />
+          </div>
+        )}
       </div>
       {hamburger ? (
         <>
@@ -135,18 +141,21 @@ export default function Header() {
             ))}
           </ul>
         </div>
-
-        <button className={styles.authbtn} onClick={() => setIsOn((s) => !s)}>
-          <Image
-            src="/images/profile.png"
-            width={24}
-            height={24}
-            alt="profile-img"
-          />
-          <span className="text">ورود</span>
-          <span className="divider">|</span>
-          <span className="text">ثبت نام</span>
-        </button>
+        {token === null ? null : token ? (
+          <UserProfile data={data} />
+        ) : (
+          <button className={styles.authbtn} onClick={() => setIsOn((s) => !s)}>
+            <Image
+              src="/images/profile.png"
+              width={24}
+              height={24}
+              alt="profile-img"
+            />
+            <span className="text">ورود</span>
+            <span className="divider">|</span>
+            <span className="text">ثبت نام</span>
+          </button>
+        )}
       </div>
 
       {on ? (

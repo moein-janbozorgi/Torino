@@ -1,4 +1,5 @@
 import { api } from "@/configs/config";
+import { toPersianNumber } from "@/helper/helper";
 import { setCookie } from "@/utils/cookieHelper";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
@@ -9,7 +10,7 @@ export const useLogin = (onSuccessCallback) => {
   return useMutation({
     mutationFn,
     onSuccess: (response) => {
-      toast.success(`کد تایید شما ${response.code}`, {
+      toast.success(`کد تایید شما ${toPersianNumber(response.code)}`, {
         autoClose: 3000,
       });
       if (onSuccessCallback) onSuccessCallback(response.data);

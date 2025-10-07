@@ -1,0 +1,21 @@
+/* کلاس‌های خودت */
+.customToast {
+  background: rgba(25, 25, 25, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  color: #fff;
+  font-family: "Vazir", sans-serif;
+  direction: rtl;
+}
+
+.customProgress {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+}
+
+:global(.Toastify__close-button) {
+  color: #fff;
+}
+
+:global(.Toastify__toast-container) {
+  padding: 12px;
+}
