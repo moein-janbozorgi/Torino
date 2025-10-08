@@ -1,21 +1,36 @@
 "use client";
 
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { api } from "@/configs/config";
 
 export const fetchAllTour = async () => {
   try {
-    const { data } = await api.get("/tour");
-    return data;
+    const result = await api.get("/tour");
+    return Array.isArray(result) ? result : result?.data ?? [];
   } catch (error) {
-    throw new Error("data faild in fetching");
+    console.log(error);
+    return [];
+  }
+};
+
+
+export const fetchTourById = async (idtour) => {
+  try {
+    const result = await api.get(`/tour/${idtour}`);
+    return result ?? {}; 
+  } catch (error) {
+    console.error("Fetch tour by ID failed:", error);
+    return {};
   }
 };
 
 export const useGetAllTour = () => {
-  const queryFn = () => api.get("/tour");
-  const queryKey = ["all-tour"];
-  return useQuery({ queryFn, queryKey });
+  return useQuery({
+    queryKey: ["all-tour"],
+    queryFn: fetchAllTour,
+    staleTime: 1000 * 60,
+    retry: 1,
+  });
 };
 
 export const useGetUserInfo = () => {

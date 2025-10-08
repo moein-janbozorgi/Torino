@@ -1,6 +1,7 @@
 .container {
   text-align: center;
   min-height: 100vh;
+  margin-top: 70px;
 }
 
 .container a {

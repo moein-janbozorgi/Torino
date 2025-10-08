@@ -15,9 +15,5 @@ export default async function Home() {
 
   const dehydratedState = dehydrate(queryClient);
 
-  return (
-    <Providers>
-      <HomePage dehydratedState={dehydratedState} />;
-    </Providers>
-  );
+  return <HomePage dehydratedState={dehydratedState} />;
 }

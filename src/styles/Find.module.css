@@ -1,8 +1,54 @@
 .container {
   width: 100%;
-  margin: 60px auto 50px;
+  margin: 60px auto 45px;
   box-sizing: border-box;
   padding: 0 1.5rem 0 1.5rem;
+}
+
+.dateTag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 40px;
+  border: 1px solid #00000026;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: "Vazir";
+  font-size: 16px;
+  color: #00000080;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 0 10px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dateTag span {
+  pointer-events: none;
+}
+
+.calendarDropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  z-index: 50;
+  background-color: #fff;
+  border: 1px solid #00000033;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .form {
@@ -11,37 +57,94 @@
   gap: 10px;
 }
 
+.hiddenInput {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  visibility: hidden;
+}
+
 .topinput {
   display: flex;
+  gap: 20px;
 }
 
 .topinput input {
-  width: 46%;
+  width: 100%;
   height: 40px;
   border-radius: 12px;
   border: 1px solid #00000026;
   text-align: center;
   outline: none;
   font-family: "Vazir";
-  font-weight: 400;
   font-size: 16px;
   color: #00000080;
+  padding-right: 7px;
+  box-sizing: border-box;
+}
+
+.topinput label:nth-child(2) input {
+  padding-right: 15px;
+}
+
+.topinput label {
+  position: relative;
+  flex: 1;
+}
+
+.topinput img {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.dateBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.label {
+  position: relative;
+  display: flex;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  width: 100%;
+}
+
+.pickerContainer {
+  position: relative;
+  width: 100%;
+}
+
+.inputLike {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #00000026;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .searchBtn {
-  width: 328px;
+  width: 100%;
   height: 47px;
   background-color: #28a745;
   color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 16px;
   font-family: "Vazir";
   font-weight: 400;
   font-size: 20px;
-}
-
-.topinput input:first-child {
-  margin-left: 16.5px;
+  margin-top: 15px;
 }
 
 .select {
@@ -68,6 +171,60 @@
   font-weight: 600;
   font-size: 16px;
   color: #28a745;
+}
+
+.cityDropdown {
+  position: absolute;
+  width: 100%;
+  top: 45px;
+  right: 0;
+  border: 1px solid #00000033;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  animation: fadeIn 0.2s ease;
+}
+
+.cityHeader {
+  font-family: "Vazir";
+  font-weight: 300;
+  font-size: 13px;
+  text-align: right;
+  padding: 5px 5px;
+  color: #282828b2;
+}
+
+.cityList {
+  display: flex;
+  flex-direction: column;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.cityItem {
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 14px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: right;
+  border: none;
+  border-bottom: 1px solid #0000001f;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: #282828;
+  transition: background 0.2s ease;
+}
+
+.cityItem img {
+  position: static;
+  flex-shrink: 0;
+  margin-top: 17px;
 }
 
 @media (min-width: 1440px) {

@@ -23,13 +23,13 @@ export default function RootLayout({ children }) {
       <body>
         <Providers>
           <Header />
-          {children}
+          <main className="flex-1">{children}</main>
           <Footer />
           <ToastContainer
             position="top-center"
             autoClose={3000}
             rtl={true}
-            theme="light"
+            theme="dark"
             toastClassName={styles.customToast}
             progressClassName={styles.customProgress}
           />

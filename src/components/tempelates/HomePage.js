@@ -6,9 +6,26 @@ import Tours from "../modules/Tours";
 import Call from "../modules/Call";
 import Whytorino from "../modules/Whytorino";
 import Last from "../modules/Last";
+import {
+  QueryClient,
+  QueryClientProvider,
+  hydrate,
+} from "@tanstack/react-query";
+import { useState } from "react";
 
+function HomePage({ dehydratedState }) {
+  const [queryClient] = useState(() => new QueryClient());
 
-function HomePage() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <hydrate state={dehydratedState}>
+        <TourList />
+      </hydrate>
+    </QueryClientProvider>
+  );
+}
+
+function TourList() {
   const { data, isLoading } = useGetAllTour();
 
   return (

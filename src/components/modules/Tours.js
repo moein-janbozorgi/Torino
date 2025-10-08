@@ -51,7 +51,7 @@ function Tours({ data, isLoading }) {
               </div>
             </div>
             <div className={styles.buttonprice}>
-              <Link href="/details">رزرو</Link>
+              <Link href="/Details">رزرو</Link>
               <div className={styles.price}>
                 <span>{toPersianNumber(convertToRial(tour.price))}</span>
                 <p>تومان</p>

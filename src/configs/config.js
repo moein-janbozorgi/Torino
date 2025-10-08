@@ -18,20 +18,23 @@ api.interceptors.request.use((config) => {
 });
 
 api.interceptors.response.use(
-  (response) => response.data,
+  (response) => response.data, 
   async (error) => {
     const originalRequest = error.config;
-    if (error.response?.status === 401 ||error.response?.status === 403 && !originalRequest._retry) {
+
+    const status = error.response?.status;
+    const notRetried = !originalRequest._retry;
+
+    if ((status === 401 || status === 403) && notRetried) {
       originalRequest._retry = true;
+
       const newAccessToken = await getNewTookens();
       if (newAccessToken) {
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-        api.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${newAccessToken}`;
         return api(originalRequest);
       }
     }
+
     return Promise.reject(error);
   }
 );
