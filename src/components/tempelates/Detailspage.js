@@ -6,8 +6,8 @@ import Loader from "./Loader";
 import styles from "@/styles/Detailspage.module.css";
 import Image from "next/image";
 import { convertToRial, toPersianNumber } from "@/helper/helper";
-import Link from "next/link";
 import { api } from "@/configs/config";
+import useAuthGuard from "@/hooks/useAuthGuard";
 
 export default function Detailspage({ idtour, dehydratedState }) {
   return (
@@ -17,14 +17,22 @@ export default function Detailspage({ idtour, dehydratedState }) {
   );
 }
 
-const sendHandler = (id) => {
-  api.put(`/basket/${id}`);
-};
-
 function DetailspageContent({ idtour }) {
+  const { checkAuth } = useAuthGuard({ autoCheck: false });
   const { data, isLoading } = useGetTourById(idtour);
 
   if (isLoading) return <Loader />;
+
+  const sendHandler = (id) => {
+    checkAuth(async () => {
+      try {
+        await api.put(`/basket/${id}`);
+        window.location.href = `/checkout`;
+      } catch (error) {
+        console.error("خطا در افزودن به سبد:", error);
+      }
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -95,9 +103,7 @@ function DetailspageContent({ idtour }) {
           </div>
         </div>
         <div className={styles.finish}>
-          <Link href="/checkout" onClick={sendHandler(data.id)}>
-            رزرو و خرید
-          </Link>
+          <button onClick={() => sendHandler(data.id)}>رزرو و خرید</button>
           <div className={styles.price}>
             <span>{toPersianNumber(convertToRial(data.price))}</span>
             <p>تومان</p>

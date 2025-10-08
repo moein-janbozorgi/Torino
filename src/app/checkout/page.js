@@ -1,8 +1,18 @@
-"use client";
+export const dynamic = "force-dynamic";
 
-function page() {
+import CheckoutPage from "@/components/tempelates/CheckoutPage";
+import { fetchBasket } from "@/hooks/queries";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 
-  return <div></div>;
+export default async function Page() {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["basket"],
+    queryFn: fetchBasket,
+  });
+
+  const dehydratedState = dehydrate(queryClient);
+
+  return <CheckoutPage dehydratedState={dehydratedState}/>;
 }
-
-export default page;

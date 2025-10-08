@@ -25,10 +25,29 @@ export const useGetTourById = (idtour) => {
 export const fetchTourById = async (idtour) => {
   try {
     const result = await api.get(`/tour/${idtour}`);
-    console.log(result)
+    console.log(result);
     return result;
   } catch (error) {
     console.error("Fetch tour by ID failed:", error);
+    return {};
+  }
+};
+
+export const useGetBasket = () => {
+  return useQuery({
+    queryKey: ["basket"],
+    queryFn: fetchBasket,
+    staleTime: 1000 * 60,
+    retry: 1,
+  });
+};
+
+export const fetchBasket = async () => {
+  try {
+    const result = await api.get("/basket");
+    console.log(result);
+    return result;
+  } catch (error) {
     return {};
   }
 };

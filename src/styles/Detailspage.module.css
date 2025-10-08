@@ -49,7 +49,6 @@
 
 .options {
   display: flex;
-  /* justify-content: space-evenly; */
   gap: 35px;
   text-align: center;
 }
@@ -91,13 +90,12 @@
   align-items: center;
 }
 
-.finish a {
-  text-decoration: none;
+.finish button {
+  border: none;
   width: 154px;
   height: 42px;
   background-color: #28a745;
   text-align: center;
-  line-height: 42px;
   border-radius: 10px;
   color: #ffffff;
   font-family: "Vazir";
@@ -106,7 +104,7 @@
   transition: 0.2s all ease-in;
 }
 
-.finish a:hover {
+.finish button:hover {
   background: #6eff9e;
 }
 

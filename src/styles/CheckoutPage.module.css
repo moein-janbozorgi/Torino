@@ -1,0 +1,218 @@
+.container {
+  width: 340px;
+  margin: 100px auto 50px;
+  box-sizing: border-box;
+}
+
+.infoBox {
+  border: 1px solid #00000033;
+  padding: 0px 20px 15px 20px;
+  border-radius: 10px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user h1 {
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.selectBox {
+  position: relative;
+  width: 100%;
+}
+
+.selectBox select {
+  padding: 0 10px;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #808080;
+  outline: none;
+  border-radius: 5px;
+  appearance: none;
+  background-color: #fff;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #00000080;
+}
+
+.form input {
+  width: 95%;
+  height: 50px;
+  border: 1px solid #808080;
+  outline: none;
+  border-radius: 5px;
+  appearance: none;
+  background-color: #fff;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #00000080;
+  padding-right: 10px;
+}
+
+.genderBox {
+  position: relative;
+  width: 100%;
+}
+
+.genderInput {
+  border: 1px solid #808080;
+  border-radius: 5px;
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #00000080;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 4px;
+  z-index: 10;
+}
+
+.dropdown p {
+  margin: 0;
+  padding: 10px;
+  cursor: pointer;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #00000080;
+}
+
+.dropdown p:hover {
+  background: #f2f2f2;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.selectBox img {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  pointer-events: none;
+}
+
+.checkoutBox {
+  border-radius: 10px;
+  margin-top: 30px;
+  border: 1px solid #0000001a;
+}
+
+.desc {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+  align-items: center;
+}
+
+.desc h1 {
+  font-family: "Vazir";
+  font-weight: 600;
+  font-size: 24px;
+  color: #000000;
+}
+
+.desc p {
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #282828;
+}
+
+.midLine {
+  margin-top: 10px;
+  border: 1px dashed #00000080;
+  border-radius: 8px;
+  border-image: repeating-linear-gradient(
+      to right,
+      #00000080,
+      transparent 7px 10px
+    )
+    1;
+}
+
+.priceDiv {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.priceDiv p {
+  margin-top: 18px;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #282828;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.price span {
+  font-family: "Vazir";
+  font-weight: 500;
+  font-size: 24px;
+  color: #009eca;
+}
+
+.price p {
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 14px;
+  color: #282828cc;
+  margin-top: 18px;
+}
+
+.btn {
+  padding: 0 20px 20px 20;
+}
+
+.btn button {
+  border: none;
+  width: 302px;
+  height: 56px;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 24px;
+  color: #ffffff;
+  background-color: #28a745;
+  border-radius: 10px;
+}
+.btn button:hover {
+  background: #6eff9e;
+}
