@@ -1,0 +1,132 @@
+.container {
+  width: 340px;
+  margin: 100px auto 50px;
+  box-sizing: border-box;
+}
+
+.tourimg {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.titleoption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titleoption h1 {
+  font-family: "Vazir";
+  font-weight: 700;
+  font-size: 24px;
+  color: #000000;
+}
+
+.titleoption p {
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 15px;
+  color: #282828;
+}
+
+.desc {
+  display: flex;
+  justify-content: space-between;
+}
+
+.desc div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desc div p {
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 13px;
+  color: #7d7d7d;
+}
+
+.options {
+  display: flex;
+  /* justify-content: space-evenly; */
+  gap: 35px;
+  text-align: center;
+}
+
+.topoption {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.topoption p {
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #444444;
+}
+
+.box:nth-child(1) {
+    margin-left: 20px;
+}
+
+.box:nth-child(3) {
+    margin-right: 25px;
+}
+
+
+
+.box p {
+  font-family: "Vazir";
+  font-weight: 500;
+  font-size: 14px;
+  color: #282828;
+}
+
+.finish {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.finish a {
+  text-decoration: none;
+  width: 154px;
+  height: 42px;
+  background-color: #28a745;
+  text-align: center;
+  line-height: 42px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 20px;
+  transition: 0.2s all ease-in;
+}
+
+.finish a:hover {
+  background: #6eff9e;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.price span {
+  font-family: "Vazir";
+  font-weight: 500;
+  font-size: 24px;
+  color: #009eca;
+}
+
+.price p {
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 10px;
+  color: #282828cc;
+  margin-top: 15px;
+}

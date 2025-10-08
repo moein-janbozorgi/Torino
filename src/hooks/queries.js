@@ -13,11 +13,20 @@ export const fetchAllTour = async () => {
   }
 };
 
+export const useGetTourById = (idtour) => {
+  return useQuery({
+    queryKey: ["tour", idtour],
+    queryFn: () => fetchTourById(idtour),
+    staleTime: 1000 * 60,
+    retry: 1,
+  });
+};
 
 export const fetchTourById = async (idtour) => {
   try {
     const result = await api.get(`/tour/${idtour}`);
-    return result ?? {}; 
+    console.log(result)
+    return result;
   } catch (error) {
     console.error("Fetch tour by ID failed:", error);
     return {};

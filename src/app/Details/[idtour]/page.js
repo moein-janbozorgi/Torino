@@ -1,12 +1,13 @@
-import DetailPage from "@/components/tempelates/DetailPage";
+import Detailspage from "@/components/tempelates/Detailspage";
 import { fetchTourById } from "@/hooks/queries";
-import { QueryClient, dehydrate } from "@tanstack/react-query";
-import Providers from "@/app/providers";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 
 export const dynamic = "force-dynamic";
 
-async function Page({ params }) {
-  const { idtour } = params;
+export default async function Page({ params }) {
+  const awaitedParams = await params;
+  const idtour = awaitedParams.idtour;
+
 
   const queryClient = new QueryClient();
 
@@ -15,7 +16,7 @@ async function Page({ params }) {
     queryFn: () => fetchTourById(idtour),
   });
 
-  return <Detailspage />;
-}
+  const dehydratedState = dehydrate(queryClient);
 
-export default Page;
+  return <Detailspage idtour={idtour} dehydratedState={dehydratedState} />;
+}

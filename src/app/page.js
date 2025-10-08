@@ -3,7 +3,6 @@ export const dynamic = "force-dynamic";
 import HomePage from "@/components/tempelates/HomePage";
 import { fetchAllTour } from "@/hooks/queries";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import Providers from "./providers";
 
 export default async function Home() {
   const queryClient = new QueryClient();

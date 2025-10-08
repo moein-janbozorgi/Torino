@@ -32,7 +32,7 @@ const getNewTookens = async () => {
 };
 
 const removeCookie = (name) => {
-  Cookies.remove(name, { path: "/" });
+  Cookies.remove(name,);
 };
 
 export { setCookie, getCookie, getNewTookens, removeCookie };
