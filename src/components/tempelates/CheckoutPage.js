@@ -9,8 +9,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { formCheker } from "@/helper/validations";
 import GenderSelect from "@/atoms/genderSelect";
-import CustomDatePicker from "@/atoms/CustomDatePicker";
 import { convertToRial, toPersianNumber } from "@/helper/helper";
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+import { Controller } from "react-hook-form";
+import DateObject from "react-date-object";
+import { useRef } from "react";
 
 export default function CheckoutPage({ dehydratedState }) {
   return (
@@ -22,17 +27,17 @@ export default function CheckoutPage({ dehydratedState }) {
 
 function Basket() {
   const { data, isLoading } = useGetBasket();
+  const formRef = useRef();
 
   const {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(formCheker),
   });
-
-  console.log(data);
 
   if (isLoading) return <Loader />;
 
@@ -52,7 +57,11 @@ function Basket() {
           />
           <h1>مشخصات مسافر</h1>
         </div>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit(onSubmit)}
+          ref={formRef}
+        >
           <input
             type="text"
             placeholder="نام و نام خانوادگی"
@@ -69,10 +78,52 @@ function Basket() {
           {errors.nationalId && (
             <span className={styles.error}>{errors.nationalId.message}</span>
           )}
-          <CustomDatePicker
-            register={register}
-            setValue={setValue}
-            name="birthDate"
+          <Controller
+            name="date"
+            control={control}
+            render={({ field }) => {
+              const selectedDate = field.value
+                ? new DateObject({
+                    date: field.value,
+                    format: "YYYY/MM/DD",
+                    calendar: persian,
+                  })
+                : null;
+
+              return (
+                <div className={styles.formInputWrapper}>
+                  <DatePicker
+                    value={selectedDate}
+                    calendar={persian}
+                    locale={persian_fa}
+                    onChange={(date) =>
+                      field.onChange(date.format("YYYY/MM/DD"))
+                    }
+                    render={(value, openCalendar) => (
+                      <div
+                        onClick={openCalendar}
+                        className={styles.dateInput}
+                      >
+                        <div className={styles.placeholder}>
+                          <Image
+                            src="/images/date.png"
+                            width={16}
+                            height={16}
+                            alt="date"
+                          />
+                          <span>
+                            {field.value ? field.value : "تاریخ تولد"}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  />
+                  {errors.date && (
+                    <span className={styles.error}>{errors.date.message}</span>
+                  )}
+                </div>
+              );
+            }}
           />
         </form>
       </div>
@@ -92,7 +143,9 @@ function Basket() {
           </div>
         </div>
         <div className={styles.btn}>
-          <button>ثبت و خرید نهایی</button>
+          <button onClick={() => formRef.current.requestSubmit()}>
+            ثبت و خرید نهایی
+          </button>
         </div>
       </div>
     </div>

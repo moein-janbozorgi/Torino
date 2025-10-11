@@ -49,6 +49,41 @@
   color: #00000080;
 }
 
+.dateInput {
+  width: 285px;
+  border: 1px solid #808080;
+  outline: none;
+  border-radius: 5px;
+  appearance: none;
+  background-color: #fff;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #00000080;
+  padding: 15px 5px;
+}
+
+.dateInput span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #00000080;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  gap: 4px;
+  color: #00000080;
+}
+
 .form input {
   width: 95%;
   height: 50px;
@@ -111,8 +146,10 @@
 
 .error {
   color: #e74c3c;
-  font-size: 0.8rem;
-  margin-top: 4px;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 15px;
+
 }
 
 .selectBox img {

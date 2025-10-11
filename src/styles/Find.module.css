@@ -70,6 +70,7 @@
 .topinput {
   display: flex;
   gap: 20px;
+  margin-bottom: 14px;
 }
 
 .topinput input {
@@ -82,12 +83,8 @@
   font-family: "Vazir";
   font-size: 16px;
   color: #00000080;
-  padding-right: 7px;
+  padding-right: 14px;
   box-sizing: border-box;
-}
-
-.topinput label:nth-child(2) input {
-  padding-right: 15px;
 }
 
 .topinput label {
@@ -101,13 +98,6 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-}
-
-.dateBox {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
 }
 
 .label {
@@ -225,6 +215,53 @@
   position: static;
   flex-shrink: 0;
   margin-top: 17px;
+}
+
+.dateInput {
+  border: 1px solid #00000026;
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.dateInput span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #00000080;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #00000080;
+  gap: 6px;
+}
+
+.error {
+  color: #ff3b3b;
+  font-size: 10px;
+  margin-top: 4px;
+  width: 100%;
+  font-family: "Vazir";
+  text-align: right;
+  position: absolute;
+  bottom: -30px;
+  left: 0;
 }
 
 @media (min-width: 1440px) {

@@ -4,49 +4,6 @@
   --color-complementry: #009eca;
   --color-text: #282828;
 }
-:root {
-  font-family: var(--font-iyekan), sans-serif;
-}
-
-@font-face {
-  font-family: "IYekan";
-  src: url("/fonts/IYekan-300.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IYekan";
-  src: url("/fonts/IYekan-500.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IYekan";
-  src: url("/fonts/IYekan-600.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IYekan";
-  src: url("/fonts/IYekan-700.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IYekan";
-  src: url("/fonts/IYekan-800.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
 
 html,
 body {
@@ -56,4 +13,5 @@ body {
   height: 100%;
   box-sizing: border-box;
 }
+
 

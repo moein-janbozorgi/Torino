@@ -26,6 +26,21 @@ const formCheker = yup.object().shape({
     .string()
     .matches(/^\d{10}$/, "کد ملی باید ۱۰ رقم باشد")
     .required("کد ملی الزامی است"),
+  date: yup.string().required("تاریخ تولد الزامی است"),
 });
 
-export { phoneCheker, otpCheker, formCheker };
+const searchChecker = yup.object().shape({
+  origin: yup.string().required("لطفاً مبدا را انتخاب کنید"),
+
+  destination: yup
+    .string()
+    .required("لطفاً مقصد را انتخاب کنید")
+    .notOneOf([yup.ref("origin")], "مبدا و مقصد نمی‌توانند یکسان باشند"),
+  dateRange: yup
+    .array()
+    .of(yup.string())
+    .min(2, "لطفاً بازه زمانی رفت و برگشت را انتخاب کنید")
+    .required("انتخاب تاریخ الزامی است"),
+});
+
+export { phoneCheker, otpCheker, formCheker, searchChecker };

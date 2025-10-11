@@ -6,13 +6,12 @@ import Link from "next/link";
 import { convertToRial, toPersianNumber } from "@/helper/helper";
 import { useEffect, useState } from "react";
 import Loader from "../tempelates/Loader";
-import { useRouter } from "next/router";
+
 
 function Tours({ data, isLoading }) {
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  const router = useRouter;
 
   useEffect(() => {
     const handleResize = () => {
