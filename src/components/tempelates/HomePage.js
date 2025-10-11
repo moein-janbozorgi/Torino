@@ -8,6 +8,7 @@ import Last from "../modules/Last";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api } from "@/configs/config";
+import Airplan from "@/atoms/Airplan";
 
 function HomePage() {
   const { data: allTours, isLoading } = useGetAllTour();
@@ -42,6 +43,7 @@ function HomePage() {
 
   return (
     <>
+      <Airplan />
       <Find onSearch={handleSearch} />
       <Tours
         data={filteredTours.length ? filteredTours : allTours}

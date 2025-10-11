@@ -22,7 +22,7 @@
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   padding-top: 0.7rem;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.9rem;
   box-sizing: border-box;
 }
 
@@ -66,11 +66,125 @@
   color: #282828;
 }
 
-.active {
-  color: #28a745 !important;
+.webheader {
+  display: none;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5rem 10px;
 }
 
-@media (min-width: 1440px) {
+.rightGroup {
+  display: flex;
+  align-items: center;
+  gap: 3.3rem;
+}
+
+.rightGroup img {
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.rightGroup ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.rightGroup ul li a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+  color: #282828;
+}
+
+.rightGroup ul li a:hover {
+  color: #1ea34a;
+}
+
+.authbtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 2px solid #1ea34a;
+  background: transparent;
+  color: #1ea34a;
+  font-size: 14px;
+  font-weight: 600;
+  height: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 16px;
+}
+
+.authbtn:hover {
+  background: #6eff9e;
+  color: #fff;
+}
+
+.authbtn img {
+  width: 20px;
+  height: 20px;
+}
+
+.authbtn .divider {
+  margin: 0 4px;
+}
+
+.headerwrapper {
+  border-bottom: 1px solid #00000029;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color 0.3s;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.link:hover {
+  color: #1ea34a;
+}
+
+.activeLink {
+  color: #1ea34a;
+}
+
+@media (min-width: 391px) {
+  .header {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  .webheader {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    display: none;
+  }
+  .webheader {
+    display: flex;
+  }
+
+  .rightGroup {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+  }
+}
+
+@media (min-width: 992px) {
   .header {
     display: none;
   }
@@ -85,7 +199,6 @@
     align-items: center;
     width: 1200px;
     margin: 0 auto;
-    padding: 10px 0 15px;
   }
 
   .rightGroup {
@@ -108,68 +221,7 @@
   }
 
   .rightGroup ul li a {
-    text-decoration: none;
     transition: color 0.3s ease;
-    font-family: "Vazir";
-    font-weight: 400;
     font-size: 16px;
-    color: #282828;
-  }
-
-  .rightGroup ul li a:hover {
-    color: #1ea34a;
-  }
-
-  .authbtn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border: 2px solid #1ea34a;
-    background: transparent;
-    color: #1ea34a;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 0.3rem 0.8rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-left: 16px;
-  }
-
-  .authbtn:hover {
-    background: #6eff9e;
-    color: #fff;
-  }
-
-  .authbtn img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .authbtn .divider {
-    margin: 0 4px;
-  }
-
-  .headerwrapper {
-    border-bottom: 1px solid #00000029;
-    width: 100%;
-    margin-top: 5px;
-  }
-
-  .link {
-    text-decoration: none;
-    color: var(--color-text);
-    transition: color 0.3s;
-    font-family: "Vazir";
-    font-weight: 400;
-    font-size: 16px;
-  }
-
-  .link:hover {
-    color: #1ea34a;
-  }
-
-  .activeLink {
-    color: #1ea34a;
   }
 }

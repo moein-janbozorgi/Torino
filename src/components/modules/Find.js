@@ -17,6 +17,7 @@ function Find({ onSearch }) {
   const [activeInput, setActiveInput] = useState(null);
   const [range, setRange] = useState({ from: null, to: null });
   const dropdownRef = useRef(null);
+  
   const router = useRouter();
 
   const {
@@ -117,127 +118,129 @@ function Find({ onSearch }) {
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <div className={styles.topinput}>
-            <label className={styles.label}>
-              <Image
-                src="/images/location.png"
-                width={18}
-                height={18}
-                alt="location"
-              />
-              <input
-                type="text"
-                placeholder="مبدا"
-                readOnly
-                {...register("origin")}
-                onClick={() => setActiveInput("origin")}
-              />
-              {errors.origin && (
-                <p className={styles.error}>{errors.origin.message}</p>
-              )}
-              {activeInput === "origin" && (
-                <div className={styles.cityDropdown} ref={dropdownRef}>
-                  <div className={styles.cityHeader}>پرتردد</div>
-                  <div className={styles.cityList}>
-                    {cities.map((city, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        className={styles.cityItem}
-                        onClick={() => handleSelectCity(city)}
-                      >
-                        <Image
-                          src="/images/location.png"
-                          width={18}
-                          height={18}
-                          alt="location"
-                        />
-                        {city.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </label>
-
-            <label className={styles.label}>
-              <Image
-                src="/images/global.png"
-                width={18}
-                height={18}
-                alt="global"
-              />
-              <input
-                type="text"
-                placeholder="مقصد"
-                readOnly
-                {...register("destination")}
-                onClick={() => setActiveInput("destination")}
-              />
-              {errors.destination && (
-                <p className={styles.error}>{errors.destination.message}</p>
-              )}
-              {activeInput === "destination" && (
-                <div className={styles.cityDropdown} ref={dropdownRef}>
-                  <div className={styles.cityHeader}>پرتردد</div>
-                  <div className={styles.cityList}>
-                    {cities.map((city, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        className={styles.cityItem}
-                        onClick={() => handleSelectCity(city)}
-                      >
-                        <Image
-                          src="/images/location.png"
-                          width={18}
-                          height={18}
-                          alt="location"
-                        />
-                        {city.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </label>
-          </div>
-          <DatePicker
-            range
-            calendar={persian}
-            locale={persian_fa}
-            containerClassName="calendarContainer"
-            onChange={(dates) => {
-              setRange(dates);
-              setValue(
-                "dateRange",
-                dates.map((d) => d.format("YYYY/MM/DD"))
-              );
-            }}
-            render={(value, openCalendar) => (
-              <div onClick={openCalendar} className={styles.dateInput}>
-                {range?.length ? (
-                  <span>
-                    {range[0]?.format("YYYY/MM/DD")} تا{" "}
-                    {range[1]?.format("YYYY/MM/DD")}
-                  </span>
-                ) : (
-                  <div className={styles.placeholder}>
-                    <Image
-                      src="/images/date.png"
-                      width={16}
-                      height={16}
-                      alt="date"
-                    />
-                    <span>تاریخ</span>
+          <div className={styles.searchBox}>
+            <div className={styles.topinput}>
+              <label className={styles.label}>
+                <Image
+                  src="/images/location.png"
+                  width={18}
+                  height={18}
+                  alt="location"
+                />
+                <input
+                  type="text"
+                  placeholder="مبدا"
+                  readOnly
+                  {...register("origin")}
+                  onClick={() => setActiveInput("origin")}
+                />
+                {errors.origin && (
+                  <p className={styles.error}>{errors.origin.message}</p>
+                )}
+                {activeInput === "origin" && (
+                  <div className={styles.cityDropdown} ref={dropdownRef}>
+                    <div className={styles.cityHeader}>پرتردد</div>
+                    <div className={styles.cityList}>
+                      {cities.map((city, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          className={styles.cityItem}
+                          onClick={() => handleSelectCity(city)}
+                        >
+                          <Image
+                            src="/images/location.png"
+                            width={18}
+                            height={18}
+                            alt="location"
+                          />
+                          {city.name}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 )}
-              </div>
-            )}
-          />
-          <button type="submit" className={styles.searchBtn}>
-            جستجو
-          </button>
+              </label>
+
+              <label className={styles.label}>
+                <Image
+                  src="/images/global.png"
+                  width={18}
+                  height={18}
+                  alt="global"
+                />
+                <input
+                  type="text"
+                  placeholder="مقصد"
+                  readOnly
+                  {...register("destination")}
+                  onClick={() => setActiveInput("destination")}
+                />
+                {errors.destination && (
+                  <p className={styles.error}>{errors.destination.message}</p>
+                )}
+                {activeInput === "destination" && (
+                  <div className={styles.cityDropdown} ref={dropdownRef}>
+                    <div className={styles.cityHeader}>پرتردد</div>
+                    <div className={styles.cityList}>
+                      {cities.map((city, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          className={styles.cityItem}
+                          onClick={() => handleSelectCity(city)}
+                        >
+                          <Image
+                            src="/images/location.png"
+                            width={18}
+                            height={18}
+                            alt="location"
+                          />
+                          {city.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </label>
+            </div>
+            <DatePicker
+              range
+              calendar={persian}
+              locale={persian_fa}
+              containerClassName="calendarContainer"
+              onChange={(dates) => {
+                setRange(dates);
+                setValue(
+                  "dateRange",
+                  dates.map((d) => d.format("YYYY/MM/DD"))
+                );
+              }}
+              render={(value, openCalendar) => (
+                <div onClick={openCalendar} className={styles.dateInput}>
+                  {range?.length ? (
+                    <span>
+                      {range[0]?.format("YYYY/MM/DD")} تا{" "}
+                      {range[1]?.format("YYYY/MM/DD")}
+                    </span>
+                  ) : (
+                    <div className={styles.placeholder}>
+                      <Image
+                        src="/images/date.png"
+                        width={16}
+                        height={16}
+                        alt="date"
+                      />
+                      <span>تاریخ</span>
+                    </div>
+                  )}
+                </div>
+              )}
+            />
+            <button type="submit" className={styles.searchBtn}>
+              جستجو
+            </button>
+          </div>
         </form>
       </div>
     </div>

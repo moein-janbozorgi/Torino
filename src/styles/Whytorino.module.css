@@ -7,7 +7,7 @@
 
 .slider {
   position: relative;
-  padding: 0 1.5rem 0 1.5rem;
+  padding: 0 1.5rem 1rem 1.5rem;
   width: 327px;
   height: 300px;
   border-radius: 12px;
@@ -46,7 +46,7 @@
 .text span {
   font-family: "Vazir";
   font-weight: 800;
-  font-size: 24px;
+  font-size: 28px;
   color: #282828;
 }
 
@@ -117,32 +117,84 @@
   transform: translateX(-50%) translateY(-50%) scale(0.85);
 }
 
-@media (min-width: 1440px) {
+.firstimg {
+  position: absolute;
+}
+
+.lowertext {
+  margin-top: -35px;
+  margin-right: 10px;
+}
+
+.lowertext h1 {
+  font-family: "Vazir";
+  font-weight: 500;
+  font-size: 24px;
+  color: #282828;
+}
+
+.lowertext p {
+  display: block;
+  width: 100%;
+  white-space: normal;
+  word-wrap: break-word;
+  text-align: justify;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 20px;
+  color: #282828;
+  line-height: 35px;
+  word-spacing: 5px;
+  width: 450px;
+}
+
+.text p {
+  font-family: "IRANSans";
+  font-weight: 800;
+  font-size: 40px;
+  color: #28a745;
+}
+
+@media (min-width: 391px) {
+  .slider {
+    width: 380px;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .counter {
+    margin-left: 7rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .lowertext {
+    display: block;
+  }
+  .cycle {
+    display: block;
+  }
+
   .zel {
     display: none;
   }
-  .slider {
-    width: 1200px;
-    margin: 50px auto 0;
-    display: flex;
+
+  .firstimg {
+    right: 14px;
   }
 
-  .alltext {
+  .slider {
+    width: 100%;
+    padding: 3rem 5rem 0 5rem;
     display: flex;
-    flex-direction: column;
   }
 
   .allslider {
+    margin: 50px 50px;
+  }
+  .alltext {
     display: flex;
     flex-direction: column;
-    margin: 20px 80px;
-  }
-  .image {
-    position: absolute;
-    top: 50%;
-    border-radius: 12px;
-    transform: translateY(-50%);
-    transition: all 0.5s ease;
   }
 
   .text {
@@ -150,117 +202,79 @@
     align-items: center;
     gap: 9px;
     position: relative;
-    margin-right: 12px;
-  }
-
-  .lowertext {
-    margin-top: -35px;
-    margin-right: 10px;
-  }
-
-  .lowertext h1 {
-    font-family: "Vazir";
-    font-weight: 500;
-    font-size: 24px;
-    color: #282828;
-  }
-
-  .lowertext p {
-    display: block;
-    width: 100%;
-    white-space: normal;
-    word-wrap: break-word;
-    text-align: justify;
-    font-family: "Vazir";
-    font-weight: 400;
-    font-size: 20px;
-    color: #282828;
-    line-height: 35px;
-    word-spacing: 5px;
-    width: 450px;
-  }
-
-  .text p {
-    font-family: "IRANSans";
-    font-weight: 800;
-    font-size: 40px;
-    color: #28a745;
-  }
-
-  .firstimg {
-    position: absolute;
-    right: 14px;
-  }
-
-  .text span {
-    font-family: "Vazir";
-    font-weight: 800;
-    font-size: 40px;
-    color: #282828;
   }
 
   .counter {
+    margin-right: 70px;
+  }
+}
+
+@media (min-width: 992px) {
+  .lowertext {
+    display: block;
+  }
+  .cycle {
+    display: block;
+  }
+
+  .zel {
+    display: none;
+  }
+
+  .firstimg {
+    right: 14px;
+  }
+
+  .slider {
+    width: 1200px;
+    margin: 0 auto 70px;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+  }
+
+  .allslider {
+    margin: 60px 100px;
+  }
+  .alltext {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text {
+    display: flex;
     align-items: center;
-    margin-right: 85px;
-    margin-top: -20px;
-    gap: 14px;
-  }
-
-  .counter p {
-    font-family: "Vazir";
-    font-weight: 500;
-    font-size: 20px;
-  }
-
-  .counter button {
-    border: none;
-    background-color: #ffff;
-  }
-
-  .counter button:hover {
-    transform: scale(1.2);
-  }
-
-  .sliderimg {
+    gap: 9px;
     position: relative;
-    height: 400px;
-    overflow: visible;
   }
 
-  .img1,
-  .img2,
-  .img3,
-  .img4 {
-    position: absolute;
-    left: 50%;
+  .counter {
+    margin-right: 70px;
   }
 
   .img1 {
-    width: 295px;
-    height: 360px;
+    width: 255px;
+    height: 284px;
     z-index: 4;
     right: 0;
     transform: translateY(-50%) scale(0.95);
   }
   .img2 {
-    width: 293px;
-    height: 320px;
+    width: 253px;
+    height: 247px;
     z-index: 3;
     right: 40px;
     transform: translateY(-50%) scale(0.9);
   }
   .img3 {
-    width: 200px;
-    height: 270px;
+    width: 168px;
+    height: 198px;
     z-index: 2;
     right: 80px;
     transform: translateX(-40%) translateY(-50%) scale(0.9);
   }
   .img4 {
-    width: 175px;
-    height: 220px;
+    width: 142px;
+    height: 162px;
     z-index: 1;
     right: 120px;
     transform: translateX(-50%) translateY(-50%) scale(0.85);

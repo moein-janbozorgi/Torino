@@ -15,7 +15,7 @@ function Tours({ data, isLoading }) {
 
   useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth <= 390;
+      const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
       if (!mobile) setShowAll(false);
     };
@@ -32,7 +32,7 @@ function Tours({ data, isLoading }) {
   console.log(displayedTours);
   return (
     <div className={styles.container}>
-      <h1>همه تور ها</h1>
+      <h1 className={styles.allTourText}>همه تور ها</h1>
       <div className={styles.card}>
         {displayedTours?.map((tour) => (
           <div key={tour.id} className={styles.main}>

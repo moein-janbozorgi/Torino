@@ -1,127 +1,222 @@
-   .container {
-    width: 327px;
-    font-family: "Vazir";
-    margin: 70px auto;
-  
+.container {
+  width: 327px;
+  font-family: "Vazir";
+  margin: 70px auto;
+}
+
+.main {
+  position: relative;
+  background-color: #28a745;
+  padding: 12px 10px;
+  height: 100px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top: 1px solid #218838;
+  border-right: 1px solid #218838;
+  border-left: 1px solid #218838;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  gap: 6px;
+  color: #fff;
+}
+
+.buy {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.buy p {
+  font-family: "Vazir";
+  font-weight: 800;
+  font-size: 22px !important;
+  color: #ffffff;
+}
+
+.buy span {
+  font-family: "Vazir";
+  font-weight: 800;
+  font-size: 22px;
+  color: #10411b;
+}
+
+.text p {
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0;
+}
+
+.mard {
+  position: absolute;
+  right: 130;
+  bottom: -9;
+  z-index: 1;
+}
+
+.details {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 12px 0;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom: 1px solid #00000040;
+  border-right: 1px solid #00000040;
+  border-left: 1px solid #00000040;
+  gap: 8px;
+}
+
+.details img {
+  color: #10411b;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #282828;
+}
+
+.details a {
+  display: inline-block;
+  background-color: #10411b;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.details a:hover {
+  background-color: #218838;
+}
+
+@media (min-width: 391px) {
+  .container {
+    width: 380px;
+    margin: 70px auto 30px;
+  }
 
   .main {
+    padding: 12px 15px;
+    height: 110px;
+  }
+
+  .mard {
+    right: 170px;
+    bottom: -9;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 800px;
+    margin: 70px auto 40px;
+    display: flex;
     position: relative;
-    background-color: #28a745;
-    padding: 12px 10px;
-    height: 100px;
-    border-top-right-radius: 10px;
+  }
+  .main {
+    right: 6px;
+    top: 0;
+    width: 70%;
+    height: 172px;
+    border-radius: 10px;
+    border-bottom: 1px solid #218838;
+    z-index: 2;
+  }
+  .details {
+    position: relative;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
-    border-top: 1px solid #218838;
-    border-right: 1px solid #218838;
-    border-left: 1px solid #218838;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid #00000040;
+    border-left: 1px solid #00000040;
+    border-top: 1px solid #00000040;
+    gap: 8px;
+  }
+  .mard {
+    right: 340px;
   }
 
   .text {
     display: flex;
     flex-direction: column;
-    z-index: 2;
     gap: 6px;
     color: #fff;
+    padding: 0 5px;
   }
 
   .buy {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
   }
 
   .buy p {
     font-family: "Vazir";
     font-weight: 800;
-    font-size: 22px !important;
-    color: #ffffff;
+    font-size: 45px !important;
   }
 
   .buy span {
-    font-family: "Vazir";
-    font-weight: 800;
-    font-size: 22px;
-    color: #10411b;
+    font-size: 45px;
   }
 
   .text p {
-    font-family: "Vazir";
-    font-weight: 400;
-    font-size: 14px;
-    margin: 0;
-  }
-
-  .mard {
-    position: absolute;
-    right: 130;
-    bottom: -9;
-    z-index: 1;
-  }
-
-  .details {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 12px 0;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom: 1px solid #00000040;
-    border-right: 1px solid #00000040;
-    border-left: 1px solid #00000040;
-    gap: 8px;
-  }
-
-  .details img {
-    color: #10411b;
-  }
-
-  .phone {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: bold;
-    font-size: 16px;
-    color: #282828;
-  }
-
-  .details a {
-    display: inline-block;
-    background-color: #10411b;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 6px 30px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
-  }
-
-  .details a:hover {
-    background-color: #218838;
+    font-size: 32px;
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 992px) {
   .container {
     width: 1200px;
-    margin: 80px auto;
+    margin: 70px auto 50px;
     display: flex;
     position: relative;
   }
-
   .main {
-    position: absolute;
-    right: 7px;
+    right: 15px;
     top: 0;
-    width: 70%;
-    position: relative;
-    background-color: #28a745;
-    padding: 12px 10px;
+    width: 65%;
     height: 172px;
     border-radius: 10px;
-    border-left: 1px solid #218838;
+    border-bottom: 1px solid #218838;
     z-index: 2;
+  }
+  .details {
+    position: relative;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid #00000040;
+    border-left: 1px solid #00000040;
+    border-top: 1px solid #00000040;
+    gap: 8px;
+  }
+  .mard {
+    right: 550px
   }
 
   .text {
@@ -145,77 +240,10 @@
   }
 
   .buy span {
-    font-family: "Vazir";
-    font-weight: 800;
     font-size: 48px;
-    color: #10411b;
   }
 
   .text p {
-    font-family: "Vazir";
-    font-weight: 400;
     font-size: 32px;
-    margin: 0;
-  }
-
-  .mard {
-    position: absolute;
-    left: 35px;
-    bottom: -4px;
-    z-index: 1;
-  }
-
-  .details {
-    position: relative;
-    width: 30%;
-    height: 170px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 12px 0;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom: 1px solid #00000040;
-    border-left: 1px solid #00000040;
-    border-top: 1px solid #00000040;
-    gap: 8px;
-  }
-
-  .details img {
-    color: #10411b;
-  }
-
-  .phone {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: bold;
-    font-size: 16px;
-    color: #282828;
-  }
-
-  .phone span {
-    font-family: "Vazir";
-    font-weight: 700;
-    font-size: 28px;
-  }
-
-  .details a {
-    font-family: "Vazir";
-    display: inline-block;
-    background-color: #10411b;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 4px 30px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
-  }
-
-  .details a:hover {
-    background-color: #218838;
   }
 }

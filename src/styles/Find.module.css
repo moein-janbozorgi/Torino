@@ -1,43 +1,8 @@
 .container {
   width: 100%;
-  margin: 60px auto 45px;
+  margin: 0 auto 45px;
   box-sizing: border-box;
   padding: 0 1.5rem 0 1.5rem;
-}
-
-.dateTag {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  height: 40px;
-  border: 1px solid #00000026;
-  border-radius: 12px;
-  cursor: pointer;
-  font-family: "Vazir";
-  font-size: 16px;
-  color: #00000080;
-  box-sizing: border-box;
-  background-color: #fff;
-  padding: 0 10px;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-
-.dateTag span {
-  pointer-events: none;
-}
-
-.calendarDropdown {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  z-index: 50;
-  background-color: #fff;
-  border: 1px solid #00000033;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  animation: fadeIn 0.2s ease;
 }
 
 @keyframes fadeIn {
@@ -135,6 +100,13 @@
   font-weight: 400;
   font-size: 20px;
   margin-top: 15px;
+}
+
+.searchBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .select {
@@ -264,22 +236,187 @@
   left: 0;
 }
 
-@media (min-width: 1440px) {
-  .select {
-    width: 1200px;
+@media (min-width: 391px) {
+  .container {
+    padding: 0 5rem 0 5rem;
+  }
+  .text p {
+    font-size: 20px;
+  }
+
+  .text span {
+    font-size: 20px;
+  }
+
+  .form {
+    padding: 0 4rem 0 4rem;
+  }
+  .topinput img {
+    right: 70px;
+  }
+}
+
+@media (min-width: 768px) {
+  .text p {
+    font-size: 20px;
+  }
+
+  .text span {
+    font-size: 20px;
+  }
+
+  .form {
+    width: 400px;
     margin: 0 auto;
   }
 
-  .container img {
+  .topinput img {
+    right: 50px;
+  }
+
+  .searchBtn {
+    width: 50%;
+    margin: 10px auto 10px;
+  }
+
+  .dateInput {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .select {
+    width: 1100px;
+    margin: 0 auto;
+  }
+
+  .form {
+    width: 800px;
+    margin: 0 auto;
+  }
+
+  .searchBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    background-color: #ffffff70;
+    border: 1px solid #00000026;
+    box-sizing: border-box;
+    padding: 5px;
+  }
+
+  .topinput {
+    direction: rtl;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 0;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  .topinput .label {
+    flex: 1 1 40%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 8px 10px 0px;
+    direction: rtl;
+  }
+
+  .topinput .label img {
+    order: 2;
+  }
+
+  .topinput .label input {
+    order: 1;
+    margin-right: 23px;
+    text-align: right; 
+  }
+
+  .topinput input,
+  .topinput input::placeholder {
+    border: none !important;
+    background: transparent;
+    text-align: right;
+    padding: 0;
+    height: auto;
+    font-size: 16px;
+    color: #2c2c2c;
+    outline: none;
+  }
+
+  .topinput .label + .label {
+    border-right: 1px solid #00000033;
+  }
+
+  .placeholder {
+    margin-right: 4px;
+  }
+
+  .topinput .label:nth-child(2) img {
+    right: 10px;
+  }
+
+  .topinput .label:nth-child(1) img {
+    right: 5px;
+  }
+
+  .dateInput {
+    flex: 1 1 20%;
+    min-width: 200px;
+    padding: 8px 12px;
+    border: none;
+    border-right: 1px solid #00000033;
+    box-sizing: border-box;
+    text-align: right;
+    border-radius: 0;
+    background: transparent;
+    direction: rtl;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .dateInput span {
+    display: block;
     width: 100%;
-    height: 350;
+    text-align: right;
+    color: #2c2c2c;
+  }
+
+  .searchBtn {
+    width: 20%;
+    margin: 0;
+    border-radius: 16px;
+    box-shadow: none;
+    border: none;
+    font-size: 20px;
+    flex-shrink: 0;
+    background-color: #28a745;
+    color: #fff;
+  }
+
+  .error {
+    position: absolute;
+    top: 50px;
+    right: 15px;
+    font-size: 11px;
+  }
+
+  .cityDropdown {
+    top: 55px;
   }
 
   .text {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 7px;
-    justify-content: center;
+    margin-bottom: 10px;
   }
 
   .text p {

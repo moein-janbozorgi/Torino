@@ -8,8 +8,6 @@
 .topfooter {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
 }
 
 .topfooter ul {
@@ -38,7 +36,7 @@
 
 .left li:first-child,
 .right li:first-child {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .topfooter a {
@@ -58,7 +56,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .photo {
@@ -98,7 +95,7 @@
 .topline {
   width: 100%;
   border-top: 1px dashed #00000040;
-  margin: 2rem 0;
+  margin: 2rem 0 0;
 }
 
 .torino {
@@ -107,55 +104,27 @@
   align-items: flex-end;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 391px) {
   .footer {
-    width: 1200px;
-    margin: 0 auto;
+    padding: 0 5rem 0 5rem;
+  }
+
+  .main {
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
-    padding: 20px 0;
-    font-family: "IRANSans", sans-serif;
-    font-size: 14px;
-    color: #333;
+    align-items: center;
   }
 
   .topfooter {
     display: flex;
-    gap: 80px;
-  }
-
-  .topfooter ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .topfooter li {
-    margin-bottom: 8px;
-  }
-
-  .topfooter li:first-child {
-    font-weight: bold;
-    font-size: 15px;
-    margin-bottom: 12px;
-  }
-
-  .topfooter a {
-    text-decoration: none;
-    color: #333;
-    transition: color 0.3s;
-  }
-
-  .topfooter a:hover {
-    color: #00a859;
+    gap: 15px;
   }
 
   .bottomfooter {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 30px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 30px;
   }
 
   .bottomfooter > div:first-child {
@@ -166,7 +135,7 @@
     order: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    margin-top: 30px;
   }
 
   .photo {
@@ -177,29 +146,116 @@
 
   .photo div {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     align-items: center;
   }
 
-  .contact {
-    font-weight: bold;
-    font-size: 15px;
-    margin-top: 5px;
-    color: #444;
+  .right li:first-child a,
+  .left li:first-child a {
+    font-family: "Vazir";
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--color-text);
   }
 
-  .bottomline {
-    border-top: 1px solid #00000022;
-    margin: 20px 0 10px;
+  .topfooter a {
+    font-size: 14px;
   }
+
+  .photo img {
+    width: 45px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .topfooter {
+    gap: 35px;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px 0;
+    font-size: 20px;
+    color: #333;
+  }
+
+  .topfooter {
+    display: flex;
+    gap: 80px;
+  }
+
+  .topfooter a {
+    font-size: 16px;
+  }
+
+  .bottomfooter {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .topfooter ul li:first-child {
+    margin-bottom: 20px; 
+  }
+
+  .bottomfooter > div:first-child {
+    order: 2;
+  }
+
+  .bottomfooter > div:last-child {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .torino img {
+    width: 146px;
+    height: 44px;
+  }
+
+  .photo div {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .photo img {
+    width: 64px;
+    height: 74px;
+  }
+
+  .contact {
+    font-weight: 400;
+    font-size: 18px !important;
+    margin-top: 5px;
+    color: #000000 !important;
+  }
+
   .topline {
     border: 1px solid#00000022;
-    margin: 20px 0 10px;
+    margin: 0px 0 0px;
   }
 
   .footer p {
-    text-align: center;
-    font-size: 12px;
-    color: #777;
+    font-family: "Vazir";
+    font-weight: 400;
+    font-size: 15px;
+    color: #000000;
+  }
+
+  .right li:first-child a,
+  .left li:first-child a {
+    font-size: 22px;
+  }
+
+  .topfooter a {
+    font-size: 18px;
   }
 }
