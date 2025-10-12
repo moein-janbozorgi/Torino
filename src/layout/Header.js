@@ -4,12 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/Header.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LoginModal from "@/components/modules/LoginModal";
 import OtpModal from "@/components/modules/OtpModal";
-import { getCookie } from "@/utils/cookieHelper";
+
 import { useGetUserInfo } from "@/hooks/queries";
 import UserProfile from "@/atoms/userProfile";
+
 
 export default function Header() {
   const pathname = usePathname();

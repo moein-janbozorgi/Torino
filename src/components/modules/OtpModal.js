@@ -1,8 +1,8 @@
 "use client";
 
-import { toPersianNumber } from "@/helper/helper";
-import { otpCheker } from "@/helper/validations";
-import { useResend, useSendOtp } from "@/hooks/mutations";
+import { toPersianNumber } from "@/utils/helper";
+import { otpCheker } from "@/utils/validations";
+import { useCheckOtp, useResend, useSendOtp } from "@/hooks/mutations";
 import styles from "@/styles/OtpModal.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
@@ -38,7 +38,7 @@ function OtpModal({ setOtp, phone, setIsOn }) {
     setIsOn((s) => !s);
   };
 
-  const { mutate } = useSendOtp(() => {
+  const { mutate } = useCheckOtp(() => {
     setOtp((s) => !s);
   });
 

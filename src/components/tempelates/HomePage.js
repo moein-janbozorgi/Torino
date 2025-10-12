@@ -1,54 +1,53 @@
 "use client";
-import { useGetAllTour } from "@/hooks/queries";
 import Find from "../modules/Find";
 import Tours from "../modules/Tours";
 import Call from "../modules/Call";
 import Whytorino from "../modules/Whytorino";
 import Last from "../modules/Last";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { api } from "@/configs/config";
+import { useSearchParams } from "next/navigation";
 import Airplan from "@/atoms/Airplan";
 
-function HomePage() {
-  const { data: allTours, isLoading } = useGetAllTour();
-  const [filteredTours, setFilteredTours] = useState([]);
+function HomePage({ initialTours }) {
+  const clientSearchParams = useSearchParams();
+  const [filteredTours, setFilteredTours] = useState(initialTours || []);
 
-  const handleSearch = async (searchResult) => {
-    setFilteredTours(searchResult);
+  useEffect(() => {
+    const fetchTours = async () => {
+      const query = clientSearchParams.toString();
+      if (!query) {
+        const res = await api.get("/tour");
+        setFilteredTours(res);
+        return;
+      }
+
+      const destinationId = clientSearchParams.get("destinationId");
+      const originId = clientSearchParams.get("originId");
+      const startDate = clientSearchParams.get("startDate");
+      const endDate = clientSearchParams.get("endDate");
+
+      if (destinationId && originId && startDate && endDate) {
+        const res = await api.get("/tour", {
+          params: { destinationId, originId, startDate, endDate },
+        });
+        setFilteredTours(res);
+      }
+    };
+
+    fetchTours();
+  }, [clientSearchParams]);
+
+  const handleSearch = (tours, query) => {
+    setFilteredTours(tours);
+    window.history.pushState(null, "", `/?${query}`);
   };
-
-  // const searchParams = useSearchParams();
-  // const originId = searchParams.get("originId");
-  // const destinationId = searchParams.get("destinationId");
-  // const startDate = searchParams.get("startDate");
-  // const endDate = searchParams.get("endDate");
-
-  // useEffect(() => {
-  //   if (originId && destinationId) {
-  //     const fetchFilteredTours = async () => {
-  //       const { data } = await api.get("/tour", {
-  //         params: {
-  //           destinationId,
-  //           originId,
-  //           startDate: `${startDate}T00:00:00:00.000Z`,
-  //           endDate: `${endDate}T23:59:59.999Z`,
-  //         },
-  //       });
-  //       setFilteredTours(data);
-  //     };
-  //     fetchFilteredTours();
-  //   }
-  // }, [destinationId, originId, startDate, endDate]);
 
   return (
     <>
       <Airplan />
       <Find onSearch={handleSearch} />
-      <Tours
-        data={filteredTours.length ? filteredTours : allTours}
-        isLoading={isLoading}
-      />
+      <Tours data={filteredTours} />
       <Call />
       <Whytorino />
       <Last />

@@ -2,13 +2,14 @@
 
 import Cookies from "js-cookie";
 
-const setCookie = (tokens) => {
-  document.cookie = `accessToken=${tokens.accessToken}; max-age=${
-    1 * 24 * 60 * 160
-  }`;
-  document.cookie = `refreshToken=${tokens.refreshToken}; max-age=${
-    30 * 24 * 60 * 160
-  }`;
+const setCookie = (name, value, days) => {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
 };
 
 function getCookie(name) {
@@ -18,21 +19,23 @@ function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(";").shift();
 }
 
-const getNewTookens = async () => {
+const getNewTokens = async () => {
   const refreshToken = getCookie("refreshToken");
-  if (!refreshToken) return null;
+  if (!refreshToken) return;
 
   try {
-    const { data } = await api.post("/auth/refresh-token", { refreshToken });
-    api.defaults.headers.common["Authorization"] = `Bearer ${data.accessToken}`;
-    return data.accessToken;
+    const response = axios.post(`${BASE_URL}/auth/refresh-token`, {
+      refreshToken,
+    });
+
+    return response;
   } catch (error) {
-    return null;
+    return error;
   }
 };
 
 const removeCookie = (name) => {
-  Cookies.remove(name,);
+  Cookies.remove(name);
 };
 
-export { setCookie, getCookie, getNewTookens, removeCookie };
+export { setCookie, getCookie, removeCookie, getNewTokens };

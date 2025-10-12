@@ -1,8 +1,8 @@
-import { toPersianNumber } from "@/helper/helper";
+import { toPersianNumber } from "@/utils/helper";
 import Image from "next/image";
 import styles from "@/styles/userProfile.module.css";
-import Userbox from "../components/modules/userBox";
 import { useState } from "react";
+import Userbox from "@/components/modules/userBox";
 
 function UserProfile({ data }) {
   const [open, setOpen] = useState(false);

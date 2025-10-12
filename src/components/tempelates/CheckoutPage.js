@@ -7,15 +7,18 @@ import styles from "@/styles/CheckoutPage.module.css";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { formCheker } from "@/helper/validations";
-import GenderSelect from "@/atoms/genderSelect";
-import { convertToRial, toPersianNumber } from "@/helper/helper";
+import { formCheker } from "@/utils/validations";
+
+import { convertToRial, toPersianNumber } from "@/utils/helper";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { Controller } from "react-hook-form";
 import DateObject from "react-date-object";
 import { useRef } from "react";
+import { useSubmitPassenger } from "@/hooks/mutations";
+import { useRouter } from "next/navigation";
+import GenderSelect from "@/atoms/genderSelect";
 
 export default function CheckoutPage({ dehydratedState }) {
   return (
@@ -26,8 +29,15 @@ export default function CheckoutPage({ dehydratedState }) {
 }
 
 function Basket() {
+  const router = useRouter();
   const { data, isLoading } = useGetBasket();
   const formRef = useRef();
+
+  const { mutate: submitPassenger, isLoading: isSubmitting } =
+    useSubmitPassenger((data) => {
+      console.log(data);
+      router.push("/");
+    });
 
   const {
     register,
@@ -41,8 +51,14 @@ function Basket() {
 
   if (isLoading) return <Loader />;
 
-  const onSubmit = (data) => {
-    console.log("Form Data:", data);
+  const onSubmit = (formData) => {
+    const payload = {
+      fullName: formData.fullName,
+      gender: formData.gender,
+      birthDate: formData.date,
+      nationalCode: formData.nationalId,
+    };
+    submitPassenger(payload);
   };
 
   return (
@@ -100,10 +116,7 @@ function Basket() {
                       field.onChange(date.format("YYYY/MM/DD"))
                     }
                     render={(value, openCalendar) => (
-                      <div
-                        onClick={openCalendar}
-                        className={styles.dateInput}
-                      >
+                      <div onClick={openCalendar} className={styles.dateInput}>
                         <div className={styles.placeholder}>
                           <Image
                             src="/images/date.png"

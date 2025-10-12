@@ -9,6 +9,14 @@
   border-bottom-right-radius: 12px;
 }
 
+.box:nth-child(-n + 3) {
+  display: none;
+}
+
+.divider {
+  display: none;
+}
+
 .titleoption {
   display: flex;
   align-items: center;
@@ -49,14 +57,22 @@
 
 .options {
   display: flex;
-  gap: 35px;
+  gap: 50px;
   text-align: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: -15;
 }
 
 .topoption {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
+  margin-bottom: -15px;
 }
 
 .topoption p {
@@ -67,20 +83,22 @@
 }
 
 .box:nth-child(1) {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .box:nth-child(3) {
-    margin-right: 25px;
+  margin-right: 10px;
 }
-
-
 
 .box p {
   font-family: "Vazir";
   font-weight: 500;
   font-size: 14px;
   color: #282828;
+}
+
+.finish1 {
+  display: none;
 }
 
 .finish {
@@ -127,4 +145,194 @@
   font-size: 10px;
   color: #282828cc;
   margin-top: 15px;
+}
+
+@media (min-width: 768px) {
+  .finish {
+    display: none;
+  }
+
+  .options {
+    gap: 0;
+  }
+
+  .box:nth-child(-n + 3) {
+    display: block;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    width: 860px;
+    border: 1px solid #00000033;
+    border-radius: 10px;
+    margin: 100px auto 70px;
+  }
+  .main {
+    padding: 20px 14px 5px;
+  }
+
+  .tourimg {
+    width: 300px;
+    height: 200px;
+  }
+
+  .topContent {
+    display: flex;
+    gap: 20px;
+  }
+
+  .topLeftContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .desc {
+    margin-right: 5px;
+    display: flex;
+    gap: 25px;
+    justify-content: flex-start;
+  }
+
+  .desc div {
+    display: flex;
+    align-items: centsr;
+    gap: 5px;
+    flex: none;
+  }
+
+  .titleoption {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .titleoption h1 {
+    padding: 0;
+    margin: 0;
+  }
+
+  .finish1 {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .finish1 button {
+    border: none;
+    width: 154px;
+    height: 42px;
+    background-color: #28a745;
+    text-align: center;
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: "Vazir";
+    font-weight: 400;
+    font-size: 20px;
+    transition: 0.2s all ease-in;
+  }
+
+  .finish1 button:hover {
+    background: #6eff9e;
+  }
+
+  .price1 {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .price1 span {
+    font-family: "Vazir";
+    font-weight: 500;
+    font-size: 24px;
+    color: #009eca;
+  }
+
+  .price1 p {
+    font-family: "Vazir";
+    font-weight: 400;
+    font-size: 10px;
+    color: #282828cc;
+    margin-top: 15px;
+  }
+
+  .box {
+    flex: 1;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .box:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    left: 0px;
+    width: 1px;
+    height: 70%;
+    background-color: #ccc;
+  }
+
+  .box:nth-child(2) {
+    transform: translateX(6px);
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 1200px;
+  }
+
+  .tourimg {
+    width: 400px;
+    height: 240px;
+  }
+  .box:nth-child(2) {
+    transform: translateX(20px);
+  }
+  .box:nth-child(3) {
+    transform: translateX(13px);
+  }
+
+  .box:nth-child(1) {
+    transform: translateX(10px);
+  }
+
+  .box:nth-child(6) {
+    transform: translateX(-10px);
+  }
+
+  .price1 span {
+    font-size: 28px;
+  }
+
+  .price1 p {
+    font-size: 13px;
+  }
+
+  .desc div p {
+    font-size: 18px;
+    color: #7d7d7d;
+  }
+
+  .desc div img {
+     width: 18px;
+     height: 18px;
+  }
+
+  .titleoption h1 {
+    font-size: 28px;
+  }
+
+  .titleoption p {
+    font-size: 18px;
+  }
 }

@@ -149,7 +149,6 @@
   font-family: "Vazir";
   font-weight: 400;
   font-size: 15px;
-
 }
 
 .selectBox img {
@@ -241,7 +240,7 @@
 
 .btn button {
   border: none;
-  width: 302px;
+  width: 100%;
   height: 56px;
   font-family: "Vazir";
   font-weight: 400;
@@ -252,4 +251,21 @@
 }
 .btn button:hover {
   background: #6eff9e;
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 1200px;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 100px;
+  }
+
+  .infoBox {
+    width: 70%;
+  }
+
+  .checkoutBox {
+    width: 30%;
+  }
 }

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import styles from "@/styles/Tours.module.css";
 import Link from "next/link";
-import { convertToRial, toPersianNumber } from "@/helper/helper";
+import { convertToRial, toPersianNumber } from "@/utils/helper";
 import { useEffect, useState } from "react";
 import Loader from "../tempelates/Loader";
 

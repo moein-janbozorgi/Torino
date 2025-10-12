@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "@/styles/Whytorino.module.css";
 import Image from "next/image";
-import { toPersianNumber } from "@/helper/helper";
+import { toPersianNumber } from "@/utils/helper";
 
 export default function Whytorino() {
   const [order, setOrder] = useState([0, 1, 2, 3]);

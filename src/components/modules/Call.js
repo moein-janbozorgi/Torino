@@ -1,4 +1,4 @@
-import { toPersianNumber } from "@/helper/helper";
+import { toPersianNumber } from "@/utils/helper";
 import styles from "@/styles/call.module.css";
 import Image from "next/image";
 import Link from "next/link";

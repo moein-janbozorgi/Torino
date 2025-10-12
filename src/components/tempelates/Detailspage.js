@@ -5,9 +5,10 @@ import { useGetTourById } from "@/hooks/queries";
 import Loader from "./Loader";
 import styles from "@/styles/Detailspage.module.css";
 import Image from "next/image";
-import { convertToRial, toPersianNumber } from "@/helper/helper";
+import { convertToRial, formatJalaliText, toPersianNumber } from "@/utils/helper";
 import { api } from "@/configs/config";
 import useAuthGuard from "@/hooks/useAuthGuard";
+import { toast } from "react-toastify";
 
 export default function Detailspage({ idtour, dehydratedState }) {
   return (
@@ -29,47 +30,108 @@ function DetailspageContent({ idtour }) {
         await api.put(`/basket/${id}`);
         window.location.href = `/checkout`;
       } catch (error) {
-        console.error("خطا در افزودن به سبد:", error);
+        toast.error("وارد حساب کاربری خود شوید", error);
+        window.location.href = `/`;
       }
     });
   };
 
+  console.log(data);
+
   return (
     <div className={styles.container}>
       <div className={styles.main}>
-        <Image
-          src={data.image}
-          width={340}
-          height={220}
-          alt="tour"
-          className={styles.tourimg}
-        />
-        <div className={styles.titleoption}>
-          <h1>{data.title}</h1>
-          <p>
-            {toPersianNumber(5)} روز و {toPersianNumber(4)} شب
-          </p>
-        </div>
-        <div className={styles.desc}>
+        <div className={styles.topContent}>
           <div>
             <Image
-              src="/images/usertick.png"
-              width={14}
-              height={14}
-              alt="user"
+              src={data.image}
+              width={340}
+              height={220}
+              alt="tour"
+              className={styles.tourimg}
             />
-            <p>تورلیدر از مبدا</p>
           </div>
-          <div>
-            <Image src="/images/map.png" width={14} height={14} alt="map" />
-            <p>برنامه سفر</p>
-          </div>
-          <div>
-            <Image src="/images/medal.png" width={14} height={14} alt="medal" />
-            <p>تضمین کیفیت</p>
+          <div className={styles.topLeftContent}>
+            <div className={styles.titleoption}>
+              <h1>{data.title}</h1>
+              <p>
+                {toPersianNumber(5)} روز و {toPersianNumber(4)} شب
+              </p>
+            </div>
+            <div className={styles.desc}>
+              <div>
+                <Image
+                  src="/images/usertick.png"
+                  width={14}
+                  height={14}
+                  alt="user"
+                />
+                <p>تورلیدر از مبدا</p>
+              </div>
+              <div>
+                <Image src="/images/map.png" width={14} height={14} alt="map" />
+                <p>برنامه سفر</p>
+              </div>
+              <div>
+                <Image
+                  src="/images/medal.png"
+                  width={14}
+                  height={14}
+                  alt="medal"
+                />
+                <p>تضمین کیفیت</p>
+              </div>
+            </div>
+            <div className={styles.finish1}>
+              <button onClick={() => sendHandler(data.id)}>رزرو و خرید</button>
+              <div className={styles.price1}>
+                <span>{toPersianNumber(convertToRial(data.price))}</span>
+                <p>تومان</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className={styles.options}>
+          <div className={styles.box}>
+            <div className={styles.topoption}>
+              <Image
+                src="/images/routing.png"
+                width={14}
+                height={14}
+                alt="medal"
+              />
+              <p>مبدا</p>
+            </div>
+            <p className={styles.underoption}>تهران</p>
+          </div>
+          <div className={styles.box}>
+            <div className={styles.topoption}>
+              <Image
+                src="/images/calendar.png"
+                width={14}
+                height={14}
+                alt="medal"
+              />
+              <p>تاریخ رفت</p>
+            </div>
+            <p className={styles.underoption}>
+              {formatJalaliText(data.startDate)}
+            </p>
+          </div>
+          <div className={styles.box}>
+            <div className={styles.topoption}>
+              <Image
+                src="/images/calendar.png"
+                width={14}
+                height={14}
+                alt="medal"
+              />
+              <p>تاریخ برگشت</p>
+            </div>
+            <p className={styles.underoption}>
+              {formatJalaliText(data.endDate)}
+            </p>
+          </div>
           <div className={styles.box}>
             <div className={styles.topoption}>
               <Image src="/images/bus.png" width={14} height={14} alt="medal" />
@@ -87,7 +149,9 @@ function DetailspageContent({ idtour }) {
               />
               <p>ظرفیت</p>
             </div>
-            <p>حداکثر {toPersianNumber(data.capacity)} نفر</p>
+            <p className={styles.underoption}>
+              حداکثر {toPersianNumber(data.capacity)} نفر
+            </p>
           </div>
           <div className={styles.box}>
             <div className={styles.topoption}>
@@ -99,7 +163,7 @@ function DetailspageContent({ idtour }) {
               />
               <p>بیمه</p>
             </div>
-            <p>بیمه {toPersianNumber(50)}</p>
+            <p>بیمه {toPersianNumber(50)} دیناری</p>
           </div>
         </div>
         <div className={styles.finish}>

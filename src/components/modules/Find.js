@@ -10,16 +10,14 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRef, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { searchChecker } from "@/helper/validations";
+import { searchChecker } from "@/utils/validations";
 import { useRouter } from "next/navigation";
+import { api } from "@/configs/config";
 
 function Find({ onSearch }) {
   const [activeInput, setActiveInput] = useState(null);
   const [range, setRange] = useState({ from: null, to: null });
   const dropdownRef = useRef(null);
-  
-  const router = useRouter();
-
   const {
     register,
     handleSubmit,
@@ -97,13 +95,18 @@ function Find({ onSearch }) {
       startDate,
       endDate,
     }).toString();
-
     console.log(startDate, endDate);
 
     try {
-      const res = await fetch(`http://localhost:6500/tour?${query}`);
-      const tours = await res.json();
-      onSearch(tours);
+      const tours = await api.get("/tour", {
+        params: {
+          destinationId,
+          originId,
+          startDate,
+          endDate,
+        },
+      });
+      onSearch(tours, query);
     } catch (err) {
       console.error(err);
     }

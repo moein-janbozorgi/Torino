@@ -4,9 +4,9 @@ import styles from "@/styles/LoginModal.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
-import {toPersianNumber } from "@/helper/helper";
-import { useLogin } from "@/hooks/mutations";
-import { phoneCheker } from "@/helper/validations";
+import {toPersianNumber } from "@/utils/helper";
+import { useSendOtp } from "@/hooks/mutations";
+import { phoneCheker } from "@/utils/validations";
 
 function LoginModal({ setIsOn, setOtp, setPhone }) {
   const {
@@ -15,7 +15,7 @@ function LoginModal({ setIsOn, setOtp, setPhone }) {
     formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(phoneCheker)});
 
-  const { mutate } = useLogin(() => {
+  const { mutate } = useSendOtp(() => {
     setIsOn((s) => !s);
     setOtp((s) => !s);
   });

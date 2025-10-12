@@ -1,4 +1,4 @@
-import { toPersianNumber } from "@/helper/helper";
+import { toPersianNumber } from "@/utils/helper";
 import { useLogout } from "@/hooks/mutations";
 import styles from "@/styles/Userbox.module.css";
 import Image from "next/image";
