@@ -18,7 +18,6 @@ export const useGetTourById = (idtour) => {
     queryKey: ["tour", idtour],
     queryFn: () => fetchTourById(idtour),
     staleTime: 1000 * 60,
-    retry: 1,
   });
 };
 
@@ -38,7 +37,6 @@ export const useGetBasket = () => {
     queryKey: ["basket"],
     queryFn: fetchBasket,
     staleTime: 1000 * 60,
-    retry: 1,
   });
 };
 
@@ -52,29 +50,36 @@ export const fetchBasket = async () => {
   }
 };
 
+export const fetchUserTours = async () => {
+  const response = await api.get("/user/tours");
+  return response ?? null;
+};
+
+export const useGetUserTours = () => {
+  return useQuery({
+    queryKey: ["user-tours"],
+    queryFn: fetchUserTours,
+    staleTime: 1000 * 60 * 2,
+  });
+};
+
 export const useGetAllTour = () => {
   return useQuery({
     queryKey: ["all-tour"],
     queryFn: fetchAllTour,
     staleTime: 1000 * 60,
-    retry: 1,
   });
 };
 
+export const fetchUserInfo = async () => {
+  const res = await api.get("/user/profile");
+  return res ?? null;
+};
+
 export const useGetUserInfo = () => {
-  const queryFn = async () => {
-    try {
-      const res = await api.get("/user/profile");
-      return res;
-    } catch {
-      return null;
-    }
-  };
   return useQuery({
     queryKey: ["user-data"],
-    queryFn,
-    staleTime: 0,
-    cachetime: 0,
-    retry: false,
+    queryFn: fetchUserInfo,
+    staleTime: 1000 * 60 * 5,
   });
 };

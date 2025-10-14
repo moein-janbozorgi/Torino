@@ -24,30 +24,8 @@ api.interceptors.request.use(
   }
 );
 
-api.interceptors.response.use(
-  (response) => {
-    return response.data;
-  },
-  async (error) => {
-    const originalRequest = error.config;
-
-    if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-
-      const res = await getNewTokens();
-      console.log(res?.data?.accessToken);
-
-      if (res?.status === 200) {
-        setCookie("accessToken", res?.data?.accessToken, 30);
-        return api(originalRequest);
-      }
-    } else {
-      setCookie("accessToken", "", 0);
-      setCookie("refreshToken", "", 0);
-    }
-
-    return Promise.reject(error?.response?.data);
-  }
-);
+api.interceptors.response.use((response) => {
+  return response.data;
+});
 
 export { api };

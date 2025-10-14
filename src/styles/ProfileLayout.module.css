@@ -1,0 +1,25 @@
+.header {
+  margin: 100px auto 40px;
+}
+
+.header ul {
+  display: flex;
+  padding: 0 1.5rem 0 1.5rem;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.header ul li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.header ul li a {
+  text-decoration: none;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 12px;
+  color:#282828;
+}
+

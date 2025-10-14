@@ -5,7 +5,11 @@ import { useGetTourById } from "@/hooks/queries";
 import Loader from "./Loader";
 import styles from "@/styles/Detailspage.module.css";
 import Image from "next/image";
-import { convertToRial, formatJalaliText, toPersianNumber } from "@/utils/helper";
+import {
+  convertToRial,
+  formatJalaliText,
+  toPersianNumber,
+} from "@/utils/helper";
 import { api } from "@/configs/config";
 import useAuthGuard from "@/hooks/useAuthGuard";
 import { toast } from "react-toastify";
@@ -28,7 +32,9 @@ function DetailspageContent({ idtour }) {
     checkAuth(async () => {
       try {
         await api.put(`/basket/${id}`);
-        window.location.href = `/checkout`;
+        setTimeout(() => {
+          window.location.href = `/checkout`;
+        }, 300);
       } catch (error) {
         toast.error("وارد حساب کاربری خود شوید", error);
         window.location.href = `/`;

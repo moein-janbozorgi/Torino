@@ -1,29 +1,31 @@
-export const dynamic = "force-dynamic";
-
 import HomePage from "@/components/tempelates/HomePage";
 
+export const revalidate = 300;
+
 export default async function Home({ searchParams }) {
-  const { destinationId, originId, startDate, endDate } = searchParams;
+  const { destinationId, originId, startDate, endDate } = await searchParams;
 
   let initialTours = [];
 
   try {
-    let url = "http://localhost:6500/tour";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const url = new URL("/tour", baseUrl);
 
     if (destinationId && originId && startDate && endDate) {
-      const query = new URLSearchParams({
+      url.search = new URLSearchParams({
         destinationId,
         originId,
         startDate,
         endDate,
       }).toString();
-      url += `?${query}`;
     }
 
-     const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url.toString());
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     initialTours = await res.json();
   } catch (err) {
     console.error("SSR fetch failed:", err);
+    initialTours = []; 
   }
 
   return <HomePage initialTours={initialTours} searchParams={searchParams} />;

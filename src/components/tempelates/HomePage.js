@@ -9,7 +9,7 @@ import { api } from "@/configs/config";
 import { useSearchParams } from "next/navigation";
 import Airplan from "@/atoms/Airplan";
 
-function HomePage({ initialTours }) {
+function HomePage({ initialTours = [] }) {
   const clientSearchParams = useSearchParams();
   const [filteredTours, setFilteredTours] = useState(initialTours || []);
 

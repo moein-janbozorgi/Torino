@@ -18,7 +18,7 @@ function UserProfile({ data }) {
         alt="arrow"
         onClick={() => setOpen((s) => !s)}
       />
-      {open ? <Userbox data={data} /> : null}
+      {open ? <Userbox data={data} setOpen={setOpen} /> : null}
     </div>
   );
 }

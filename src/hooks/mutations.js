@@ -3,6 +3,7 @@ import { removeCookie, setCookie } from "@/utils/cookieHelper";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
+import { toPersianNumber } from "@/utils/helper";
 
 export const useSendOtp = (onSuccessCallback) => {
   const mutationFn = (data) => api.post("/auth/send-otp", data);
@@ -10,7 +11,7 @@ export const useSendOtp = (onSuccessCallback) => {
   return useMutation({
     mutationFn,
     onSuccess: (response) => {
-      toast.success(`کد تایید شما ${response.code}`, {
+      toast.success(`کد تایید شما ${toPersianNumber(response.code)}`, {
         autoClose: 3000,
       });
       if (onSuccessCallback) onSuccessCallback(response.data);
@@ -56,12 +57,12 @@ export const useSubmitPassenger = (onSuccessCallback) => {
   return useMutation({
     mutationFn,
     onSuccess: (data) => {
+      console.log(data);
       toast.success("تور با موفقیت رزرو شد");
       queryClient.invalidateQueries(["basket"]);
       if (onSuccessCallback) onSuccessCallback(data);
     },
-    onError: (err) => {
-      console.error(err);
+    onError: () => {
       toast.error("ثبت اطلاعات مسافر با خطا مواجه شد");
     },
   });
@@ -77,6 +78,29 @@ export const useResend = () => {
     },
     onError: () => {
       toast.error("ارسال مجدد کد با خطا مواجه شد", { autoClose: 1000 });
+    },
+  });
+};
+
+export const useUpdateUserProfile = (onSuccessCallback) => {
+  const queryClient = useQueryClient();
+
+  const mutationFn = async (payload) => {
+    const response = await api.put("/user/profile", payload);
+    return response;
+  };
+
+  return useMutation({
+    mutationFn,
+    onSuccess: (data) => {
+      queryClient.invalidateQueries(["user-data"]);
+
+      toast.success("دیتا با موفقیت تغییر یافت");
+
+      if (onSuccessCallback) onSuccessCallback(data);
+    },
+    onError: (error) => {
+      toast.error(error?.message || "مشکلی پیش آمده، دوباره تلاش کنید");
     },
   });
 };

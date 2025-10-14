@@ -19,6 +19,7 @@ import { useRef } from "react";
 import { useSubmitPassenger } from "@/hooks/mutations";
 import { useRouter } from "next/navigation";
 import GenderSelect from "@/atoms/genderSelect";
+import { toast } from "react-toastify";
 
 export default function CheckoutPage({ dehydratedState }) {
   return (
@@ -33,11 +34,12 @@ function Basket() {
   const { data, isLoading } = useGetBasket();
   const formRef = useRef();
 
-  const { mutate: submitPassenger, isLoading: isSubmitting } =
-    useSubmitPassenger((data) => {
-      console.log(data);
-      router.push("/");
-    });
+  const { mutate: submitPassenger } = useSubmitPassenger((data) => {
+    console.log(data);
+    setTimeout(() => {
+      router.push("/profile/tours");
+    }, 1500);
+  });
 
   const {
     register,
@@ -53,10 +55,10 @@ function Basket() {
 
   const onSubmit = (formData) => {
     const payload = {
+      nationalCode: formData.nationalCode,
       fullName: formData.fullName,
       gender: formData.gender,
-      birthDate: formData.date,
-      nationalCode: formData.nationalId,
+      birthDate: formData.birthDate,
     };
     submitPassenger(payload);
   };
@@ -90,12 +92,16 @@ function Basket() {
           {errors.gender && (
             <span className={styles.error}>{errors.gender.message}</span>
           )}
-          <input type="text" placeholder="کد ملی" {...register("nationalId")} />
-          {errors.nationalId && (
-            <span className={styles.error}>{errors.nationalId.message}</span>
+          <input
+            type="text"
+            placeholder="کد ملی"
+            {...register("nationalCode")}
+          />
+          {errors.nationalCode && (
+            <span className={styles.error}>{errors.nationalCode.message}</span>
           )}
           <Controller
-            name="date"
+            name="birthDate"
             control={control}
             render={({ field }) => {
               const selectedDate = field.value
@@ -131,8 +137,10 @@ function Basket() {
                       </div>
                     )}
                   />
-                  {errors.date && (
-                    <span className={styles.error}>{errors.date.message}</span>
+                  {errors.birthDate && (
+                    <span className={styles.error}>
+                      {errors.birthDate.message}
+                    </span>
                   )}
                 </div>
               );
@@ -142,7 +150,7 @@ function Basket() {
       </div>
       <div className={styles.checkoutBox}>
         <div className={styles.desc}>
-          <h1>{data.title}</h1>
+          <h1>{data?.title || "  بارگذاری..."}</h1>
           <p>
             {toPersianNumber(5)} روز و {toPersianNumber(4)} شب
           </p>
@@ -151,7 +159,11 @@ function Basket() {
         <div className={styles.priceDiv}>
           <p>قیمت نهایی</p>
           <div className={styles.price}>
-            <span>{toPersianNumber(convertToRial(data.price))}</span>
+            <span>
+              {data?.price
+                ? toPersianNumber(convertToRial(data.price))
+                : "درحال بروزرسانی"}
+            </span>
             <p>تومان</p>
           </div>
         </div>

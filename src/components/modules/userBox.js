@@ -1,11 +1,19 @@
+"useclient";
 import { toPersianNumber } from "@/utils/helper";
 import { useLogout } from "@/hooks/mutations";
 import styles from "@/styles/Userbox.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-function Userbox({ data }) {
+function Userbox({ data, setOpen }) {
   const handleLogout = useLogout();
+  const router = useRouter();
+
+  const routeHandler = () => {
+    router.push("/profile");
+    setOpen((s) => !s);
+  };
 
   return (
     <div className={styles.container}>
@@ -26,7 +34,7 @@ function Userbox({ data }) {
           width={16}
           height={16}
         />
-        <Link href="/">اطلاعات حساب کاربری</Link>
+        <button onClick={routeHandler}>اطلاعات حساب کاربری</button>
       </div>
       <div className={styles.divider}></div>
       <div className={styles.logout} onClick={handleLogout}>
