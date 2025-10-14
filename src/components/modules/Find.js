@@ -11,13 +11,49 @@ import { useForm } from "react-hook-form";
 import { useRef, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { searchChecker } from "@/utils/validations";
-import { useRouter } from "next/navigation";
 import { api } from "@/configs/config";
+import { convertCity } from "@/utils/helper";
 
-function Find({ onSearch }) {
+function Find({ onSearch, data }) {
   const [activeInput, setActiveInput] = useState(null);
   const [range, setRange] = useState({ from: null, to: null });
+  const [originCities, setOriginCities] = useState([]);
+  const [destinationCities, setDestinationCities] = useState([]);
   const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    if (!data) return;
+
+    const origins = Array.from(
+      new Map(
+        data.map((city) => [
+          city.origin.id,
+          {
+            id: city.origin.id,
+            name: convertCity(city.origin.name),
+          },
+        ])
+      ).values()
+    );
+
+    const destinations = Array.from(
+      new Map(
+        data.map((city) => [
+          city.destination.id,
+          {
+            id: city.destination.id,
+            name: convertCity(city.destination.name),
+          },
+        ])
+      ).values()
+    );
+
+    setOriginCities(origins);
+    setDestinationCities(destinations);
+  }, [data]);
+
+  console.log(originCities, destinationCities);
+
   const {
     register,
     handleSubmit,
@@ -27,18 +63,6 @@ function Find({ onSearch }) {
     resolver: yupResolver(searchChecker),
     defaultValues: { destination: "", origin: "", dateRange: [] },
   });
-
-  const cities = [
-    { id: "1", name: "تهران" },
-    { id: "2", name: "سنندج" },
-    { id: "3", name: "مادرید" },
-    { id: "4", name: "اصفهان" },
-    { id: "5", name: "سلیمانیه" },
-    { id: "6", name: "هولیر" },
-    { id: "7", name: "مازندران" },
-    { id: "8", name: "گیلان" },
-    { id: "9", name: "ایتالیا" },
-  ];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -60,8 +84,10 @@ function Find({ onSearch }) {
   };
 
   const onSubmit = async (data) => {
-    const originObj = cities.find((c) => c.name === data.origin);
-    const destinationObj = cities.find((c) => c.name === data.destination);
+    const originObj = originCities.find((c) => c.name === data.origin);
+    const destinationObj = destinationCities.find(
+      (c) => c.name === data.destination
+    );
     const originId = originObj.id;
     const destinationId = destinationObj.id;
 
@@ -144,7 +170,7 @@ function Find({ onSearch }) {
                   <div className={styles.cityDropdown} ref={dropdownRef}>
                     <div className={styles.cityHeader}>پرتردد</div>
                     <div className={styles.cityList}>
-                      {cities.map((city, i) => (
+                      {originCities.map((city, i) => (
                         <button
                           key={i}
                           type="button"
@@ -186,7 +212,7 @@ function Find({ onSearch }) {
                   <div className={styles.cityDropdown} ref={dropdownRef}>
                     <div className={styles.cityHeader}>پرتردد</div>
                     <div className={styles.cityList}>
-                      {cities.map((city, i) => (
+                      {destinationCities.map((city, i) => (
                         <button
                           key={i}
                           type="button"

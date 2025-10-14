@@ -65,6 +65,10 @@
   pointer-events: none;
 }
 
+.topinput label:nth-child(1) img {
+  right: 47px;
+}
+
 .label {
   position: relative;
   display: flex;
@@ -335,7 +339,7 @@
   .topinput .label input {
     order: 1;
     margin-right: 23px;
-    text-align: right; 
+    text-align: right;
   }
 
   .topinput input,
@@ -363,7 +367,7 @@
   }
 
   .topinput .label:nth-child(1) img {
-    right: 5px;
+    right: 10px;
   }
 
   .dateInput {
@@ -431,5 +435,10 @@
     font-weight: 600;
     font-size: 28px;
     color: #28a745;
+  }
+
+  .cityItem {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
   }
 }

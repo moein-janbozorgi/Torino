@@ -1,0 +1,62 @@
+.table {
+  width: 330px;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  direction: rtl;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #00000040;
+}
+
+.table thead {
+  background-color: #e6e6e6;
+}
+
+.row {
+  background-color: #ffffff;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.row:hover {
+  background-color: #f9f9f9;
+}
+
+.cell {
+  padding: 15px 10px;
+  font-family: "Vazir";
+  font-weight: 300;
+  font-size: 13px;
+  color: #282828;
+}
+
+.row:last-child .cell {
+  border-bottom: none;
+}
+
+.table th {
+  padding: 15px 12px;
+  text-align: center;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 12px;
+  color: #282828cc;
+}
+
+.noData {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Vazirmatn";
+  color: #282828;
+  padding: 14px 0;
+  border-bottom: none;
+}
+
+tr td:nth-child(1) {
+  font-family: "Vazir";
+  font-weight: 300;
+  font-size: 9px;
+  color: #282828;
+}

@@ -6,7 +6,9 @@ import Loader from "./Loader";
 import styles from "@/styles/Detailspage.module.css";
 import Image from "next/image";
 import {
+  convertCity,
   convertToRial,
+  convertVehicle,
   formatJalaliText,
   toPersianNumber,
 } from "@/utils/helper";
@@ -108,7 +110,9 @@ function DetailspageContent({ idtour }) {
               />
               <p>مبدا</p>
             </div>
-            <p className={styles.underoption}>تهران</p>
+            <p className={styles.underoption}>
+              {convertCity(data.origin.name)}
+            </p>
           </div>
           <div className={styles.box}>
             <div className={styles.topoption}>
@@ -143,7 +147,7 @@ function DetailspageContent({ idtour }) {
               <Image src="/images/bus.png" width={14} height={14} alt="medal" />
               <p>حمل و نقل</p>
             </div>
-            <p>{data.fleetVehicle}</p>
+            <p>{convertVehicle(data.fleetVehicle)}</p>
           </div>
           <div className={styles.box}>
             <div className={styles.topoption}>

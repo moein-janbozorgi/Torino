@@ -1,18 +1,20 @@
 .header {
+  width: 330px;
   margin: 100px auto 40px;
 }
 
 .header ul {
   display: flex;
-  padding: 0 1.5rem 0 1.5rem;
   justify-content: space-between;
   list-style: none;
+  padding: 0 1.2rem 0 1.2rem;
 }
 
 .header ul li {
   display: flex;
   align-items: center;
   gap: 7px;
+  transition: all 0.3s ease;
 }
 
 .header ul li a {
@@ -20,6 +22,20 @@
   font-family: "Vazir";
   font-weight: 400;
   font-size: 12px;
-  color:#282828;
+  color: #888;
+  transition: color 0.3s ease;
 }
 
+.header ul li.active a {
+  color: #009e60;
+  font-weight: 500;
+}
+
+.header ul li.active img {
+    filter: invert(44%) sepia(94%) saturate(700%) hue-rotate(135deg)
+      brightness(90%) contrast(90%);
+}
+
+.header ul li.active {
+  transform: scale(1.05);
+}

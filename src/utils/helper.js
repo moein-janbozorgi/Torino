@@ -72,4 +72,55 @@ export function randomNineDigit() {
   return Math.floor(Math.random() * (max - min + 1) + min).toString();
 }
 
+export function generateRandom8DigitNumber() {
+  return Math.floor(10000000 + Math.random() * 90000000);
+}
+
+export function formatPersianDate(isoString) {
+  const date = new Date(isoString);
+
+  const faDate = new Intl.DateTimeFormat("fa-IR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(date);
+
+  const faTime = new Intl.DateTimeFormat("fa-IR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(date);
+
+  return `${faTime} - ${faDate}`;
+}
+
+const vehicleMap = {
+  bus: "اتوبوس",
+  ship: "کشتی",
+  train: "قطار",
+  airplane: "هواپیما",
+  SUV: "آفرود",
+};
+
+export function convertVehicle(name) {
+  return vehicleMap[name] || name;
+}
+
+const cityMap = {
+  Tehran: "تهران",
+  Sananndaj: "سنندج",
+  Madrid: "مادرید",
+  Isfahan: "اصفهان",
+  Sulaymaniyah: "سلیمانیه",
+  Hewler: "هولر",
+  Mazandaran: "مازندران",
+  Gilan: "گیلان",
+  Italy: "ایتالیا",
+};
+
+
+export function convertCity(name) {
+  return cityMap[name] || name;
+}
+
 export { convertToRial };

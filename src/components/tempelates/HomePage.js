@@ -46,7 +46,7 @@ function HomePage({ initialTours = [] }) {
   return (
     <>
       <Airplan />
-      <Find onSearch={handleSearch} />
+      <Find onSearch={handleSearch} data={filteredTours} />
       <Tours data={filteredTours} />
       <Call />
       <Whytorino />

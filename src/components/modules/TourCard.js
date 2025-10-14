@@ -1,6 +1,8 @@
 import styles from "@/styles/ToursCard.module.css";
 import {
+  convertCity,
   convertToRial,
+  convertVehicle,
   formatJalaliText,
   randomNineDigit,
   toPersianNumber,
@@ -31,12 +33,12 @@ function TourCard({ tour }) {
                 height={18}
                 alt="airplane"
               />
-              <p>سفر با {tour.fleetVehicle}</p>
+              <p>سفر با {convertVehicle(tour.fleetVehicle)}</p>
             </div>
           </div>
           <div className={styles.origindest}>
             <h3>
-              {tour.origin.name} به {tour.destination.name}
+              {convertCity(tour.origin.name)} به {convertCity(tour.destination.name)}
             </h3>
             <p>{formatJalaliText(tour.startDate)}</p>
           </div>

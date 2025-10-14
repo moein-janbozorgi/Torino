@@ -63,6 +63,19 @@ export const useGetUserTours = () => {
   });
 };
 
+export const fetchTransactions = async () => {
+  const response = await api.get("/user/transactions");
+  return response ?? null;
+};
+
+export const useGetUseTransactions = () => {
+  return useQuery({
+    queryKey: ["user-transactions"],
+    queryFn: fetchTransactions,
+    staleTime: 1000 * 60 * 2,
+  });
+};
+
 export const useGetAllTour = () => {
   return useQuery({
     queryKey: ["all-tour"],
