@@ -1,4 +1,4 @@
-import { getCookie, getNewTokens, setCookie } from "@/utils/cookieHelper";
+import { getCookie, setCookie } from "@/utils/cookieHelper";
 
 import axios from "axios";
 
@@ -24,8 +24,46 @@ api.interceptors.request.use(
   }
 );
 
-api.interceptors.response.use((response) => {
-  return response.data;
-});
+api.interceptors.response.use(
+  (response) => {
+    return response.data;
+  },
+  async (error) => {
+    const originalRequest = error.config;
+
+    if (
+      (error.response.status === 401 || error.response.status === 403) &&
+      !originalRequest._retry
+    ) {
+      originalRequest._retry = true;
+
+      const res = await getNewTokens();
+      if (res?.status === 200) {
+        console.log(res);
+        setCookie("accessToken", res?.data?.accessToken, 30);
+        return api(originalRequest);
+      }
+    } else {
+      setCookie("accessToken", "", 0);
+      setCookie("refreshToken", "", 0);
+    }
+
+    return Promise.reject(error?.response?.data);
+  }
+);
+
+const getNewTokens = async () => {
+  const refreshToken = getCookie("refreshToken");
+  if (!refreshToken) return;
+
+  try {
+    const response = axios.post(`${BASE_URL}/auth/refresh-token`, {
+      refreshToken,
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
 
 export { api };

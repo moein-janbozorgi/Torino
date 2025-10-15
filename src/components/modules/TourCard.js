@@ -36,15 +36,18 @@ function TourCard({ tour }) {
               <p>سفر با {convertVehicle(tour.fleetVehicle)}</p>
             </div>
           </div>
-          <div className={styles.origindest}>
-            <h3>
-              {convertCity(tour.origin.name)} به {convertCity(tour.destination.name)}
-            </h3>
-            <p>{formatJalaliText(tour.startDate)}</p>
-          </div>
-          <div className={styles.endDate}>
-            <h3>تاریخ برگشت</h3>
-            <p>{formatJalaliText(tour.endDate)}</p>
+          <div className={styles.timeWrapper}>
+            <div className={styles.origindest}>
+              <h3>
+                {convertCity(tour.origin.name)} به{" "}
+                {convertCity(tour.destination.name)}
+              </h3>
+              <p>{formatJalaliText(tour.startDate)}</p>
+            </div>
+            <div className={styles.endDate}>
+              <h3>تاریخ برگشت</h3>
+              <p>{formatJalaliText(tour.endDate)}</p>
+            </div>
           </div>
         </div>
         <div className={styles.bottomMain}>

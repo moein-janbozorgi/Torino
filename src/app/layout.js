@@ -1,9 +1,11 @@
 import Header from "@/layout/Header";
 import Footer from "@/layout/footer";
-import Providers from "./providers";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "@/styles/toastStyle.module.css";
+import "./globals.css";
+import Providers from "@/Providers/ReactQueryProvider";
+
 
 export const metadata = {
   title: "Torino",
@@ -20,10 +22,10 @@ export default function RootLayout({ children }) {
         rel="stylesheet"
         precedence="default"
       />
-      <body>
+      <body className="layout-body">
         <Providers>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="main-content">{children}</main>
           <Footer />
           <ToastContainer
             position="top-center"

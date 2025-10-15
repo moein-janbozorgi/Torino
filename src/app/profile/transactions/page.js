@@ -31,6 +31,7 @@ export default function TransactionsPage() {
         <tr>
           <th>تاریخ‌ و ساعت</th>
           <th>مبلغ‌(تومان)</th>
+          <th className={styles.hide}>نوع تراکنش</th>
           <th>شماره سفارش</th>
         </tr>
       </thead>
@@ -58,6 +59,7 @@ function TransactionsCard({ data }) {
         <td className={styles.cell}>
           {toPersianNumber(convertToRial(data.amount * 2))}
         </td>
+        <td className={styles.hide}>ثبت نام در تور گردشگری</td>
         <td className={styles.cell}>
           {toPersianNumber(generateRandom8DigitNumber())}
         </td>

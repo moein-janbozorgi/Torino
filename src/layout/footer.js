@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.bottomline}></div>
-      <p>کلیه حقوق این وب سایت متعلق به تورینو میباشد.</p>
+      <p className={styles.last}>کلیه حقوق این وب سایت متعلق به تورینو میباشد.</p>
     </footer>
   );
 }

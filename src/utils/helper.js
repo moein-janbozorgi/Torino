@@ -55,7 +55,7 @@ export function formatJalaliText(isoDate) {
   const month = persianMonths[jm - 1];
   const year = toPersianNumber(jy);
 
-  return `${weekDay} ${day} ${month} ${year}`;
+  return [weekDay, day, month, year].join(" ");
 }
 
 export function randomNineDigit() {
@@ -117,7 +117,6 @@ const cityMap = {
   Gilan: "گیلان",
   Italy: "ایتالیا",
 };
-
 
 export function convertCity(name) {
   return cityMap[name] || name;

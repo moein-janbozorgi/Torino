@@ -15,6 +15,10 @@
   padding: 0;
 }
 
+.last {
+  margin: 3px;
+}
+
 .contact {
   font-family: "Vazir";
   font-weight: 400;
@@ -106,7 +110,7 @@
 
 @media (min-width: 391px) {
   .footer {
-    padding: 0 5rem 0 5rem;
+    padding: 0 3rem 0 3rem;
   }
 
   .main {
@@ -172,6 +176,9 @@
   .topfooter {
     gap: 35px;
   }
+  .footer {
+    padding: 0 5rem 0 5rem;
+  }
 }
 
 @media (min-width: 992px) {
@@ -202,7 +209,7 @@
   }
 
   .topfooter ul li:first-child {
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
   }
 
   .bottomfooter > div:first-child {
@@ -257,5 +264,9 @@
 
   .topfooter a {
     font-size: 18px;
+  }
+
+  .last {
+    margin: 12px 0 0;
   }
 }

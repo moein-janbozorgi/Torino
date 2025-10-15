@@ -103,9 +103,9 @@
 }
 
 .numTour {
-    gap: 13px;
-    border-left:  1px solid #00000033;
-    padding-left: 20px;
+  gap: 13px;
+  border-left: 1px solid #00000033;
+  padding-left: 20px;
 }
 
 .spend {
@@ -135,5 +135,179 @@
 }
 
 .bottomLeft {
+  gap: 25px;
+}
+
+@media (min-width: 392px) {
+  .container {
+    width: 480px;
+  }
+
+  .finish {
+    font-size: 8px;
+  }
+
+  .tourName div p {
+    font-size: 14px;
+  }
+
+  .endDate h3 {
+    font-size: 16px;
+  }
+
+  .origindest h3 {
+    font-size: 16px;
+  }
+
+  .origindest,
+  .endDate p {
+    font-size: 14px;
+  }
+
+  .numTour p {
+    font-size: 14px;
+  }
+
+  .numTour span {
+    font-size: 14px;
+  }
+
+  .numTour {
+    padding-left: 70px;
+  }
+
+  .spend {
+    font-size: 13px;
+  }
+
+  .price p {
+    font-size: 10px;
+  }
+
+  .price span {
+    font-size: 14px;
+    color: #000000;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 580px;
+  }
+
+  .finish {
+    font-size: 10px;
+  }
+
+  .tourName div p {
+    font-size: 14px;
+  }
+
+  .endDate h3 {
+    font-size: 16px;
+  }
+
+  .origindest h3 {
+    font-size: 16px;
+  }
+
+  .origindest,
+  .endDate p {
+    font-size: 14px;
+  }
+
+  .numTour p {
+    font-size: 14px;
+  }
+
+  .numTour span {
+    font-size: 14px;
+  }
+
+  .numTour {
+    padding-left: 115px;
+  }
+
+  .spend {
+    font-size: 13px;
+  }
+
+  .price p {
+    font-size: 10px;
+  }
+
+  .price span {
+    font-size: 14px;
+    color: #000000;
+  }
+}
+
+@media (min-width: 992px) {
+  .containerWrapper {
+    width: 960px;
+    border: 1px solid #00000033;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .finish {
+    padding: 1px 12px;
+    top: 4px;
+    left: 4px;
+  }
+
+  .timeWrapper {
+    display: flex;
     gap: 25px;
+  }
+
+  .timeWrapper div {
+    display: flex;
+    gap: 15px;
+  }
+
+  .timeWrapper div h3 {
+    font-family: "Vazir";
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  .timeWrapper div p {
+    font-family: "Vazir";
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .topMain {
+    padding: 0 15px 0 0;
+  }
+
+  .bottomMain {
+    padding: 5px 15x;
+    display: flex;
+    justify-content: unset;
+  }
+
+  .tourName {
+    gap: 170px;
+  }
+
+  .tourName img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .bottomLeft {
+     padding-right: 20px;
+  }
+
+  .numTour {
+    padding-left: 20px;
+  }
 }

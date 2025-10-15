@@ -24,7 +24,7 @@ export default async function Home({ searchParams }) {
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     initialTours = await res.json();
   } catch (err) {
-    console.error("SSR fetch failed:", err);
+    console.error(err);
     initialTours = []; 
   }
 

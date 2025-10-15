@@ -13,7 +13,6 @@ import {
   toPersianNumber,
 } from "@/utils/helper";
 import { api } from "@/configs/config";
-import useAuthGuard from "@/hooks/useAuthGuard";
 import { toast } from "react-toastify";
 
 export default function Detailspage({ idtour, dehydratedState }) {
@@ -25,23 +24,19 @@ export default function Detailspage({ idtour, dehydratedState }) {
 }
 
 function DetailspageContent({ idtour }) {
-  const { checkAuth } = useAuthGuard({ autoCheck: false });
   const { data, isLoading } = useGetTourById(idtour);
 
   if (isLoading) return <Loader />;
 
   const sendHandler = (id) => {
-    checkAuth(async () => {
-      try {
-        await api.put(`/basket/${id}`);
-        setTimeout(() => {
-          window.location.href = `/checkout`;
-        }, 300);
-      } catch (error) {
-        toast.error("وارد حساب کاربری خود شوید", error);
-        window.location.href = `/`;
-      }
-    });
+    try {
+      api.put(`/basket/${id}`);
+      setTimeout(() => {
+        window.location.href = `/checkout`;
+      }, 300);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   console.log(data);

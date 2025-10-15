@@ -108,7 +108,7 @@ export const useUpdateUserProfile = (onSuccessCallback) => {
 export const useLogout = () => {
   const queryClient = useQueryClient();
   const handleLogout = () => {
-    removeCookie("accessToken");
+    removeCookie("accessToken", "refreshToken");
     api.defaults.headers.common["Authorization"];
     queryClient.setQueryData(["user-data"], null);
     queryClient.invalidateQueries(["user-data"]);

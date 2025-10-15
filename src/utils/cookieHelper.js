@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import Cookies from "js-cookie";
 
 const setCookie = (name, value, days) => {
@@ -19,23 +20,9 @@ function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(";").shift();
 }
 
-const getNewTokens = async () => {
-  const refreshToken = getCookie("refreshToken");
-  if (!refreshToken) return;
-
-  try {
-    const response = axios.post(`${BASE_URL}/auth/refresh-token`, {
-      refreshToken,
-    });
-
-    return response;
-  } catch (error) {
-    return error;
-  }
-};
-
-const removeCookie = (name) => {
-  Cookies.remove(name);
+const removeCookie = () => {
+  Cookies.remove("accessToken", { path: "/" });
+  Cookies.remove("refreshToken", { path: "/" });
 };
 
 export { setCookie, getCookie, removeCookie, getNewTokens };
