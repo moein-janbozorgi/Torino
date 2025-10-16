@@ -1,10 +1,11 @@
-.container {
-  width: 340px;
-  margin: 100px auto 50px;
-  box-sizing: border-box;
+.wrapper {
+  width: 100%;
+  max-width: 330px;
+  margin: 40px auto 40px;
 }
 
 .tourimg {
+  width: 100%;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
@@ -147,6 +148,20 @@
   margin-top: 15px;
 }
 
+@media (min-width: 391px) {
+  .wrapper {
+    max-width: 500px;
+  }
+  .container {
+    padding: 20px;
+  }
+
+  .options {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 @media (min-width: 768px) {
   .finish {
     display: none;
@@ -156,25 +171,27 @@
     gap: 0;
   }
 
-  .box:nth-child(-n + 3) {
-    display: block;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+  .tourimg {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .wrapper {
+    width: calc(100% - 100px);
+    max-width: 900px;
+    border: 1px solid #00000033;
+    margin: 100px auto 70px;
+    border-radius: 10px;
   }
 
   .container {
-    width: 860px;
-    border: 1px solid #00000033;
-    border-radius: 10px;
-    margin: 100px auto 70px;
-  }
-  .main {
-    padding: 20px 14px 5px;
+    width: 100%;
+    padding: 20px 15px 0;
   }
 
   .tourimg {
-    width: 300px;
+    width: 250px;
     height: 200px;
   }
 
@@ -198,7 +215,7 @@
 
   .desc div {
     display: flex;
-    align-items: centsr;
+    align-items: center;
     gap: 5px;
     flex: none;
   }
@@ -262,7 +279,6 @@
   }
 
   .box {
-    flex: 1;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
@@ -270,30 +286,43 @@
     position: relative;
   }
 
-  .box:not(:last-child)::after {
+}
+
+@media (min-width: 992px) {
+
+   .box:not(:last-child)::after {
     content: "";
     position: absolute;
     top: 15%;
-    bottom: 15%;
+    bottom:15%;
     left: 0px;
     width: 1px;
     height: 70%;
     background-color: #ccc;
+  } 
+
+  .box:nth-child(-n + 3) {
+    display: block;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
   }
 
-  .box:nth-child(2) {
-    transform: translateX(6px);
+  .wrapper {
+    width: calc(100% - 260px);
+    max-width: 1200px;
+    border: 1px solid #00000033;
+    margin: 100px auto 70px;
+    border-radius: 10px;
   }
-}
 
-@media (min-width: 992px) {
-  .container {
-    width: 1200px;
+  .box {
+    flex: 1;
   }
 
   .tourimg {
-    width: 400px;
-    height: 240px;
+    width: 300px;
+    height: 230px;
   }
   .box:nth-child(2) {
     transform: translateX(20px);
@@ -319,13 +348,13 @@
   }
 
   .desc div p {
-    font-size: 18px;
+    font-size: 15px;
     color: #7d7d7d;
   }
 
   .desc div img {
-     width: 18px;
-     height: 18px;
+    width: 18px;
+    height: 18px;
   }
 
   .titleoption h1 {
