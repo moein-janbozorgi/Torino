@@ -9,8 +9,10 @@ function AuthProvider({ children }) {
 
   const { data, isPending } = useGetUserInfo();
 
+  console.log(data)
+
   useEffect(() => {
-    if (!isPending && !data?.data) router.push("/");
+    if (!isPending && !data) router.push("/");
   }, [isPending]);
 
   if (isPending) return <p>Loading</p>;

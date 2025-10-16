@@ -1,7 +1,7 @@
 .footer {
   width: 100%;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   box-sizing: border-box;
 }
 
@@ -110,18 +110,17 @@
 
 @media (min-width: 391px) {
   .footer {
-    padding: 0 3rem 0 3rem;
+    margin: 0 auto;
+    padding: 0 3rem;
   }
-
   .main {
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
 
   .topfooter {
     display: flex;
-    gap: 15px;
+    gap: 20px;
   }
 
   .bottomfooter {
@@ -144,7 +143,6 @@
 
   .photo {
     display: flex;
-    gap: 0.8rem;
     margin-bottom: 10px;
   }
 
@@ -167,7 +165,7 @@
   }
 
   .photo img {
-    width: 45px;
+    width: 35px;
     height: 40px;
   }
 }
@@ -177,18 +175,31 @@
     gap: 35px;
   }
   .footer {
-    padding: 0 5rem 0 5rem;
+    padding: 0 4rem 0 4rem;
+  }
+
+  .photo img {
+    width: 40px;
+    height: 45px;
+  }
+
+  .torino img {
+    width: 126px;
+    height: 35px;
+  }
+
+  .contact {
+    font-size: 16px !important;
   }
 }
 
 @media (min-width: 992px) {
   .footer {
-    width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 10px auto;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    padding: 20px 0;
     font-size: 20px;
     color: #333;
   }

@@ -16,7 +16,7 @@
     position: relative;
     background: #ffffff;
     border-radius: 20px;
-    width: 350px;
+    max-width: 350px;
     text-align: center;
     animation: popUp 0.3s ease;
   }
@@ -60,7 +60,7 @@
   }
 
   .modal input {
-    width: 90%;
+    width: 100%;
     border-radius: 6px;
     padding: 20px 5px;
     font-family: "Vazir";
@@ -87,7 +87,7 @@
     font-weight: 500;
     font-size: 18px;
     margin-top: 1.8rem;
-    width: 95%;
+    width: 100%;
     height: 3.4rem;
     border: 1px solid #166534;
     border-radius: 6px;

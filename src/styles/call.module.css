@@ -1,14 +1,14 @@
 .container {
-  width: 327px;
-  font-family: "Vazir";
-  margin: 70px auto;
+  width: 100%;
+  max-width: 327px;
+  margin: 100px auto 20px;
 }
 
 .main {
   position: relative;
   background-color: #28a745;
   padding: 12px 10px;
-  height: 100px;
+  height: 130px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   border-top: 1px solid #218838;
@@ -53,8 +53,8 @@
 
 .mard {
   position: absolute;
-  right: 130;
-  bottom: -9;
+  right: 130px;
+  bottom: -9px;
   z-index: 1;
 }
 
@@ -103,28 +103,11 @@
 
 @media (min-width: 391px) {
   .container {
-    width: 380px;
-    margin: 70px auto 30px;
-  }
-
-  .main {
-    padding: 12px 15px;
-    height: 110px;
-  }
-
-  .mard {
-    right: 170px;
-    bottom: -9;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    width: 800px;
-    margin: 70px auto 40px;
+    max-width: 730px;
+    padding: 0 2rem 0 2rem;
     display: flex;
-    position: relative;
   }
+
   .main {
     right: 6px;
     top: 0;
@@ -150,92 +133,75 @@
     border-top: 1px solid #00000040;
     gap: 8px;
   }
+
   .mard {
-    right: 340px;
+    right: 50%;
+  }
+
+  .buy p {
+    font-size: 28px !important;
+  }
+
+  .buy span {
+    font-size: 28px;
+  }
+
+  .text p {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 990px;
+    margin: 70px auto 40px;
+    padding: 0 3rem 0 3rem;
+  }
+
+  .mard {
+    right: 55%;
   }
 
   .text {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    color: #fff;
     padding: 0 5px;
   }
 
   .buy {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    gap: 9px;
   }
 
   .buy p {
-    font-family: "Vazir";
-    font-weight: 800;
-    font-size: 45px !important;
+    font-size: 34px !important;
   }
 
   .buy span {
-    font-size: 45px;
+    font-size: 34px;
   }
 
   .text p {
-    font-size: 32px;
+    font-size: 24px;
   }
 }
 
 @media (min-width: 992px) {
   .container {
-    width: 1200px;
-    margin: 70px auto 50px;
-    display: flex;
-    position: relative;
+    max-width: 1150px;
+    margin: 70px auto 40px
   }
+
   .main {
-    right: 15px;
-    top: 0;
-    width: 65%;
-    height: 172px;
-    border-radius: 10px;
-    border-bottom: 1px solid #218838;
-    z-index: 2;
-  }
-  .details {
-    position: relative;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom: 1px solid #00000040;
-    border-left: 1px solid #00000040;
-    border-top: 1px solid #00000040;
-    gap: 8px;
-  }
+  height: 200px;
+}
+
   .mard {
-    right: 550px
+    right: 65%;
   }
 
   .text {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    color: #fff;
-    padding: 10px 30px;
-  }
-
-  .buy {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    padding: 10px 40px;
   }
 
   .buy p {
-    font-family: "Vazir";
-    font-weight: 800;
     font-size: 48px !important;
   }
 
@@ -245,5 +211,9 @@
 
   .text p {
     font-size: 32px;
+  }
+
+  .phone span {
+    font-size: 22px
   }
 }

@@ -1,10 +1,10 @@
 .container {
   width: 100%;
-  box-sizing: border-box;
 }
 
 .main {
-  width: 327px;
+  width: 100%;
+  max-width: 327px;
   border: 1px solid #0000001f;
   border-radius: 10px;
   display: flex;
@@ -17,7 +17,7 @@
   font-weight: 400;
   font-size: 20px;
   color: #000000;
-  margin: 0 25px 3px 0;
+  margin: 0 15px 3px 0;
 }
 
 .description {
@@ -114,7 +114,8 @@
 
 @media (min-width: 391px) {
   .container {
-    padding: 0 4rem 0 4rem;
+    max-width: 720px;
+    padding: 0 2rem 0 2rem;
   }
   .allTourText {
     font-size: 24px;
@@ -122,7 +123,7 @@
   }
 
   .main {
-    width: 380px;
+    width: 95%;
     border: 1px solid #0000001f;
     border-radius: 10px;
     display: flex;
@@ -131,7 +132,7 @@
   }
 
   .top img {
-    width: 380px;
+    border-radius: 10px 10px 0 0;
   }
 
   .buttonprice {
@@ -147,19 +148,49 @@
 
 @media (min-width: 768px) {
   .container {
-    padding: 0 5rem 0 5rem;
+    max-width: 990px;
+    margin: 0 auto;
+    padding: 0 3rem 0 3rem;
   }
 
   .card {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
   }
   .allTourText {
     text-align: start;
-    padding-right: 10px;
     font-size: 24px !important;
+  }
+
+  .buttonprice a {
+    padding: 4px 30px;
+    font-size: 15px;
+    border-radius: 4px;
+  }
+  .price span {
+    font-size: 15px;
+  }
+
+  .price {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .price {
+    font-size: 10px;
+  }
+
+  .description h1 {
+    font-size: 18px;
+  }
+
+  .description p {
+    font-size: 14px;
+  }
+
+  .options {
+    gap: 3px;
   }
 }
 
@@ -167,7 +198,7 @@
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 4.5rem 0 4.5rem;
   }
 
   .container h1 {
@@ -180,7 +211,7 @@
 
   .card {
     display: grid;
-    grid-template-columns: repeat(4, 278px);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     justify-items: center;
   }

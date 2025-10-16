@@ -11,14 +11,12 @@ import OtpModal from "@/components/modules/OtpModal";
 import { useGetUserInfo } from "@/hooks/queries";
 import UserProfile from "@/atoms/userProfile";
 
-
 export default function Header() {
   const pathname = usePathname();
   const [hamburger, setHamburger] = useState(false);
   const [on, setIsOn] = useState(false);
   const [otp, setOtp] = useState(false);
   const [phone, setPhone] = useState("");
- 
 
   const links = [
     { href: "/", label: "صفحه اصلی" },
@@ -37,8 +35,8 @@ export default function Header() {
         <div>
           <Image
             src="/images/hamburger.png"
-            width={22}
-            height={18}
+            width={25}
+            height={20}
             alt="menu"
             onClick={() => setHamburger((s) => !s)}
           />
@@ -98,7 +96,7 @@ export default function Header() {
             </div>
             <div>
               <Image
-                src="/images/call.png"
+                src="/images/callkh.png"
                 width={16}
                 height={16}
                 alt="call-img"

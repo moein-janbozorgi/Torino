@@ -62,7 +62,7 @@ export default function Whytorino() {
 
           <span>چرا</span>
           <p>تورینو</p>
-          <span>؟</span>
+          <span className={styles.question}>؟</span>
         </div>
         <div className={styles.lowertext}>
           <h1>تور طبیعت گردی و تاریخی</h1>

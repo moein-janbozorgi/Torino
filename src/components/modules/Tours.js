@@ -7,11 +7,9 @@ import { convertToRial, toPersianNumber } from "@/utils/helper";
 import { useEffect, useState } from "react";
 import Loader from "../tempelates/Loader";
 
-
 function Tours({ data, isLoading }) {
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -39,10 +37,15 @@ function Tours({ data, isLoading }) {
             <div className={styles.top}>
               <Image
                 src={tour.image}
+                alt="tours-title"
                 width={327}
                 height={159}
-                alt="tours-title"
+                style={{
+                  width: "100%", 
+                  height: "auto",
+                }}
               />
+
               <div className={styles.description}>
                 <h1>{tour.title}</h1>
                 <div className={styles.options}>

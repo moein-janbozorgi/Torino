@@ -57,7 +57,7 @@ function TransactionsCard({ data }) {
       <tr className={styles.row}>
         <td className={styles.cell}>{formatPersianDate(data.createdAt)}</td>
         <td className={styles.cell}>
-          {toPersianNumber(convertToRial(data.amount * 2))}
+          {toPersianNumber(convertToRial(data.amount))}
         </td>
         <td className={styles.hide}>ثبت نام در تور گردشگری</td>
         <td className={styles.cell}>

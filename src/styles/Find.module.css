@@ -1,8 +1,7 @@
 .container {
-  width: 100%;
+  max-width: 390px;
   margin: 0 auto 45px;
-  box-sizing: border-box;
-  padding: 0 1.5rem 0 1.5rem;
+  padding: 0 1rem 0 1rem;
 }
 
 @keyframes fadeIn {
@@ -59,14 +58,14 @@
 
 .topinput img {
   position: absolute;
-  right: 40px;
+  right: 20%;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
 }
 
 .topinput label:nth-child(1) img {
-  right: 47px;
+  right: 30%;
 }
 
 .label {
@@ -143,7 +142,7 @@
   position: absolute;
   width: 100%;
   top: 45px;
-  right: 0;
+  left: 0;
   border: 1px solid #00000033;
   border-radius: 8px;
   overflow: hidden;
@@ -242,61 +241,99 @@
 
 @media (min-width: 391px) {
   .container {
-    padding: 0 5rem 0 5rem;
+    max-width: 720px;
+    padding: 0 2rem 0 2rem;
+    margin: 0 auto 60px;
   }
   .text p {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .text span {
-    font-size: 20px;
+    font-size: 18px;
   }
 
-  .form {
-    padding: 0 4rem 0 4rem;
+  .topinput input {
+    height: 44px;
+    font-size: 17px;
   }
+
   .topinput img {
-    right: 70px;
+    right: 30%;
+  }
+
+  .topinput label:nth-child(1) img {
+    right: 35%;
   }
 }
 
 @media (min-width: 768px) {
+  .container {
+    max-width: 800px;
+    margin: 0 auto 80px;
+    padding: 0 3rem;
+  }
+
   .text p {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .text span {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .form {
-    width: 400px;
+    width: 380px;
     margin: 0 auto;
+    gap: 14px;
+  }
+
+  .topinput {
+    gap: 25px;
+  }
+
+  .topinput input {
+    height: 46px;
+    font-size: 17px;
   }
 
   .topinput img {
-    right: 50px;
-  }
-
-  .searchBtn {
-    width: 50%;
-    margin: 10px auto 10px;
+    right: 40px;
   }
 
   .dateInput {
-    width: 75%;
+    width: 80%;
     margin: 0 auto;
+  }
+
+  .searchBtn {
+    width: 55%;
+    margin: 15px auto 0;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .cityDropdown {
+    max-height: 180px;
+  }
+
+  .topinput img {
+    right: 30%;
+  }
+
+  .topinput label:nth-child(1) img {
+    right: 35%;
   }
 }
 
 @media (min-width: 992px) {
   .select {
-    width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
   .form {
-    width: 800px;
+    width: 700px;
     margin: 0 auto;
   }
 
