@@ -24,6 +24,14 @@
   padding-bottom: 0.2rem;
 }
 
+.rightGroup ul li.active::after {
+  background-color: #28a745;
+}
+
+.rightGroup ul li.active a {
+  color: #28a745;
+}
+
 .overlay {
   position: fixed;
   top: 0;

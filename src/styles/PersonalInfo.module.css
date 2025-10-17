@@ -1,5 +1,6 @@
 .card {
-  width: 330px;
+  width: 100%;
+  max-width: 330px;
   margin: 0 auto;
   border: 1px solid #00000033;
   border-radius: 10px;
@@ -234,4 +235,16 @@
 .addBtn:hover {
   background: #6eff9e;
   color: #fff;
+}
+
+@media (min-width: 391px) {
+  .card {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    max-width: 1200px;
+  }
 }

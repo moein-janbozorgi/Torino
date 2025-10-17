@@ -115,24 +115,18 @@ export default function Header() {
             alt="torino-img"
           />
           <ul>
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={
-                    link.href === "/"
-                      ? pathname === "/"
-                        ? styles.activeLink
-                        : styles.link
-                      : pathname.startsWith(link.href)
-                      ? styles.activeLink
-                      : styles.link
-                  }
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            <li className={pathname === "/" ? `${styles.active}` : ""}>
+              <Link href="/">صفحه اصلی</Link>
+            </li>
+            <li className={pathname === "#" ? `${styles.active}` : ""}>
+              <Link href="/pik">خدمات گردشگری</Link>
+            </li>
+            <li className={pathname === "#" ? `${styles.active}` : ""}>
+              <Link href="/about">درباره ما</Link>
+            </li>
+            <li className={pathname === "#" ? `${styles.active}` : ""}>
+              <Link href="/call-us"> تماس با ما</Link>
+            </li>
           </ul>
         </div>
         {user ? (

@@ -1,5 +1,6 @@
 .card {
-  width: 330px;
+  width: 100%;
+  max-width: 330px;
   margin: 0 auto;
   border: 1px solid #00000033;
   border-radius: 10px;
@@ -58,7 +59,8 @@
 .email {
   display: flex;
   align-items: center;
-  gap: 70px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .email p {
@@ -70,6 +72,8 @@
 
 .email span {
   color: #282828;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .edit {
@@ -147,4 +151,61 @@
   font-weight: 400;
   font-size: 13px;
   color: #009eca;
+}
+
+@media (min-width: 391px) {
+  .card {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    max-width: 1200px;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  .phone {
+    gap: 30px;
+    padding: 0 13px;
+  }
+  .lowerInfo {
+    display: flex;
+    gap: 100px;
+  }
+
+  .email {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+  }
+
+  .editInput {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    width: 40%;
+  }
+
+  .error {
+    position: absolute;
+    bottom: -20px;
+    right: 3px;
+    font-size: 12px;
+  }
+
+  .inputWrapper {
+    position: relative;
+    flex: 1;
+  }
+
+  .inp {
+    width: 200px;
+  }
+
+  .addBtn {
+    width: 40%;
+  }
 }

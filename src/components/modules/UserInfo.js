@@ -3,15 +3,11 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import { useGetUserInfo } from "@/hooks/queries";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import styles from "@/styles/UserInfo.module.css";
-import { api } from "@/configs/config";
 import Image from "next/image";
 import { toPersianNumber } from "@/utils/helper";
 import { emailChecker } from "@/utils/validations";
-import { toast } from "react-toastify";
 import { useUpdateUserProfile } from "@/hooks/mutations";
 
 export default function UserInfo() {
@@ -37,51 +33,60 @@ export default function UserInfo() {
   return (
     <div className={styles.card}>
       <div className={styles.topInput}>
-        <h3>اطلاعات حساب بانکی</h3>
-        <div className={styles.editInfo}>
-          <Image src="/images/edit.png" width={12} height={12} alt="edit" />
-          <p onClick={() => setIsEditing((s) => !s)}>ویرایش اطلاعات</p>
+        <h3>اطلاعات حساب کاربری</h3>
+        {data?.email ? (
+          <div className={styles.editInfo}>
+            <Image src="/images/edit.png" width={12} height={12} alt="edit" />
+            <p onClick={() => setIsEditing((s) => !s)}>ویرایش اطلاعات</p>
+          </div>
+        ) : null}
+      </div>
+      <div className={styles.wrapper}>
+        <div className={styles.phone}>
+          <p>شماره موبایل</p>
+          <span>{toPersianNumber(data?.mobile)}</span>
         </div>
-      </div>
-      <div className={styles.phone}>
-        <p>شماره موبایل</p>
-        <span>{toPersianNumber(data?.mobile)}</span>
-      </div>
-      {isEditing ? (
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.editInput}>
-          <div className={styles.inputWrapper}>
-            <input
-              {...register("email")}
-              className={styles.inp}
-              type="text"
-              placeholder="آدرس ایمیل"
-            />
-            {errors.email && (
-              <span className={styles.error}>{errors.email.message}</span>
-            )}
-          </div>
-          <button
-            type="submit"
-            className={styles.addBtn}
-            disabled={mutation.isLoading}
-          >
-            تایید
-          </button>
-        </form>
-      ) : (
-        <div className={styles.lowerInfo}>
-          <div className={styles.email}>
-            <p>ایمیل</p>
-            <span>{data?.email || "—"}</span>
-          </div>
-          {!data?.email ? (
-            <div className={styles.edit}>
-              <Image src="/images/edit.png" width={16} height={16} alt="edit" />
-              <p onClick={() => setIsEditing((s) => !s)}>افزودن</p>
+        {isEditing ? (
+          <form onSubmit={handleSubmit(onSubmit)} className={styles.editInput}>
+            <div className={styles.inputWrapper}>
+              <input
+                {...register("email")}
+                className={styles.inp}
+                type="text"
+                placeholder="آدرس ایمیل"
+              />
+              {errors.email && (
+                <span className={styles.error}>{errors.email.message}</span>
+              )}
             </div>
-          ) : null}
-        </div>
-      )}
+            <button
+              type="submit"
+              className={styles.addBtn}
+              disabled={mutation.isLoading}
+            >
+              تایید
+            </button>
+          </form>
+        ) : (
+          <div className={styles.lowerInfo}>
+            <div className={styles.email}>
+              <p>ایمیل</p>
+              <span>{data?.email || ""}</span>
+            </div>
+            {!data?.email ? (
+              <div className={styles.edit}>
+                <Image
+                  src="/images/edit.png"
+                  width={16}
+                  height={16}
+                  alt="edit"
+                />
+                <p onClick={() => setIsEditing((s) => !s)}>افزودن</p>
+              </div>
+            ) : null}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

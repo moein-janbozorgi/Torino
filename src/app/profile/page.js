@@ -4,11 +4,11 @@ import UserInfo from "@/components/modules/UserInfo";
 
 function Page() {
   return (
-    <>
+    <div>
       <UserInfo />
       <PersonalInfo />
       <BankInfo />
-    </>
+    </div>
   );
 }
 

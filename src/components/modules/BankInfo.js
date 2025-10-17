@@ -47,35 +47,37 @@ export default function BankInfo() {
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <h3>ویرایش اطلاعات حساب بانکی</h3>
           <div className={styles.inputs}>
-            <input
-              type="text"
-              placeholder="شماره کارت"
-              {...register("debitCard_code")}
-            />
-            {errors.debitCard_code && (
-              <span className={styles.error}>
-                {errors.debitCard_code.message}
-              </span>
-            )}
-            <input
-              type="text"
-              placeholder="شماره حساب"
-              {...register("accountIdentifier")}
-            />
-            {errors.accountIdentifier && (
-              <span className={styles.error}>
-                {errors.accountIdentifier.message}
-              </span>
-            )}
-            <input
-              type="text"
-              placeholder="شماره شبا"
-              {...register("shaba_code")}
-            />
-            {errors.shaba_code && (
-              <span className={styles.error}>{errors.shaba_code.message}</span>
-            )}
+            <div className={styles.inputWrapper}>
+              <input placeholder="شماره کارت" {...register("debitCard_code")} />
+              {errors.debitCard_code && (
+                <span className={styles.error}>
+                  {errors.debitCard_code.message}
+                </span>
+              )}
+            </div>
+
+            <div className={styles.inputWrapper}>
+              <input
+                placeholder="شماره حساب"
+                {...register("accountIdentifier")}
+              />
+              {errors.accountIdentifier && (
+                <span className={styles.error}>
+                  {errors.accountIdentifier.message}
+                </span>
+              )}
+            </div>
+
+            <div className={styles.inputWrapper}>
+              <input placeholder="شماره شبا" {...register("shaba_code")} />
+              {errors.shaba_code && (
+                <span className={styles.error}>
+                  {errors.shaba_code.message}
+                </span>
+              )}
+            </div>
           </div>
+          <div className={styles.divider}></div>
           <div className={styles.buttons}>
             <button
               type="submit"
@@ -103,15 +105,17 @@ export default function BankInfo() {
             </div>
           </div>
           <div className={styles.mainInfo}>
-            <div className={styles.data}>
-              <p>شماره کارت</p>
-              <span>
-                {toPersianNumber(data?.payment?.debitCard_code) || "—"}
-              </span>
-            </div>
-            <div className={styles.data}>
-              <p>شماره شبا</p>
-              <span>{toPersianNumber(data?.payment?.shaba_code) || "—"}</span>
+            <div className={styles.wrapperInfo}>
+              <div className={styles.data}>
+                <p>شماره کارت</p>
+                <span>
+                  {toPersianNumber(data?.payment?.debitCard_code) || "—"}
+                </span>
+              </div>
+              <div className={styles.data}>
+                <p>شماره شبا</p>
+                <span>{toPersianNumber(data?.payment?.shaba_code) || "—"}</span>
+              </div>
             </div>
             <div className={styles.data}>
               <p>شماره حساب</p>
