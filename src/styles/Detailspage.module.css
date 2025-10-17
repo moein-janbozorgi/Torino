@@ -169,6 +169,7 @@
 
   .options {
     gap: 0;
+    justify-content: flex-start;
   }
 
   .tourimg {
@@ -309,7 +310,7 @@
   }
 
   .wrapper {
-    width: calc(100% - 260px);
+    width: calc(100% - 130px);
     max-width: 1200px;
     border: 1px solid #00000033;
     margin: 100px auto 70px;

@@ -1,4 +1,5 @@
 "use client";
+
 import AuthProvider from "@/Providers/AuthProvider";
 import styles from "@/styles/ProfileLayout.module.css";
 import Image from "next/image";
@@ -11,32 +12,50 @@ export default function ProfileLayout({ children }) {
   return (
     <AuthProvider>
       <div className={styles.container}>
-        <div className={styles.main}>
-          <div className={styles.wrapper}>
-            <div>
-              <Image
-                src={"/images/pblackfull.png"}
-                width={16}
-                height={16}
-                alt="profile"
-              />
-              <Link href="/profile">پروفایل</Link>
-            </div>
-            <div>
-              <Image src={"/images/sun.png"} width={16} height={16} alt="sun" />
-              <Link href="/profile/tours">تور های من</Link>
-            </div>
-            <div>
-              <Image
-                src="/images/convert.png"
-                width={16}
-                height={16}
-                alt="convert"
-              />
-              <Link href="/profile/transactions">تراکنش ها</Link>
-            </div>
+        <aside className={styles.wrapper}>
+          <div
+            className={
+              pathname === "/profile"
+                ? `${styles.box} ${styles.active}`
+                : styles.box
+            }
+          >
+            <Image
+              src={"/images/pblackfull.png"}
+              width={16}
+              height={16}
+              alt="profile"
+            />
+            <Link href="/profile">پروفایل</Link>
           </div>
-        </div>
+
+          <div
+            className={
+              pathname === "/profile/tours"
+                ? `${styles.box} ${styles.active}`
+                : styles.box
+            }
+          >
+            <Image src={"/images/sun.png"} width={16} height={16} alt="sun" />
+            <Link href="/profile/tours">تور های من</Link>
+          </div>
+
+          <div
+            className={
+              pathname === "/profile/transactions"
+                ? `${styles.box} ${styles.active}`
+                : styles.box
+            }
+          >
+            <Image
+              src="/images/convert.png"
+              width={16}
+              height={16}
+              alt="convert"
+            />
+            <Link href="/profile/transactions">تراکنش ها</Link>
+          </div>
+        </aside>
         <header className={styles.header}>
           <ul>
             <li className={pathname === "/profile" ? styles.active : ""}>
@@ -53,6 +72,7 @@ export default function ProfileLayout({ children }) {
               <Image src={"/images/sun.png"} width={16} height={16} alt="sun" />
               <Link href="/profile/tours">تور های من</Link>
             </li>
+
             <li
               className={
                 pathname === "/profile/transactions" ? styles.active : ""
@@ -68,7 +88,8 @@ export default function ProfileLayout({ children }) {
             </li>
           </ul>
         </header>
-        <main>{children}</main>
+
+        <main className={styles.main}>{children}</main>
       </div>
     </AuthProvider>
   );

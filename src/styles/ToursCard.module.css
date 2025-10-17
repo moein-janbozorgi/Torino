@@ -1,5 +1,6 @@
 .container {
   width: 330px;
+  max-width: 100%;
   margin: 0 auto 20px;
   border: 1px solid #00000033;
   border-radius: 10px;
@@ -23,6 +24,11 @@
 .topMain {
   border-bottom: 1px solid #00000033;
   padding: 20px 20px 5px;
+}
+
+.divider {
+  width: 1px;
+  background-color: #00000033;
 }
 
 .tourName {
@@ -104,8 +110,6 @@
 
 .numTour {
   gap: 13px;
-  border-left: 1px solid #00000033;
-  padding-left: 20px;
 }
 
 .spend {
@@ -135,7 +139,7 @@
 }
 
 .bottomLeft {
-  gap: 25px;
+  gap: 20px;
 }
 
 @media (min-width: 392px) {
@@ -170,10 +174,6 @@
 
   .numTour span {
     font-size: 14px;
-  }
-
-  .numTour {
-    padding-left: 70px;
   }
 
   .spend {
@@ -224,10 +224,6 @@
     font-size: 14px;
   }
 
-  .numTour {
-    padding-left: 115px;
-  }
-
   .spend {
     font-size: 13px;
   }
@@ -244,10 +240,9 @@
 
 @media (min-width: 992px) {
   .containerWrapper {
-    width: 960px;
+    max-width: 800px;
     border: 1px solid #00000033;
     padding: 10px 20px;
-    box-sizing: border-box;
     border-radius: 10px;
   }
 
@@ -304,7 +299,7 @@
   }
 
   .bottomLeft {
-     padding-right: 20px;
+    padding-right: 20px;
   }
 
   .numTour {

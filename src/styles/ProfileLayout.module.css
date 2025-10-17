@@ -1,8 +1,10 @@
 .header {
-  margin: 100px auto 40px;
+  max-width: 330px;
+  width: 100%;
+  margin: 40px auto 40px;
 }
 
-.main {
+.wrapper {
   display: none;
 }
 
@@ -10,8 +12,8 @@
   display: flex;
   justify-content: space-between;
   list-style: none;
-  padding: 0 1.2rem;
   margin: 0;
+  padding: 0 0.5rem;
 }
 
 .header ul li {
@@ -64,9 +66,11 @@
     brightness(90%) contrast(90%);
 }
 
+
 @media (min-width: 391px) {
   .header {
-    padding: 0 3rem;
+    width: 100%;
+    max-width: 600px;
   }
 }
 
@@ -80,25 +84,29 @@
   }
 
   .container {
-    width: 830;
-    margin: 100px auto 50px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 80px auto 100px;
+    padding: 0 2rem;
     display: flex;
-    gap: 20px;
+    align-items: flex-start;
+    gap: 30px;
   }
 
   .wrapper {
-    width: 200px;
+    flex: 0 0 240px;
     display: flex;
     flex-direction: column;
     border: 1px solid #00000033;
     padding: 15px 10px;
     border-radius: 10px;
+    background: #fff;
   }
 
   .wrapper div {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
   }
 
   .wrapper div:nth-child(1) {
@@ -112,7 +120,7 @@
   }
 
   .wrapper div:nth-child(3) {
-      padding: 15px 0  0;
+    padding: 15px 0 0;
   }
 
   .wrapper a {
@@ -126,10 +134,35 @@
     align-items: center;
     gap: 7px;
   }
+
+  .main {
+    flex: 1;
+    width: 100%;
+    max-width: calc(100% - 240px);
+    background: transparent;
+  }
 }
 
 @media (min-width: 992px) {
   .container {
-    width: 1200px;
+    max-width: 1200px;
+    padding: 0 4rem;
+    margin: 80px auto 100px;
+    display: flex;
+    gap: 30px;
+  }
+
+  .wrapper {
+    flex: 0 0 220px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #00000033;
+    border-radius: 10px;
+    padding: 15px 10px;
+    background: #fff;
+  }
+
+  .main {
+    flex: 1;
   }
 }

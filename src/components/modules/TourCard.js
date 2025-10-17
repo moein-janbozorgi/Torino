@@ -12,6 +12,7 @@ import Image from "next/image";
 function TourCard({ tour }) {
   console.log(tour);
   return (
+
     <div className={styles.container}>
       <div className={styles.main}>
         <p className={styles.finish}>به اتمام رسیده</p>
@@ -55,6 +56,7 @@ function TourCard({ tour }) {
             <p>شماره تور</p>
             <span>{toPersianNumber(randomNineDigit())}</span>
           </div>
+          <div className={styles.divider}></div>
           <div className={styles.bottomLeft}>
             <p className={styles.spend}>مبلغ پرداخت شده</p>
             <div className={styles.price}>

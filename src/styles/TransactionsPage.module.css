@@ -1,5 +1,6 @@
 .table {
-  width: 330px;
+  width: 100%;
+  max-width: 330px;
   margin: 0 auto;
   border-collapse: separate;
   border-spacing: 0;
@@ -75,7 +76,7 @@ tr td:nth-child(1) {
 
 @media (min-width: 391px) {
   .table {
-    width: 500px;
+    max-width: 600px;
     margin: 0 auto;
   }
 
@@ -89,7 +90,7 @@ tr td:nth-child(1) {
     display: block;
   }
   .table {
-    width: 580px;
+    max-width: 900px;
     margin: 0 auto;
   }
   .table th {
@@ -104,7 +105,7 @@ tr td:nth-child(1) {
 
 @media (min-width: 992px) {
   .table {
-    width: 960px;
+    max-width: 960px;
     margin: 0 auto;
   }
 
