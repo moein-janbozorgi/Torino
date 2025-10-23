@@ -12,9 +12,11 @@ import { useRef, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { searchChecker } from "@/utils/validations";
 import { api } from "@/configs/config";
-import { convertCity } from "@/utils/helper";
+import { convertCity, searchTours } from "@/utils/helper";
+import { useSearchParams } from "next/navigation";
 
 function Find({ onSearch, data }) {
+  const searchParams = useSearchParams();
   const [activeInput, setActiveInput] = useState(null);
   const [range, setRange] = useState({ from: null, to: null });
   const [originCities, setOriginCities] = useState([]);
@@ -51,18 +53,6 @@ function Find({ onSearch, data }) {
     setDestinationCities(destinations);
   }, [data]);
 
-  console.log(originCities, destinationCities);
-
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(searchChecker),
-    defaultValues: { destination: "", origin: "", dateRange: [] },
-  });
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -82,59 +72,66 @@ function Find({ onSearch, data }) {
     }
   };
 
-  const onSubmit = async (data) => {
-    const originObj = originCities.find((c) => c.name === data.origin);
-    const destinationObj = destinationCities.find(
-      (c) => c.name === data.destination
-    );
-    const originId = originObj.id;
-    const destinationId = destinationObj ? destinationObj.id : "";
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(searchChecker),
+    defaultValues: { destination: "", origin: "", dateRange: [] },
+  });
 
-    const startDateObj = new DateObject({
-      calendar: persian,
-      locale: persian_fa,
-      date: range[0],
-    });
+  useEffect(() => {
+    if (!searchParams) return;
 
-    const endDateObj = new DateObject({
-      calendar: persian,
-      locale: persian_fa,
-      date: range[1],
-    });
+    const originId = searchParams.get("originId");
+    const destinationId = searchParams.get("destinationId");
+    const startDate = searchParams.get("startDate");
+    const endDate = searchParams.get("endDate");
 
-    const startDate = startDateObj
-      .convert("gregorian")
-      .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-      .toDate()
-      .toISOString();
-
-    const endDate = endDateObj
-      .convert("gregorian")
-      .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-      .toDate()
-      .toISOString();
-
-    const query = new URLSearchParams({
-      destinationId,
-      originId,
-      startDate,
-      endDate,
-    }).toString();
-    console.log(startDate, endDate);
-
-    try {
-      const tours = await api.get("/tour", {
-        params: {
-          destinationId,
-          originId,
-          startDate,
-          endDate,
-        },
-      });
-      onSearch(tours, query);
-    } catch (err) {
-      console.error(err);
+    if (!originId && !destinationId && !startDate && !endDate) {
+      setRange([]);
+      setValue("origin", "");
+      setValue("destination", "");
+      return;
     }
+
+    if (originId) {
+      const originObj = originCities.find((c) => c.id.toString() === originId);
+      if (originObj) setValue("origin", originObj.name);
+    }
+    if (destinationId) {
+      const destinationObj = destinationCities.find(
+        (c) => c.id.toString() === destinationId
+      );
+      if (destinationObj) setValue("destination", destinationObj.name);
+    }
+    if (startDate && endDate) {
+      setRange([
+        new DateObject({
+          date: startDate,
+          calendar: persian,
+          locale: persian_fa,
+        }),
+        new DateObject({
+          date: endDate,
+          calendar: persian,
+          locale: persian_fa,
+        }),
+      ]);
+    }
+  }, [searchParams, originCities, destinationCities, setValue]);
+
+  const onSubmit = (data) => {
+    searchTours({
+      origin: data.origin,
+      destination: data.destination,
+      range,
+      originCities,
+      destinationCities,
+      onSearch,
+    });
   };
 
   return (

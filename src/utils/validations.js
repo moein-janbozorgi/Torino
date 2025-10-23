@@ -40,12 +40,7 @@ const formCheker = yup.object().shape({
 });
 
 const searchChecker = yup.object().shape({
-  origin: yup.string().required("لطفاً مبدا را انتخاب کنید"),
-  dateRange: yup
-    .array()
-    .of(yup.string())
-    .min(2, "لطفاً بازه زمانی رفت و برگشت را انتخاب کنید")
-    .required("انتخاب تاریخ الزامی است"),
+  origin: yup.string().required("انتخاب مبدا الزامیست!"),
 });
 
 const bankChecker = yup.object({

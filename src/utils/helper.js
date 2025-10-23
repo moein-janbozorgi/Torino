@@ -1,4 +1,63 @@
 import { toJalaali } from "jalaali-js";
+import { api } from "@/configs/config";
+import { DateObject } from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+export const searchTours = async ({
+  origin,
+  destination,
+  range,
+  originCities,
+  destinationCities,
+  onSearch,
+}) => {
+  try {
+    const queryObj = {};
+
+    const originObj = originCities.find((c) => c.name === origin);
+    const destinationObj = destinationCities.find(
+      (c) => c.name === destination
+    );
+
+    if (originObj) queryObj.originId = originObj.id;
+    if (destinationObj) queryObj.destinationId = destinationObj.id;
+
+    if (range[0]) {
+      const startDate = new DateObject({
+        calendar: persian,
+        locale: persian_fa,
+        date: range[0],
+      })
+        .convert("gregorian")
+        .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+        .toDate()
+        .toISOString();
+
+      queryObj.startDate = startDate;
+    }
+
+    if (range[1]) {
+      const endDate = new DateObject({
+        calendar: persian,
+        locale: persian_fa,
+        date: range[1],
+      })
+        .convert("gregorian")
+        .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+        .toDate()
+        .toISOString();
+
+      queryObj.endDate = endDate;
+    }
+
+    const queryString = new URLSearchParams(queryObj).toString();
+
+    const tours = await api.get("/tour", { params: queryObj });
+    onSearch(tours, queryString);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 export function toPersianNumber(num) {
   if (num == null) return "";
