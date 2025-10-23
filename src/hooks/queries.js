@@ -21,57 +21,48 @@ export const useGetTourById = (idtour) => {
   });
 };
 
-export const fetchTourById = async (idtour) => {
-  try {
-    const result = await api.get(`/tour/${idtour}`);
-    console.log(result);
-    return result;
-  } catch (error) {
-    console.error("Fetch tour by ID failed:", error);
-    return {};
-  }
-};
-
 export const useGetBasket = () => {
   return useQuery({
     queryKey: ["basket"],
-    queryFn: fetchBasket,
+    queryFn: async () => {
+      try {
+        const response = await api.get("/basket");
+        return response ?? {};
+      } catch (error) {
+        console.error("Error fetching basket:", error);
+        return {};
+      }
+    },
     staleTime: 1000 * 60,
   });
-};
-
-export const fetchBasket = async () => {
-  try {
-    const result = await api.get("/basket");
-    console.log(result);
-    return result;
-  } catch (error) {
-    return {};
-  }
-};
-
-export const fetchUserTours = async () => {
-  const response = await api.get("/user/tours");
-  return response ?? null;
 };
 
 export const useGetUserTours = () => {
   return useQuery({
     queryKey: ["user-tours"],
-    queryFn: fetchUserTours,
+    queryFn: async () => {
+      try {
+        const response = await api.get("/user/tours");
+        return response ?? null;
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
     staleTime: 1000 * 60 * 2,
   });
-};
-
-export const fetchTransactions = async () => {
-  const response = await api.get("/user/transactions");
-  return response ?? null;
 };
 
 export const useGetUseTransactions = () => {
   return useQuery({
     queryKey: ["user-transactions"],
-    queryFn: fetchTransactions,
+    queryFn: async () => {
+      try {
+        const response = await api.get("/user/transactions");
+        return response ?? null;
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
     staleTime: 1000 * 60 * 2,
   });
 };
@@ -84,15 +75,17 @@ export const useGetAllTour = () => {
   });
 };
 
-export const fetchUserInfo = async () => {
-  const res = await api.get("/user/profile");
-  return res ?? null;
-};
-
 export const useGetUserInfo = () => {
   return useQuery({
     queryKey: ["user-data"],
-    queryFn: fetchUserInfo,
+    queryFn: async () => {
+      try {
+        const res = await api.get("/user/profile");
+        return res ?? null;
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
     staleTime: 1000 * 60 * 5,
   });
 };

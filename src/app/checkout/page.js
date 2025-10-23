@@ -1,18 +1,167 @@
-export const dynamic = "force-dynamic";
+"use client";
 
-import CheckoutPage from "@/components/tempelates/CheckoutPage";
-import { fetchBasket } from "@/hooks/queries";
-import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { useGetBasket } from "@/hooks/queries";
+import Loader from "@/components/tempelates/Loader";
+import styles from "@/styles/CheckoutPage.module.css";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { formCheker } from "@/utils/validations";
+import { convertToRial, toPersianNumber } from "@/utils/helper";
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+import { Controller } from "react-hook-form";
+import DateObject from "react-date-object";
+import { useRef } from "react";
+import { useSubmitPassenger } from "@/hooks/mutations";
+import { useRouter } from "next/navigation";
+import GenderSelect from "@/atoms/genderSelect";
 
-export default async function Page() {
-  const queryClient = new QueryClient();
+export default function Basket() {
+  const router = useRouter();
+  const { data, isLoading } = useGetBasket();
+  const formRef = useRef();
 
-  await queryClient.prefetchQuery({
-    queryKey: ["basket"],
-    queryFn: fetchBasket,
+  const { mutate: submitPassenger } = useSubmitPassenger((data) => {
+    console.log(data);
+    setTimeout(() => {
+      router.push("/profile/tours");
+    }, 1500);
   });
 
-  const dehydratedState = dehydrate(queryClient);
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formCheker),
+  });
 
-  return <CheckoutPage dehydratedState={dehydratedState}/>;
+  if (isLoading) return <Loader />;
+
+  const onSubmit = (formData) => {
+    const payload = {
+      nationalCode: formData.nationalCode,
+      fullName: formData.fullName,
+      gender: formData.gender,
+      birthDate: formData.birthDate,
+    };
+    submitPassenger(payload);
+  };
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.infoBox}>
+        <div className={styles.user}>
+          <Image
+            src="/images/pblackfull.png"
+            width={24}
+            height={24}
+            alt="profile"
+          />
+          <h1>مشخصات مسافر</h1>
+        </div>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit(onSubmit)}
+          ref={formRef}
+        >
+          <input
+            type="text"
+            placeholder="نام و نام خانوادگی"
+            {...register("fullName")}
+          />
+          {errors.fullName && (
+            <span className={styles.error}>{errors.fullName.message}</span>
+          )}
+          <GenderSelect register={register} setValue={setValue} />
+          {errors.gender && (
+            <span className={styles.error}>{errors.gender.message}</span>
+          )}
+          <input
+            type="text"
+            placeholder="کد ملی"
+            {...register("nationalCode")}
+          />
+          {errors.nationalCode && (
+            <span className={styles.error}>{errors.nationalCode.message}</span>
+          )}
+          <Controller
+            name="birthDate"
+            control={control}
+            render={({ field }) => {
+              const selectedDate = field.value
+                ? new DateObject({
+                    date: field.value,
+                    format: "YYYY/MM/DD",
+                    calendar: persian,
+                  })
+                : null;
+
+              return (
+                <div className={styles.formInputWrapper}>
+                  <DatePicker
+                    value={selectedDate}
+                    calendar={persian}
+                    locale={persian_fa}
+                    onChange={(date) =>
+                      field.onChange(date.format("YYYY/MM/DD"))
+                    }
+                    render={(value, openCalendar) => (
+                      <div onClick={openCalendar} className={styles.dateInput}>
+                        <div className={styles.placeholder}>
+                          <Image
+                            src="/images/date.png"
+                            width={16}
+                            height={16}
+                            alt="date"
+                          />
+                          <span>
+                            {field.value ? field.value : "تاریخ تولد"}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  />
+                  {errors.birthDate && (
+                    <span className={styles.error}>
+                      {errors.birthDate.message}
+                    </span>
+                  )}
+                </div>
+              );
+            }}
+          />
+        </form>
+      </div>
+      <div className={styles.checkoutBox}>
+        <div className={styles.desc}>
+          <h1>{data?.title || "  بارگذاری..."}</h1>
+          <p>
+            {toPersianNumber(5)} روز و {toPersianNumber(4)} شب
+          </p>
+        </div>
+        <div className={styles.midLine}></div>
+        <div className={styles.priceDiv}>
+          <p>قیمت نهایی</p>
+          <div className={styles.price}>
+            <span>
+              {data?.price
+                ? toPersianNumber(convertToRial(data.price))
+                : "درحال بروزرسانی"}
+            </span>
+            <p>تومان</p>
+          </div>
+        </div>
+        <div className={styles.btn}>
+          <button onClick={() => formRef.current.requestSubmit()}>
+            ثبت و خرید نهایی
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -23,7 +23,6 @@ function Find({ onSearch, data }) {
 
   useEffect(() => {
     if (!data) return;
-
     const origins = Array.from(
       new Map(
         data.map((city) => [
@@ -89,7 +88,7 @@ function Find({ onSearch, data }) {
       (c) => c.name === data.destination
     );
     const originId = originObj.id;
-    const destinationId = destinationObj.id;
+    const destinationId = destinationObj ? destinationObj.id : "";
 
     const startDateObj = new DateObject({
       calendar: persian,
@@ -205,9 +204,6 @@ function Find({ onSearch, data }) {
                   {...register("destination")}
                   onClick={() => setActiveInput("destination")}
                 />
-                {errors.destination && (
-                  <p className={styles.error}>{errors.destination.message}</p>
-                )}
                 {activeInput === "destination" && (
                   <div className={styles.cityDropdown} ref={dropdownRef}>
                     <div className={styles.cityHeader}>پرتردد</div>

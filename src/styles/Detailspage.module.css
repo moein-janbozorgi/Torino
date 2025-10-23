@@ -310,7 +310,7 @@
   }
 
   .wrapper {
-    width: calc(100% - 130px);
+    width: calc(100% - 240px);
     max-width: 1200px;
     border: 1px solid #00000033;
     margin: 100px auto 70px;

@@ -1,6 +1,5 @@
 import HomePage from "@/components/tempelates/HomePage";
-
-export const revalidate = 300;
+import { serverFetch } from "@/hooks/HttpsReq";
 
 export default async function Home({ searchParams }) {
   const { destinationId, originId, startDate, endDate } = await searchParams;
@@ -8,24 +7,18 @@ export default async function Home({ searchParams }) {
   let initialTours = [];
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-    const url = new URL("/tour", baseUrl);
+    const query = {};
+    if (destinationId) query.destinationId = destinationId;
+    if (originId) query.originId = originId;
+    if (startDate) query.startDate = startDate;
+    if (endDate) query.endDate = endDate;
 
-    if (destinationId && originId && startDate && endDate) {
-      url.search = new URLSearchParams({
-        destinationId,
-        originId,
-        startDate,
-        endDate,
-      }).toString();
-    }
+    const data = await serverFetch("/tour", query, { cache: "no-store" });
 
-    const res = await fetch(url.toString());
-    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-    initialTours = await res.json();
+    initialTours = data ?? [];
   } catch (err) {
-    console.error(err);
-    initialTours = []; 
+    console.error("Error fetching tours:", err);
+    initialTours = [];
   }
 
   return <HomePage initialTours={initialTours} searchParams={searchParams} />;

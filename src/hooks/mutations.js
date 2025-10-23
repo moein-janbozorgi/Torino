@@ -105,6 +105,17 @@ export const useUpdateUserProfile = (onSuccessCallback) => {
   });
 };
 
+export const useSendTourInfo = () => {
+  const mutationFn = async (id) => {
+    const response = await api.put(`/basket/${id}`);
+    return response;
+  };
+
+  return useMutation({
+    mutationFn,
+  });
+};
+
 export const useLogout = () => {
   const queryClient = useQueryClient();
   const handleLogout = () => {

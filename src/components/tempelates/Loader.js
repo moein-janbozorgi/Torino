@@ -9,6 +9,7 @@ function Loader() {
         alignItems: "center",
         height: "100%",
         width: "100%",
+        marginTop: "50px",
         backgroundColor: "#fff",
       }}
     >

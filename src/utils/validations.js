@@ -41,11 +41,6 @@ const formCheker = yup.object().shape({
 
 const searchChecker = yup.object().shape({
   origin: yup.string().required("لطفاً مبدا را انتخاب کنید"),
-
-  destination: yup
-    .string()
-    .required("لطفاً مقصد را انتخاب کنید")
-    .notOneOf([yup.ref("origin")], "مبدا و مقصد نمی‌توانند یکسان باشند"),
   dateRange: yup
     .array()
     .of(yup.string())

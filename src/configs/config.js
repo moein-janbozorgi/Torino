@@ -30,6 +30,7 @@ api.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
+    
 
     if (
       (error.response.status === 401 || error.response.status === 403) &&
@@ -43,11 +44,7 @@ api.interceptors.response.use(
         setCookie("accessToken", res?.data?.accessToken, 30);
         return api(originalRequest);
       }
-    } else {
-      setCookie("accessToken", "", 0);
-      setCookie("refreshToken", "", 0);
     }
-
     return Promise.reject(error?.response?.data);
   }
 );

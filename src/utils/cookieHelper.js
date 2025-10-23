@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import Cookies from "js-cookie";
 
 const setCookie = (name, value, days) => {
@@ -25,4 +24,4 @@ const removeCookie = () => {
   Cookies.remove("refreshToken", { path: "/" });
 };
 
-export { setCookie, getCookie, removeCookie, getNewTokens };
+export { setCookie, getCookie, removeCookie };
