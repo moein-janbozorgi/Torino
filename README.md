@@ -47,7 +47,7 @@
 ## 🖼️ پیش‌نمایش پروژه
 
 ![صفحه اصلی](https://imgur.com/a/6UmNK8j)
-![صفحه جزییات]("https://imgur.com/a/6ZspHJg)
+![صفحه جزییات](https://imgur.com/a/6ZspHJg)
 ![صفحه خرید](https://imgur.com/a/JkiAh9G)
 ![صفحه پروفایل](https://imgur.com/a/wnrGeNk)
 ![صفحه تورهای مشتری](https://imgur.com/a/miXJlFZ)
