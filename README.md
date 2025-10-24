@@ -46,12 +46,12 @@
 
 ## 🖼️ پیش‌نمایش پروژه
 
-![صفحه اصلی](https://imgur.com/a/6UmNK8j)
-![صفحه جزییات](https://imgur.com/a/6ZspHJg)
-![صفحه خرید](https://imgur.com/a/JkiAh9G)
-![صفحه پروفایل](https://imgur.com/a/wnrGeNk)
-![صفحه تورهای مشتری](https://imgur.com/a/miXJlFZ)
-![صفحه تراکنش ها](https://imgur.com/a/26QPQ9b)
+![صفحه اصلی](https://i.imgur.com/A5I4r5t.png)
+![صفحه جزییات](https://i.imgur.com/zij02EO.png)
+![صفحه خرید](https://i.imgur.com/SlQh5E9.png)
+![صفحه پروفایل](https://i.imgur.com/iTFigwT.png)
+![صفحه تورهای مشتری](https://i.imgur.com/CGdF9eI.png)
+![صفحه تراکنش ها](https://i.imgur.com/hZIG5by.png)
 
 ## اطلاعات تماسcd
 
