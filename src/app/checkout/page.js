@@ -69,26 +69,34 @@ export default function Basket() {
           onSubmit={handleSubmit(onSubmit)}
           ref={formRef}
         >
-          <input
-            type="text"
-            placeholder="نام و نام خانوادگی"
-            {...register("fullName")}
-          />
-          {errors.fullName && (
-            <span className={styles.error}>{errors.fullName.message}</span>
-          )}
-          <GenderSelect register={register} setValue={setValue} />
-          {errors.gender && (
-            <span className={styles.error}>{errors.gender.message}</span>
-          )}
-          <input
-            type="text"
-            placeholder="کد ملی"
-            {...register("nationalCode")}
-          />
-          {errors.nationalCode && (
-            <span className={styles.error}>{errors.nationalCode.message}</span>
-          )}
+          <div className={styles.formField}>
+            <input
+              type="text"
+              placeholder="نام و نام خانوادگی"
+              {...register("fullName")}
+            />
+            {errors.fullName && (
+              <span className={styles.error}>{errors.fullName.message}</span>
+            )}
+          </div>
+          <div className={styles.formField}>
+            <GenderSelect register={register} setValue={setValue} />
+            {errors.gender && (
+              <span className={styles.error}>{errors.gender.message}</span>
+            )}
+          </div>
+          <div className={styles.formField}>
+            <input
+              type="text"
+              placeholder="کد ملی"
+              {...register("nationalCode")}
+            />
+            {errors.nationalCode && (
+              <span className={styles.error}>
+                {errors.nationalCode.message}
+              </span>
+            )}
+          </div>
           <Controller
             name="birthDate"
             control={control}

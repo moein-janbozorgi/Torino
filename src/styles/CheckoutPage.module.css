@@ -15,6 +15,22 @@
   border-radius: 10px;
 }
 
+.formField,
+.formInputWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.formField .error,
+.formInputWrapper .error {
+  color: #e74c3c;
+  font-family: "Vazir";
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
 .user {
   display: flex;
   align-items: center;
@@ -147,13 +163,6 @@
 
 .dropdown p:hover {
   background: #f2f2f2;
-}
-
-.error {
-  color: #e74c3c;
-  font-family: "Vazir";
-  font-weight: 400;
-  font-size: 15px;
 }
 
 .selectBox img {
@@ -347,6 +356,11 @@
     padding: 0 3.5rem;
     justify-content: space-between;
     align-items: flex-start;
+  }
+
+  .formField .error,
+  .formInputWrapper .error {
+    font-size: 14px;
   }
 
   .infoBox {
