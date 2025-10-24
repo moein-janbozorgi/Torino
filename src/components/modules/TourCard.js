@@ -10,12 +10,16 @@ import {
 import Image from "next/image";
 
 function TourCard({ tour }) {
+  const today = new Date();
   console.log(tour);
   return (
-
     <div className={styles.container}>
       <div className={styles.main}>
-        <p className={styles.finish}>به اتمام رسیده</p>
+        {new Date(tour.endDate) < today ? (
+          <p className={styles.end}>به اتمام رسیده</p>
+        ) : (
+          <p className={styles.ongoing}>در حال برگزاری</p>
+        )}
         <div className={styles.topMain}>
           <div className={styles.tourName}>
             <div>

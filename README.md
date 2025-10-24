@@ -53,6 +53,6 @@
 ![صفحه تورهای مشتری](https://i.imgur.com/CGdF9eI.png)
 ![صفحه تراکنش ها](https://i.imgur.com/hZIG5by.png)
 
-## اطلاعات تماسcd
+## اطلاعات تماس
 
 ایمیل : moeinjanb84@gmail.com
