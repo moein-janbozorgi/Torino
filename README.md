@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Torino | اپلیکیشن رزرو آنلاین تور و هتل
 
-## Getting Started
+تورینو یک وبسایت رزرو تور و هتل است که کاربران می‌توانند تورهای مختلف را بررسی، رزرو و مدیریت کنند. این پروژه با مدرن ترین تکنولوژی ها پیاده سازی شده
 
-First, run the development server:
+## 🚀 قابلیت‌ها
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🔍 نمایش لیست محصولات به همراه جزییات و جست و جو
+- 👤 مدیریت کاربران (ورود/ثبت‌نام) واحراز هویت توسط jwt
+- 🌐 ارتباط مستقیم با بک‌اند از طریق API
+- 🎨 استفاده از آیکون‌ها و طراحی مدرن (Iconly)
+- 📊 داشبورد پروفایل با مدیریت رزروها و تراکنش‌ها
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🛠️ تکنولوژی‌های استفاده‌شده
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **React.js** (برای ساخت رابط کاربری)
+- **Axios / Fetch API** (برای ارتباط با بک‌اند)
+- **Yup** (برای اعتبار سنجی پروژه)
+- **React hook form** (ترکیب با yup برای فرم بندی بهتر)
+- **toast** (برای نشان دادن اعلان های شکست و موفقیت)
+- **next-js** (بهینه بودن پروژه از نظر سِیو و ...)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ نحوه اجرا
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+اجرای فرانت‌اند:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. کلون کردن پروژه:
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/moein-janbozorgi/Torino.git
+   cd torino-project
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. npm i نصب پکیج ها
+
+3. npm run dev اجرای برنامه
+
+اجرای بک اند:
+
+1. فایل travel-agency-api را باز کرده و دستور
+   npm start را درون ترمینال وارد کنید
+
+## 🖼️ پیش‌نمایش پروژه
+
+![صفحه اصلی](https://imgur.com/a/6UmNK8j)
+![صفحه جزییات]("https://imgur.com/a/6ZspHJg)
+![صفحه خرید](https://imgur.com/a/JkiAh9G)
+![صفحه پروفایل](https://imgur.com/a/wnrGeNk)
+![صفحه تورهای مشتری](https://imgur.com/a/miXJlFZ)
+![صفحه تراکنش ها](https://imgur.com/a/26QPQ9b)
+
+## اطلاعات تماسcd
+
+ایمیل : moeinjanb84@gmail.com

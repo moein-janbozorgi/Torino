@@ -65,6 +65,16 @@
     brightness(90%) contrast(90%);
 }
 
+.wrapper div.active a {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.wrapper div.active img {
+  filter: invert(44%) sepia(94%) saturate(10000%) hue-rotate(135deg)
+    brightness(90%) contrast(90%);
+}
+
 @media (min-width: 391px) {
   .header {
     width: 100%;
