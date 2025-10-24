@@ -13,7 +13,7 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { Controller } from "react-hook-form";
 import DateObject from "react-date-object";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSubmitPassenger } from "@/hooks/mutations";
 import { useRouter } from "next/navigation";
 import GenderSelect from "@/atoms/genderSelect";
@@ -61,6 +61,7 @@ export default function Basket() {
             width={24}
             height={24}
             alt="profile"
+            priority={true}
           />
           <h1>مشخصات مسافر</h1>
         </div>
@@ -126,6 +127,7 @@ export default function Basket() {
                             width={16}
                             height={16}
                             alt="date"
+                            priority={true}
                           />
                           <span>
                             {field.value ? field.value : "تاریخ تولد"}

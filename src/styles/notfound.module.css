@@ -1,7 +1,5 @@
 .container {
   text-align: center;
-  min-height: 100vh;
-  margin-top: 70px;
 }
 
 .container a {
@@ -9,7 +7,6 @@
   background: #d8ffe1;
   padding: 10px 20px;
   border-radius: 16px;
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 20px;
   color: #28a745;
@@ -22,7 +19,6 @@
 }
 
 .container h1 {
-  font-family: "Vazir";
   font-weight: 600;
   font-size: 24px;
   color: var(--color-text);
@@ -30,15 +26,35 @@
   margin-bottom: 30px;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 768px) {
+  .container img {
+    width: 440px;
+    height: 440px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .container a {
+    font-size: 22px;
+  }
+
+  .container h1 {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 992px) {
   .container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 30px;
     flex-direction: row-reverse;
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
-    min-height: 100vh;
   }
 
   .container img {
@@ -51,7 +67,6 @@
     background: #d8ffe1;
     padding: 10px 20px;
     border-radius: 16px;
-    font-family: "Vazir";
     font-weight: 400;
     font-size: 28px;
     color: #28a745;
@@ -64,7 +79,6 @@
   }
 
   .container h1 {
-    font-family: "Vazir";
     font-weight: 600;
     font-size: 36px;
     color: var(--color-text);

@@ -6,7 +6,6 @@ import styles from "@/styles/toastStyle.module.css";
 import "./globals.css";
 import Providers from "@/Providers/ReactQueryProvider";
 
-
 export const metadata = {
   title: "Torino",
   description: "تورینو وب‌سایت گردشگری",
@@ -17,10 +16,55 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl">
       <head />
       <link rel="shortcut icon" href="/images/Torino.png" />
+      <link rel="preload" href="/images/airplan.webp" as="image" />
       <link
-        href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@latest/dist/font-face.css"
-        rel="stylesheet"
-        precedence="default"
+        rel="preload"
+        href="/fonts/Vazirmatn-Regular.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="/fonts/Vazirmatn-Medium.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="/fonts/Vazirmatn-Bold.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="/fonts/Vazirmatn-ExtraBold.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="/fonts/Vazirmatn-SemiBold.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="/fonts/Vazirmatn-Thin.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="/fonts/Vazirmatn-Light.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
       />
       <body className="layout-body">
         <Providers>

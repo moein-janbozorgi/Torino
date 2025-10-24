@@ -31,7 +31,6 @@
 
 .header ul li a {
   text-decoration: none;
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 12px;
   color: #888;
@@ -62,10 +61,9 @@
 }
 
 .header ul li.active img {
-  filter: invert(44%) sepia(94%) saturate(700%) hue-rotate(135deg)
+  filter: invert(44%) sepia(94%) saturate(10000%) hue-rotate(135deg)
     brightness(90%) contrast(90%);
 }
-
 
 @media (min-width: 391px) {
   .header {
@@ -125,7 +123,6 @@
 
   .wrapper a {
     text-decoration: none;
-    font-family: "Vazir";
     font-weight: 400;
     font-size: 14px;
     color: #282828;

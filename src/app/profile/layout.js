@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 export default function ProfileLayout({ children }) {
   const pathname = usePathname();
 
+
   return (
     <AuthProvider>
       <div className={styles.container}>
@@ -25,6 +26,7 @@ export default function ProfileLayout({ children }) {
               width={16}
               height={16}
               alt="profile"
+              priority={true}
             />
             <Link href="/profile">پروفایل</Link>
           </div>
@@ -88,7 +90,6 @@ export default function ProfileLayout({ children }) {
             </li>
           </ul>
         </header>
-
         <main className={styles.main}>{children}</main>
       </div>
     </AuthProvider>

@@ -1,10 +1,9 @@
-/* کلاس‌های خودت */
 .customToast {
+  font-family: "Vazirmatn";
   background: rgba(25, 25, 25, 0.8);
   backdrop-filter: blur(8px);
   border-radius: 12px;
   color: #fff;
-  font-family: "Vazir", sans-serif;
   direction: rtl;
 }
 

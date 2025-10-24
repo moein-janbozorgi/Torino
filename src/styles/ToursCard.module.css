@@ -16,7 +16,6 @@
   padding: 6px 12px;
   border-radius: 27px;
   left: 0;
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 6px;
 }
@@ -43,7 +42,6 @@
 }
 
 .tourName div p {
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 12px;
   color: #000000;
@@ -56,14 +54,12 @@
 }
 
 .endDate h3 {
-  font-family: "Vazir";
   font-weight: 600;
   font-size: 14px;
   color: #000000;
 }
 
 .origindest h3 {
-  font-family: "Vazir";
   font-weight: 600;
   font-size: 14px;
   color: #000000;
@@ -71,7 +67,6 @@
 
 .origindest,
 .endDate p {
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 12px;
   color: #00000099;
@@ -95,14 +90,12 @@
 }
 
 .numTour p {
-  font-family: "Vazir";
   font-weight: 600;
   font-size: 10px;
   color: #00000080;
 }
 
 .numTour span {
-  font-family: "Vazir";
   font-weight: 500;
   font-size: 12px;
   color: #282828;
@@ -113,7 +106,6 @@
 }
 
 .spend {
-  font-family: "Vazir";
   font-weight: 600;
   font-size: 10px;
   color: #00000080;
@@ -125,14 +117,12 @@
 }
 
 .price p {
-  font-family: "Vazir";
   font-weight: 300;
   font-size: 8px;
   color: #00000080;
 }
 
 .price span {
-  font-family: "Vazir";
   font-weight: 500;
   font-size: 12px;
   color: #282828;
@@ -267,14 +257,12 @@
   }
 
   .timeWrapper div h3 {
-    font-family: "Vazir";
     font-weight: 600;
     font-size: 14px;
     color: #000000;
   }
 
   .timeWrapper div p {
-    font-family: "Vazir";
     font-weight: 400;
     font-size: 14px;
   }

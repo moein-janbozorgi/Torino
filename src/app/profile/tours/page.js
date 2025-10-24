@@ -5,7 +5,10 @@ import { toast } from "react-toastify";
 import Loader from "@/components/tempelates/Loader";
 import TourCard from "@/components/modules/TourCard";
 import { useEffect } from "react";
-import styles from "@/styles/MytourPage.module.css"
+import styles from "@/styles/MytourPage.module.css";
+
+
+
 export default function MyToursPage() {
   const { data, isLoading, isError } = useGetUserTours();
 

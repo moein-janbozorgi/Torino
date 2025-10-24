@@ -1,15 +1,25 @@
 "use client";
 import { useSendTourInfo } from "@/hooks/mutations";
+import { useGetUserInfo } from "@/hooks/queries";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 function Reserve({ id }) {
+  const { data } = useGetUserInfo();
   const { mutateAsync } = useSendTourInfo();
+  const router = useRouter();
 
   const sendHandler = async () => {
+    if (!data) {
+      toast.error("لطفاً ابتدا وارد حساب کاربری خود شوید.");
+      router.push("/");
+      return;
+    }
     try {
-      await mutateAsync(id); 
-      window.location.href = "/checkout";
+      await mutateAsync(id);
+      router.push("/checkout");
     } catch (error) {
-      console.error("Reserve failed:", error);
+      throw new Error("error:", error.message);
     }
   };
 

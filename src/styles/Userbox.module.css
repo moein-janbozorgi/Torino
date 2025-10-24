@@ -38,7 +38,6 @@
 }
 
 .phone p {
-  font-family: "Vazir";
   font-weight: 500;
   font-size: 14px;
   color: #10411b;
@@ -55,14 +54,12 @@
 .info button {
   border: none;
   background-color: #ffffff;
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 12px;
   color: #282828;
 }
 
 .logout p {
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 12px;
   color: #d40000;

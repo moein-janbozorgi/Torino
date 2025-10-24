@@ -29,7 +29,6 @@ export const useGetBasket = () => {
         const response = await api.get("/basket");
         return response ?? {};
       } catch (error) {
-        console.error("Error fetching basket:", error);
         return {};
       }
     },
@@ -45,7 +44,7 @@ export const useGetUserTours = () => {
         const response = await api.get("/user/tours");
         return response ?? null;
       } catch (error) {
-        console.log(error.message);
+        return null;
       }
     },
     staleTime: 1000 * 60 * 2,
@@ -81,9 +80,10 @@ export const useGetUserInfo = () => {
     queryFn: async () => {
       try {
         const res = await api.get("/user/profile");
-        return res ?? null;
+        console.log(res);
+        return res || null;
       } catch (error) {
-        console.log(error.message);
+        return null;
       }
     },
     staleTime: 1000 * 60 * 5,

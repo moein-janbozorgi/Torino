@@ -35,7 +35,6 @@
   }
 
   .modal h1 {
-    font-family: "Vazir";
     font-weight: 600;
     font-size: 22px;
     color: #282828;
@@ -47,7 +46,6 @@
   }
 
   .modal p {
-    font-family: "Vazir";
     font-weight: 400;
     font-size: 14px;
     color: #282828;
@@ -66,7 +64,6 @@
   }
 
   .modal button {
-    font-family: "Vazir";
     font-weight: 500;
     font-size: 18px;
     margin-top: 1rem;
@@ -92,14 +89,12 @@
   }
 
   .resend span {
-    font-family: "Vazir";
     font-weight: 300;
     font-size: 13px;
     color: #282828;
   }
 
   .resend div p {
-    font-family: "Vazir";
     font-weight: 300;
     font-size: 13px !important;
     color: #282828;
@@ -138,7 +133,7 @@
   }
 
 
-@media (min-width: 1440px) {
+@media (min-width: 992px) {
   .overlay {
     position: fixed;
     inset: 0;
@@ -157,7 +152,7 @@
     position: relative;
     background: #ffffff;
     border-radius: 20px;
-    width: 561px;
+    width: 350px;
     margin-left: 10px;
     text-align: center;
     animation: popUp 0.3s ease;
@@ -177,7 +172,6 @@
   }
 
   .modal h1 {
-    font-family: "Vazir";
     font-weight: 600;
     font-size: 22px;
     color: #282828;
@@ -189,7 +183,6 @@
   }
 
   .modal p {
-    font-family: "Vazir";
     font-weight: 400;
     font-size: 14px;
     color: #282828;
@@ -209,7 +202,6 @@
   }
 
   .modal button {
-    font-family: "Vazir";
     font-weight: 500;
     font-size: 18px;
     margin-top: 1rem;
@@ -235,14 +227,12 @@
   }
 
   .resend span {
-    font-family: "Vazir";
     font-weight: 300;
     font-size: 13px;
     color: #282828;
   }
 
   .resend div p {
-    font-family: "Vazir";
     font-weight: 300;
     font-size: 13px !important;
     color: #282828;

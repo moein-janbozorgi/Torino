@@ -18,13 +18,6 @@ export default function Header() {
   const [otp, setOtp] = useState(false);
   const [phone, setPhone] = useState("");
 
-  const links = [
-    { href: "/", label: "صفحه اصلی" },
-    { href: "/services", label: "خدمات گردشگری" },
-    { href: "/about", label: "درباره ما" },
-    { href: "/contact", label: "تماس با ما" },
-  ];
-
   const { data: user } = useGetUserInfo();
 
   console.log(user);
@@ -65,43 +58,41 @@ export default function Header() {
           <div
             className={`${styles.hamburger} ${hamburger ? styles.open : ""}`}
           >
-            <div>
+            <div className={pathname === "/" ? `${styles.active}` : ""}>
               <Image
                 src="/images/home.png"
                 width={16}
                 height={16}
                 alt="home-img"
               />
-              <Link href="/" className={styles.active}>
-                صفحه اصلی
-              </Link>
+              <Link href="/">صفحه اصلی</Link>
             </div>
-            <div>
+            <div className={pathname === "/#" ? `${styles.active}` : ""}>
               <Image
                 src="/images/airplane.png"
                 width={16}
                 height={16}
                 alt="airplane-img"
               />
-              <Link href="/">خدمات گردشگری</Link>
+              <Link href="/#">خدمات گردشگری</Link>
             </div>
-            <div>
+            <div className={pathname === "/#" ? `${styles.active}` : ""}>
               <Image
                 src="/images/volume-low.png"
                 width={16}
                 height={16}
                 alt="volume-img"
               />
-              <Link href="/">درباره ما</Link>
+              <Link href="/#">درباره ما</Link>
             </div>
-            <div>
+            <div className={pathname === "/#" ? `${styles.active}` : ""}>
               <Image
                 src="/images/callkh.png"
                 width={16}
                 height={16}
                 alt="call-img"
               />
-              <Link href="/">تماس با ما</Link>
+              <Link href="/#">تماس با ما</Link>
             </div>
           </div>
         </>
@@ -118,14 +109,14 @@ export default function Header() {
             <li className={pathname === "/" ? `${styles.active}` : ""}>
               <Link href="/">صفحه اصلی</Link>
             </li>
-            <li className={pathname === "#" ? `${styles.active}` : ""}>
-              <Link href="/pik">خدمات گردشگری</Link>
+            <li className={pathname === "/#" ? `${styles.active}` : ""}>
+              <Link href="/#">خدمات گردشگری</Link>
             </li>
-            <li className={pathname === "#" ? `${styles.active}` : ""}>
-              <Link href="/about">درباره ما</Link>
+            <li className={pathname === "/#" ? `${styles.active}` : ""}>
+              <Link href="/#">درباره ما</Link>
             </li>
-            <li className={pathname === "#" ? `${styles.active}` : ""}>
-              <Link href="/call-us"> تماس با ما</Link>
+            <li className={pathname === "/#" ? `${styles.active}` : ""}>
+              <Link href="/#"> تماس با ما</Link>
             </li>
           </ul>
         </div>

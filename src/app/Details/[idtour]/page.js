@@ -11,6 +11,11 @@ import Loader from "@/components/tempelates/Loader";
 import { serverFetch } from "@/hooks/HttpsReq";
 import Reserve from "@/atoms/reserve";
 
+export const metadata = {
+  title: "Torino details",
+  description: "جزییات محصول"
+};
+
 export default async function Page({ params }) {
   const awaitedParams = await params;
   const idtour = awaitedParams.idtour;

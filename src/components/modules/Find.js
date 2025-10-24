@@ -51,7 +51,7 @@ function Find({ onSearch, data }) {
 
     setOriginCities(origins);
     setDestinationCities(destinations);
-  }, [data]);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {

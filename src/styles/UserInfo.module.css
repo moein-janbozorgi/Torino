@@ -11,7 +11,6 @@
 }
 
 .header h3 {
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 16px;
   color: #000000;
@@ -24,7 +23,6 @@
 }
 
 .phone span {
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 14px;
   color: #282828;
@@ -32,7 +30,6 @@
 
 .error {
   color: #e74c3c;
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 14px;
   text-align: right;
@@ -40,7 +37,6 @@
 }
 
 .phone p {
-  font-family: "Vazir";
   font-weight: 300;
   font-size: 14px;
   color: #000000;
@@ -64,7 +60,6 @@
 }
 
 .email p {
-  font-family: "Vazir";
   font-weight: 300;
   font-size: 14px;
   color: #000000;
@@ -83,7 +78,6 @@
 }
 
 .edit p {
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 14px;
   color: #009eca;
@@ -101,7 +95,6 @@
 .inp {
   width: 100%;
   padding: 8px;
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 12px;
   color: #00000080;
@@ -116,7 +109,6 @@
   border: none;
   background-color: #28a745;
   border-radius: 5px;
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 16px;
   color: #ffffff;
@@ -129,7 +121,6 @@
 }
 
 .topInput h3 {
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 16px;
   color: #000000;
@@ -147,7 +138,6 @@
 }
 
 .editInfo p {
-  font-family: "Vazir";
   font-weight: 400;
   font-size: 13px;
   color: #009eca;
@@ -169,7 +159,7 @@
   }
   .phone {
     gap: 30px;
-    padding: 0 13px;
+    padding: 0 10px;
   }
   .lowerInfo {
     display: flex;
@@ -186,7 +176,7 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    width: 40%;
+    width: 50%;
   }
 
   .error {

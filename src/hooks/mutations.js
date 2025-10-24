@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
 import { toPersianNumber } from "@/utils/helper";
+import { useRouter } from "next/navigation";
 
 export const useSendOtp = (onSuccessCallback) => {
   const mutationFn = (data) => api.post("/auth/send-otp", data);
@@ -47,6 +48,7 @@ export const useCheckOtp = (onSuccessCallback) => {
 };
 
 export const useSubmitPassenger = (onSuccessCallback) => {
+  const router = useRouter();
   const queryClient = useQueryClient();
 
   const mutationFn = async (data) => {
@@ -63,7 +65,8 @@ export const useSubmitPassenger = (onSuccessCallback) => {
       if (onSuccessCallback) onSuccessCallback(data);
     },
     onError: () => {
-      toast.error("ثبت اطلاعات مسافر با خطا مواجه شد");
+      router.push("/");
+      toast.error("مشکلی رخ داد یک تور را برای رزور انتخاب کنید");
     },
   });
 };

@@ -23,6 +23,18 @@ function OtpModal({ setOtp, phone, setIsOn }) {
     return () => clearInterval(interval);
   }, [seconds]);
 
+  useEffect(() => {
+    const lastSent = localStorage.getItem("otpSentAt");
+    if (lastSent) {
+      const elapsed = (Date.now() - Number(lastSent)) / 1000;
+      if (elapsed < 120) setSeconds(120 - Math.floor(elapsed));
+    }
+
+    if (seconds <= 0) return;
+    const interval = setInterval(() => setSeconds((prev) => prev - 1), 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   const {
     register,
     handleSubmit,
