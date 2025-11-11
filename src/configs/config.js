@@ -30,7 +30,6 @@ api.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
-    
 
     if (
       (error.response.status === 401 || error.response.status === 403) &&
