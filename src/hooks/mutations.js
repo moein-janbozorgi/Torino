@@ -120,6 +120,7 @@ export const useSendTourInfo = () => {
 };
 
 export const useLogout = () => {
+  const router = useRouter()
   const queryClient = useQueryClient();
   const handleLogout = () => {
     removeCookie("accessToken", "refreshToken");
@@ -127,6 +128,7 @@ export const useLogout = () => {
     queryClient.setQueryData(["user-data"], null);
     queryClient.invalidateQueries(["user-data"]);
     toast.success("شما با موفقیت خارج شدید");
+    router.push("/")
   };
   return handleLogout;
 };
