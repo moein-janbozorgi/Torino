@@ -38,7 +38,7 @@ function Tours({ data, isLoading }) {
             <div key={tour.id} className={styles.main}>
               <div className={styles.top}>
                 <Image
-                  src={tour.image}
+                  src={`https://torino-back.onrender.com${tour.image}`}
                   alt="tours-title"
                   width={327}
                   height={159}
