@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["torino-back.onrender.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "torino-back.onrender.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
 };
 
