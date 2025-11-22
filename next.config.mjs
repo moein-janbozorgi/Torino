@@ -5,11 +5,11 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "torino-back.onrender.com",
-        port: "",
-        pathname: "/**",
+        pathname: "/images/**",
       },
     ],
   },
 };
 
 export default nextConfig;
+ل
