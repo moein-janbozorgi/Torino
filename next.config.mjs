@@ -1,14 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "localhost",
-        pathname: "/**", 
-      },
-    ],
+    domains: ["torino-back.onrender.com"],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
