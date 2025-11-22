@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
           <div className={styles.torino}>
             <Image
-              src="/images/torino-logo.png"
+              src="/images/Torino-logo.png"
               width={100}
               height={30}
               alt="torino"
