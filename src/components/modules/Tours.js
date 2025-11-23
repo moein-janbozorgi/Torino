@@ -37,7 +37,7 @@ function Tours({ data, isLoading }) {
           {displayedTours.map((tour) => (
             <div key={tour.id} className={styles.main}>
               <div className={styles.top}>
-                <img
+                <Image
                   src={tour.image}
                   alt="tours-title"
                   width={327}
