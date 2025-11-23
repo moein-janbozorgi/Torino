@@ -42,6 +42,7 @@ function Tours({ data, isLoading }) {
                   alt="tours-title"
                   width={327}
                   height={159}
+                  unoptimized={true}
                   style={{ width: "100%", height: "auto" }}
                 />
                 <div className={styles.description}>
