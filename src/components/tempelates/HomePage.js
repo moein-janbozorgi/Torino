@@ -9,10 +9,11 @@ import { api } from "@/configs/config";
 import { useSearchParams } from "next/navigation";
 import Airplan from "@/atoms/Airplan";
 
-function HomePage({ initialTours = [] }) {
+function HomePage({ initialTours, allTours}) {
   const clientSearchParams = useSearchParams();
   const [filteredTours, setFilteredTours] = useState(initialTours || []);
   const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     const fetchTours = async () => {
@@ -53,7 +54,7 @@ function HomePage({ initialTours = [] }) {
   return (
     <>
       <Airplan />
-      <Find onSearch={handleSearch} data={filteredTours} />
+      <Find onSearch={handleSearch} data={allTours} />
       <Tours data={filteredTours} isLoading={isLoading} />
       <Call />
       <Whytorino />

@@ -3,14 +3,12 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import styles from "@/styles/BankInfo.module.css";
-import { api } from "@/configs/config";
 import { useGetUserInfo } from "@/hooks/queries";
 import Image from "next/image";
 import { toPersianNumber } from "@/utils/helper";
 import { bankChecker } from "@/utils/validations";
-import { toast } from "react-toastify";
+
 import { useUpdateUserProfile } from "@/hooks/mutations";
 
 export default function BankInfo() {

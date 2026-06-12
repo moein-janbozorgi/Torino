@@ -12,7 +12,7 @@ function Reserve({ id }) {
   const sendHandler = async () => {
     if (!data) {
       toast.error("لطفاً ابتدا وارد حساب کاربری خود شوید.");
-      router.push("/");
+      router.push("/?login=true");
       return;
     }
     try {

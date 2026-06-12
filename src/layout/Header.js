@@ -4,10 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/Header.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginModal from "@/components/modules/LoginModal";
 import OtpModal from "@/components/modules/OtpModal";
-
+import { useSearchParams } from "next/navigation";
 import { useGetUserInfo } from "@/hooks/queries";
 import UserProfile from "@/atoms/userProfile";
 
@@ -21,6 +21,19 @@ export default function Header() {
   const { data: user } = useGetUserInfo();
 
   console.log(user);
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("login") === "true") {
+      setIsOn(true);
+
+      const url = new URL(window.location.href);
+      url.searchParams.delete("login");
+
+      window.history.replaceState({}, "", url);
+    }
+  }, [searchParams]);
 
   return (
     <header className={styles.topheader}>

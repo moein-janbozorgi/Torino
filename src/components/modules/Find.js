@@ -11,7 +11,6 @@ import { useForm } from "react-hook-form";
 import { useRef, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { searchChecker } from "@/utils/validations";
-import { api } from "@/configs/config";
 import { convertCity, searchTours } from "@/utils/helper";
 import { useSearchParams } from "next/navigation";
 
@@ -23,8 +22,9 @@ function Find({ onSearch, data }) {
   const [destinationCities, setDestinationCities] = useState([]);
   const dropdownRef = useRef(null);
 
+
   useEffect(() => {
-    if (!data) return;
+    if (!data?.length) return;
     const origins = Array.from(
       new Map(
         data.map((city) => [
@@ -33,8 +33,8 @@ function Find({ onSearch, data }) {
             id: city.origin.id,
             name: convertCity(city.origin.name),
           },
-        ])
-      ).values()
+        ]),
+      ).values(),
     );
 
     const destinations = Array.from(
@@ -45,13 +45,13 @@ function Find({ onSearch, data }) {
             id: city.destination.id,
             name: convertCity(city.destination.name),
           },
-        ])
-      ).values()
+        ]),
+      ).values(),
     );
 
     setOriginCities(origins);
     setDestinationCities(destinations);
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -103,7 +103,7 @@ function Find({ onSearch, data }) {
     }
     if (destinationId) {
       const destinationObj = destinationCities.find(
-        (c) => c.id.toString() === destinationId
+        (c) => c.id.toString() === destinationId,
       );
       if (destinationObj) setValue("destination", destinationObj.name);
     }
@@ -235,7 +235,7 @@ function Find({ onSearch, data }) {
                 setRange(dates);
                 setValue(
                   "dateRange",
-                  dates.map((d) => d.format("YYYY/MM/DD"))
+                  dates.map((d) => d.format("YYYY/MM/DD")),
                 );
               }}
               render={(value, openCalendar) => (
