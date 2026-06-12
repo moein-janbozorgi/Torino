@@ -1,5 +1,6 @@
 import Header from "@/layout/Header";
 import Footer from "@/layout/footer";
+import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "@/styles/toastStyle.module.css";
@@ -68,9 +69,14 @@ export default function RootLayout({ children }) {
       />
       <body className="layout-body">
         <Providers>
-          <Header />
+          <Suspense fallback={null}>
+            <Header />
+          </Suspense>
+
           <main className="main-content">{children}</main>
+
           <Footer />
+
           <ToastContainer
             position="top-center"
             autoClose={3000}
