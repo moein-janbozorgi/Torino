@@ -11,7 +11,6 @@ import Image from "next/image";
 
 function TourCard({ tour }) {
   const today = new Date();
-  console.log(tour);
   return (
     <div className={styles.container}>
       <div className={styles.main}>

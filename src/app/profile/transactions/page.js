@@ -16,7 +16,6 @@ import {
 export default function TransactionsPage() {
   const { data, isLoading, isError } = useGetUseTransactions();
 
-  console.log(data);
 
   useEffect(() => {
     if (isError) {
@@ -52,7 +51,6 @@ export default function TransactionsPage() {
 }
 
 function TransactionsCard({ data }) {
-  console.log(data.amount);
   return (
     <>
       <tr className={styles.row}>

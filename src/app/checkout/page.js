@@ -24,7 +24,6 @@ export default function Basket() {
   const formRef = useRef();
 
   const { mutate: submitPassenger } = useSubmitPassenger((data) => {
-    console.log(data);
     setTimeout(() => {
       router.push("/profile/tours");
     }, 1500);

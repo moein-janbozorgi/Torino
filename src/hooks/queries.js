@@ -3,89 +3,66 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/configs/config";
 
-export const fetchAllTour = async () => {
+const MINUTE = 1000 * 60;
+
+// Query keys are shared with the mutations that invalidate them, so they live
+// in one place rather than being retyped as string literals at each call site.
+export const queryKeys = {
+  allTours: ["all-tour"],
+  basket: ["basket"],
+  userTours: ["user-tours"],
+  userTransactions: ["user-transactions"],
+  userInfo: ["user-data"],
+};
+
+// Every endpoint degrades to a safe empty value instead of throwing, so each
+// consumer can render straight from `data` without its own error branch.
+// Note the fallback must never be undefined: React Query rejects that.
+const safeGet = async (path, fallback) => {
   try {
-    const result = await api.get("/tour");
-    return Array.isArray(result) ? result : result?.data ?? [];
-  } catch (error) {
-    console.log(error);
-    return [];
+    const response = await api.get(path);
+    return response ?? fallback;
+  } catch {
+    return fallback;
   }
 };
 
-export const useGetTourById = (idtour) => {
-  return useQuery({
-    queryKey: ["tour", idtour],
-    queryFn: () => fetchTourById(idtour),
-    staleTime: 1000 * 60,
-  });
+export const fetchAllTour = async () => {
+  const result = await safeGet("/tour", []);
+  return Array.isArray(result) ? result : (result?.data ?? []);
 };
 
-export const useGetBasket = () => {
-  return useQuery({
-    queryKey: ["basket"],
-    queryFn: async () => {
-      try {
-        const response = await api.get("/basket");
-        return response ?? {};
-      } catch (error) {
-        return {};
-      }
-    },
-    staleTime: 1000 * 60,
-  });
-};
-
-export const useGetUserTours = () => {
-  return useQuery({
-    queryKey: ["user-tours"],
-    queryFn: async () => {
-      try {
-        const response = await api.get("/user/tours");
-        return response ?? null;
-      } catch (error) {
-        return null;
-      }
-    },
-    staleTime: 1000 * 60 * 2,
-  });
-};
-
-export const useGetUseTransactions = () => {
-  return useQuery({
-    queryKey: ["user-transactions"],
-    queryFn: async () => {
-      try {
-        const response = await api.get("/user/transactions");
-        return response ?? null;
-      } catch (error) {
-        console.log(error.message);
-      }
-    },
-    staleTime: 1000 * 60 * 2,
-  });
-};
-
-export const useGetAllTour = () => {
-  return useQuery({
-    queryKey: ["all-tour"],
+export const useGetAllTour = () =>
+  useQuery({
+    queryKey: queryKeys.allTours,
     queryFn: fetchAllTour,
-    staleTime: 1000 * 60,
+    staleTime: MINUTE,
   });
-};
 
-export const useGetUserInfo = () => {
-  return useQuery({
-    queryKey: ["user-data"],
-    queryFn: async () => {
-      try {
-        const res = await api.get("/user/profile");
-        console.log(res);
-        return res || null;
-      } catch (error) {
-        return null;
-      }
-    },
-    staleTime: 1000 * 60 * 5,
+export const useGetBasket = () =>
+  useQuery({
+    queryKey: queryKeys.basket,
+    queryFn: () => safeGet("/basket", {}),
+    staleTime: MINUTE,
   });
-};
+
+export const useGetUserTours = () =>
+  useQuery({
+    queryKey: queryKeys.userTours,
+    queryFn: () => safeGet("/user/tours", null),
+    staleTime: 2 * MINUTE,
+  });
+
+export const useGetUseTransactions = () =>
+  useQuery({
+    queryKey: queryKeys.userTransactions,
+    queryFn: () => safeGet("/user/transactions", null),
+    staleTime: 2 * MINUTE,
+  });
+
+export const useGetUserInfo = () =>
+  useQuery({
+    queryKey: queryKeys.userInfo,
+    queryFn: () => safeGet("/user/profile", null),
+    staleTime: 5 * MINUTE,
+  });

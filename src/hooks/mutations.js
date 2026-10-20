@@ -4,10 +4,15 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
 import { toPersianNumber } from "@/utils/helper";
+import { queryKeys } from "@/hooks/queries";
 import { useRouter } from "next/navigation";
 
+const GENERIC_ERROR = "درخواست موفقیت امیز نبود";
+
+const sendOtpRequest = (data) => api.post("/auth/send-otp", data);
+
 export const useSendOtp = (onSuccessCallback) => {
-  const mutationFn = (data) => api.post("/auth/send-otp", data);
+  const mutationFn = sendOtpRequest;
 
   return useMutation({
     mutationFn,
@@ -18,7 +23,7 @@ export const useSendOtp = (onSuccessCallback) => {
       if (onSuccessCallback) onSuccessCallback(response.data);
     },
     onError: () => {
-      toast.error("درخواست موفقیت امیز نبود");
+      toast.error(GENERIC_ERROR);
     },
   });
 };
@@ -37,12 +42,12 @@ export const useCheckOtp = (onSuccessCallback) => {
         autoClose: 1000,
       });
 
-      queryClient.invalidateQueries(["user-data"]);
+      queryClient.invalidateQueries(queryKeys.userInfo);
 
       if (onSuccessCallback) onSuccessCallback(response.data);
     },
     onError: () => {
-      toast.error("درخواست موفقیت امیز نبود");
+      toast.error(GENERIC_ERROR);
     },
   });
 };
@@ -59,9 +64,8 @@ export const useSubmitPassenger = (onSuccessCallback) => {
   return useMutation({
     mutationFn,
     onSuccess: (data) => {
-      console.log(data);
       toast.success("تور با موفقیت رزرو شد");
-      queryClient.invalidateQueries(["basket"]);
+      queryClient.invalidateQueries(queryKeys.basket);
       if (onSuccessCallback) onSuccessCallback(data);
     },
     onError: () => {
@@ -72,7 +76,7 @@ export const useSubmitPassenger = (onSuccessCallback) => {
 };
 
 export const useResend = () => {
-  const mutationFn = (data) => api.post("/auth/send-otp", data);
+  const mutationFn = sendOtpRequest;
 
   return useMutation({
     mutationFn,
@@ -96,7 +100,7 @@ export const useUpdateUserProfile = (onSuccessCallback) => {
   return useMutation({
     mutationFn,
     onSuccess: (data) => {
-      queryClient.invalidateQueries(["user-data"]);
+      queryClient.invalidateQueries(queryKeys.userInfo);
 
       toast.success("دیتا با موفقیت تغییر یافت");
 
@@ -125,8 +129,8 @@ export const useLogout = () => {
   const handleLogout = () => {
     removeCookie("accessToken", "refreshToken");
     api.defaults.headers.common["Authorization"];
-    queryClient.setQueryData(["user-data"], null);
-    queryClient.invalidateQueries(["user-data"]);
+    queryClient.setQueryData(queryKeys.userInfo, null);
+    queryClient.invalidateQueries(queryKeys.userInfo);
     toast.success("شما با موفقیت خارج شدید");
     router.push("/?login=true");
   };
