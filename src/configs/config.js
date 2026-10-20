@@ -30,22 +30,21 @@ api.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
+    const status = error.response?.status;
 
-    console.log(error.response)
-    if (
-      (error.response.status === 401 || error.response.status === 403) &&
-      !originalRequest._retry
-    ) {
+    // A network-level failure (backend down, DNS, timeout) has no response at
+    // all. Reading .status off it unguarded replaced the real ECONNREFUSED
+    // with a confusing "cannot read properties of undefined".
+    if ((status === 401 || status === 403) && !originalRequest?._retry) {
       originalRequest._retry = true;
 
       const res = await getNewTokens();
       if (res?.status === 200) {
-        console.log(res);
         setCookie("accessToken", res?.data?.accessToken, 30);
         return api(originalRequest);
       }
     }
-    return Promise.reject(error?.response?.data);
+    return Promise.reject(error?.response?.data ?? error);
   }
 );
 

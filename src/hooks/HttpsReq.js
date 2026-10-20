@@ -9,16 +9,16 @@ const serverFetch = async (
 ) => {
   let url = BASE_URL;
   if (endpoint) url += endpoint;
-  if (query) url += `?${QueryString.stringify(query)}`;
+  const queryString = query ? QueryString.stringify(query) : "";
+  if (queryString) url += `?${queryString}`;
 
-  console.log(url);
 
   try {
     const res = await fetch(`${url}`, cache);
     const json = await res.json();
     return json;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };

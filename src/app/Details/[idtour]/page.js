@@ -20,9 +20,8 @@ export default async function Page({ params }) {
   const awaitedParams = await params;
   const idtour = awaitedParams.idtour;
 
-  const data = await serverFetch(`/tour/${idtour}`, { cache: "no-store" });
+  const data = await serverFetch(`/tour/${idtour}`, {}, { cache: "no-store" });
 
-  console.log(data);
 
   if (!data) return <Loader />;
 
