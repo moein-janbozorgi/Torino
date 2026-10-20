@@ -6,7 +6,7 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import styles from "@/styles/Find.module.css";
 import "@/styles/calendar.css";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { useRef, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,44 +14,86 @@ import { searchChecker } from "@/utils/validations";
 import { convertCity, searchTours } from "@/utils/helper";
 import { useSearchParams } from "next/navigation";
 
+// The date range encoded in the URL. Returns undefined when the URL carries
+// other filters but no dates, meaning "leave the user's own pick alone".
+function rangeFromParams(params) {
+  const originId = params.get("originId");
+  const destinationId = params.get("destinationId");
+  const startDate = params.get("startDate");
+  const endDate = params.get("endDate");
+
+  if (!originId && !destinationId && !startDate && !endDate) return [];
+
+  if (startDate && endDate) {
+    return [
+      new DateObject({
+        date: startDate,
+        calendar: persian,
+        locale: persian_fa,
+      }),
+      new DateObject({
+        date: endDate,
+        calendar: persian,
+        locale: persian_fa,
+      }),
+    ];
+  }
+
+  return undefined;
+}
+
 function Find({ onSearch, data }) {
   const searchParams = useSearchParams();
   const [activeInput, setActiveInput] = useState(null);
-  const [range, setRange] = useState({ from: null, to: null });
-  const [originCities, setOriginCities] = useState([]);
-  const [destinationCities, setDestinationCities] = useState([]);
+  const [range, setRange] = useState(
+    () => rangeFromParams(searchParams) ?? { from: null, to: null },
+  );
   const dropdownRef = useRef(null);
 
+  // The DatePicker also writes `range`, so it cannot simply be derived. React's
+  // documented way to fold a changed input into existing state is to adjust it
+  // during render rather than from an effect.
+  const paramsKey = searchParams.toString();
+  const [prevParamsKey, setPrevParamsKey] = useState(paramsKey);
+  if (paramsKey !== prevParamsKey) {
+    setPrevParamsKey(paramsKey);
+    const nextRange = rangeFromParams(searchParams);
+    if (nextRange !== undefined) setRange(nextRange);
+  }
 
-  useEffect(() => {
-    if (!data?.length) return;
-    const origins = Array.from(
-      new Map(
-        data.map((city) => [
-          city.origin.id,
-          {
-            id: city.origin.id,
-            name: convertCity(city.origin.name),
-          },
-        ]),
-      ).values(),
-    );
+  // Both lists are pure derivations of `data`, so compute them during render
+  // rather than copying them into state from an effect.
+  const originCities = useMemo(
+    () =>
+      Array.from(
+        new Map(
+          (Array.isArray(data) ? data : []).map((city) => [
+            city.origin.id,
+            {
+              id: city.origin.id,
+              name: convertCity(city.origin.name),
+            },
+          ]),
+        ).values(),
+      ),
+    [data],
+  );
 
-    const destinations = Array.from(
-      new Map(
-        data.map((city) => [
-          city.destination.id,
-          {
-            id: city.destination.id,
-            name: convertCity(city.destination.name),
-          },
-        ]),
-      ).values(),
-    );
-
-    setOriginCities(origins);
-    setDestinationCities(destinations);
-  }, [data]);
+  const destinationCities = useMemo(
+    () =>
+      Array.from(
+        new Map(
+          (Array.isArray(data) ? data : []).map((city) => [
+            city.destination.id,
+            {
+              id: city.destination.id,
+              name: convertCity(city.destination.name),
+            },
+          ]),
+        ).values(),
+      ),
+    [data],
+  );
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -82,6 +124,8 @@ function Find({ onSearch, data }) {
     defaultValues: { destination: "", origin: "", dateRange: [] },
   });
 
+  // Pushing the URL into the form is a sync with react-hook-form's own store,
+  // which is external to React state. The range half is handled above.
   useEffect(() => {
     if (!searchParams) return;
 
@@ -91,7 +135,6 @@ function Find({ onSearch, data }) {
     const endDate = searchParams.get("endDate");
 
     if (!originId && !destinationId && !startDate && !endDate) {
-      setRange([]);
       setValue("origin", "");
       setValue("destination", "");
       return;
@@ -106,20 +149,6 @@ function Find({ onSearch, data }) {
         (c) => c.id.toString() === destinationId,
       );
       if (destinationObj) setValue("destination", destinationObj.name);
-    }
-    if (startDate && endDate) {
-      setRange([
-        new DateObject({
-          date: startDate,
-          calendar: persian,
-          locale: persian_fa,
-        }),
-        new DateObject({
-          date: endDate,
-          calendar: persian,
-          locale: persian_fa,
-        }),
-      ]);
     }
   }, [searchParams, originCities, destinationCities, setValue]);
 

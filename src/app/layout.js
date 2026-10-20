@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="fa" dir="rtl" data-scroll-behavior="smooth">
       <head />
       <link rel="shortcut icon" href="/images/Torino.png" />
       <link rel="preload" href="/images/airplan.webp" as="image" />

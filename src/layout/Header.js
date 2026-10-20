@@ -13,27 +13,35 @@ import UserProfile from "@/atoms/userProfile";
 
 export default function Header() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const loginRequested = searchParams.get("login") === "true";
+
   const [hamburger, setHamburger] = useState(false);
-  const [on, setIsOn] = useState(false);
+  // Seed from the URL so ?login=true opens the modal on the very first render,
+  // with no flash of the closed header.
+  const [on, setIsOn] = useState(loginRequested);
   const [otp, setOtp] = useState(false);
   const [phone, setPhone] = useState("");
 
   const { data: user } = useGetUserInfo();
 
-  console.log(user);
+  // Re-open if the param flips on later during a client navigation. Adjusting
+  // state during render is React's documented alternative to an effect here.
+  const [prevLoginRequested, setPrevLoginRequested] = useState(loginRequested);
+  if (loginRequested !== prevLoginRequested) {
+    setPrevLoginRequested(loginRequested);
+    if (loginRequested) setIsOn(true);
+  }
 
-  const searchParams = useSearchParams();
-
+  // Stripping the param from the address bar is a real external-system sync.
   useEffect(() => {
-    if (searchParams.get("login") === "true") {
-      setIsOn(true);
+    if (!loginRequested) return;
 
-      const url = new URL(window.location.href);
-      url.searchParams.delete("login");
+    const url = new URL(window.location.href);
+    url.searchParams.delete("login");
 
-      window.history.replaceState({}, "", url);
-    }
-  }, [searchParams]);
+    window.history.replaceState({}, "", url);
+  }, [loginRequested]);
 
   return (
     <header className={styles.topheader}>

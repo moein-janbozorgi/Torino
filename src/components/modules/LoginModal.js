@@ -10,22 +10,31 @@ import { phoneCheker } from "@/utils/validations";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
+const OTP_COOLDOWN_SECONDS = 120;
+
+// Seconds left before another OTP may be requested, 0 when none.
+function remainingCooldown() {
+  if (typeof window === "undefined") return 0;
+  const lastSent = localStorage.getItem("otpSentAt");
+  if (!lastSent) return 0;
+  const elapsed = (Date.now() - Number(lastSent)) / 1000;
+  return elapsed < OTP_COOLDOWN_SECONDS ? OTP_COOLDOWN_SECONDS - elapsed : 0;
+}
+
 function LoginModal({ setIsOn, setOtp, setPhone }) {
-  const [canSend, setCanSend] = useState(true);
+  // Read the cooldown straight from localStorage on first render instead of
+  // syncing it in via setState. canSend is never rendered, only checked in
+  // onSubmit, so deriving it up front cannot cause a hydration mismatch.
+  const [canSend, setCanSend] = useState(() => remainingCooldown() === 0);
+
   useEffect(() => {
-    const lastSent = localStorage.getItem("otpSentAt");
-    if (lastSent) {
-      const elapsed = (Date.now() - Number(lastSent)) / 1000;
-      if (elapsed < 120) {
-        setCanSend(false);
-        const timeout = setTimeout(
-          () => setCanSend(true),
-          (120 - elapsed) * 1000
-        );
-        return () => clearTimeout(timeout);
-      }
-    }
-  }, []);
+    if (canSend) return;
+    const timeout = setTimeout(
+      () => setCanSend(true),
+      remainingCooldown() * 1000
+    );
+    return () => clearTimeout(timeout);
+  }, [canSend]);
 
   const {
     register,

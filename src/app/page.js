@@ -4,6 +4,11 @@ import { serverFetch } from "@/hooks/HttpsReq";
 export default async function Home({ searchParams }) {
   const { destinationId, originId, startDate, endDate } = await searchParams;
 
+  let allTours = [];
+  let initialTours = [];
+
+  // Only the data fetching belongs in the try: a try/catch around the JSX
+  // return cannot catch render errors anyway (that needs an error boundary).
   try {
     const query = {};
 
@@ -12,17 +17,17 @@ export default async function Home({ searchParams }) {
     if (startDate) query.startDate = startDate;
     if (endDate) query.endDate = endDate;
 
-    const allTours = await serverFetch("/tour", {}, { cache: "no-store" });
+    allTours = await serverFetch("/tour", {}, { cache: "no-store" });
 
-    const initialTours =
+    initialTours =
       Object.keys(query).length > 0
         ? await serverFetch("/tour", query, { cache: "no-store" })
         : allTours;
-
-    return <HomePage initialTours={initialTours} allTours={allTours} />;
   } catch (err) {
     console.error("Error fetching tours:", err);
-
-    return <HomePage initialTours={[]} allTours={[]} />;
+    allTours = [];
+    initialTours = [];
   }
+
+  return <HomePage initialTours={initialTours} allTours={allTours} />;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useGetUserInfo } from "@/hooks/queries";
 import styles from "@/styles/PersonalInfo.module.css";
@@ -17,7 +17,6 @@ import { useUpdateUserProfile } from "@/hooks/mutations";
 export default function PersonalInfo() {
   const { data } = useGetUserInfo();
   const [isEditing, setIsEditing] = useState(false);
-  const [selectedGender, setSelectedGender] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
   const mutation = useUpdateUserProfile(() => setIsEditing((s) => !s));
@@ -45,6 +44,10 @@ export default function PersonalInfo() {
     },
   });
 
+  // gender lives in the form; mirroring it into separate state only had to
+  // be kept in sync by hand, so read it back off the form instead.
+  const selectedGender = useWatch({ control, name: "gender" }) || "";
+
   useEffect(() => {
     if (data) {
       reset({
@@ -55,12 +58,10 @@ export default function PersonalInfo() {
         gender: data.personal?.gender || "",
         birthDate: data.birthDate || "",
       });
-      setSelectedGender(data.personal?.gender || "");
     }
   }, [data, reset]);
 
   const handleSelectGender = (gender) => {
-    setSelectedGender(gender);
     setValue("gender", gender, { shouldValidate: true, shouldDirty: true });
     setIsOpen(false);
   };
@@ -80,7 +81,7 @@ export default function PersonalInfo() {
       firstName,
       lastName,
       nationalCode: values.nationalCode,
-      gender: mapGenderToServer(values.gender || selectedGender),
+      gender: mapGenderToServer(values.gender),
       birthDate: values.birthDate,
     };
 
