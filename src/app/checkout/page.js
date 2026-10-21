@@ -2,7 +2,6 @@
 
 import { useGetBasket } from "@/hooks/queries";
 import Loader from "@/components/tempelates/Loader";
-import styles from "@/styles/CheckoutPage.module.css";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,6 +16,10 @@ import { useEffect, useRef } from "react";
 import { useSubmitPassenger } from "@/hooks/mutations";
 import { useRouter } from "next/navigation";
 import GenderSelect from "@/atoms/genderSelect";
+
+const textInput =
+  "h-[55px] w-full appearance-none rounded-[5px] border border-[#808080] bg-white pr-2.5 text-base font-normal text-[#00000080] outline-none xs:w-[250px] md:w-40 lg:w-[220px]";
+const fieldError = "mt-[5px] text-xs font-normal text-[#e74c3c] lg:text-sm";
 
 export default function Basket() {
   const router = useRouter();
@@ -52,9 +55,9 @@ export default function Basket() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.infoBox}>
-        <div className={styles.user}>
+    <div className="mx-auto mt-10 mb-[50px] flex w-full max-w-[1200px] flex-col gap-5 px-5 xs:max-w-[400px] xs:px-8 md:max-w-[950px] md:flex-row md:items-start md:justify-between md:px-12 lg:max-w-[1200px] lg:px-14">
+      <div className="rounded-[10px] border border-[#00000033] px-5 pt-0 pb-[15px] xs:px-10 md:flex md:flex-[1_1_60%] md:flex-col md:gap-5 md:px-5 lg:flex-[1_1_70%]">
+        <div className="flex items-center gap-2.5">
           <Image
             src="/images/pblackfull.png"
             width={24}
@@ -62,37 +65,39 @@ export default function Basket() {
             alt="profile"
             priority={true}
           />
-          <h1>مشخصات مسافر</h1>
+          <h1 className="text-2xl font-normal text-black">مشخصات مسافر</h1>
         </div>
         <form
-          className={styles.form}
+          className="flex flex-col gap-[25px] md:flex-row md:flex-wrap md:gap-5"
           onSubmit={handleSubmit(onSubmit)}
           ref={formRef}
         >
-          <div className={styles.formField}>
+          <div className="relative flex flex-col">
             <input
               type="text"
+              className={textInput}
               placeholder="نام و نام خانوادگی"
               {...register("fullName")}
             />
             {errors.fullName && (
-              <span className={styles.error}>{errors.fullName.message}</span>
+              <span className={fieldError}>{errors.fullName.message}</span>
             )}
           </div>
-          <div className={styles.formField}>
+          <div className="relative flex flex-col">
             <GenderSelect register={register} setValue={setValue} />
             {errors.gender && (
-              <span className={styles.error}>{errors.gender.message}</span>
+              <span className={fieldError}>{errors.gender.message}</span>
             )}
           </div>
-          <div className={styles.formField}>
+          <div className="relative flex flex-col">
             <input
               type="text"
+              className={textInput}
               placeholder="کد ملی"
               {...register("nationalCode")}
             />
             {errors.nationalCode && (
-              <span className={styles.error}>
+              <span className={fieldError}>
                 {errors.nationalCode.message}
               </span>
             )}
@@ -110,7 +115,7 @@ export default function Basket() {
                 : null;
 
               return (
-                <div className={styles.formInputWrapper}>
+                <div className="relative flex flex-col">
                   <DatePicker
                     value={selectedDate}
                     calendar={persian}
@@ -119,8 +124,11 @@ export default function Basket() {
                       field.onChange(date.format("YYYY/MM/DD"))
                     }
                     render={(value, openCalendar) => (
-                      <div onClick={openCalendar} className={styles.dateInput}>
-                        <div className={styles.placeholder}>
+                      <div
+                        onClick={openCalendar}
+                        className="w-[270px] appearance-none rounded-[5px] border border-[#808080] bg-white px-[5px] py-[15px] text-base font-normal text-[#00000080] outline-none xs:max-w-[250px] md:w-40 lg:w-[220px]"
+                      >
+                        <div className="flex items-center gap-1 text-base font-normal text-[#00000080]">
                           <Image
                             src="/images/date.png"
                             width={16}
@@ -128,7 +136,7 @@ export default function Basket() {
                             alt="date"
                             priority={true}
                           />
-                          <span>
+                          <span className="flex items-center justify-center text-center text-base font-normal text-[#00000080]">
                             {field.value ? field.value : "تاریخ تولد"}
                           </span>
                         </div>
@@ -136,7 +144,7 @@ export default function Basket() {
                     )}
                   />
                   {errors.birthDate && (
-                    <span className={styles.error}>
+                    <span className={fieldError}>
                       {errors.birthDate.message}
                     </span>
                   )}
@@ -146,27 +154,32 @@ export default function Basket() {
           />
         </form>
       </div>
-      <div className={styles.checkoutBox}>
-        <div className={styles.desc}>
-          <h1>{data?.title || "  بارگذاری..."}</h1>
-          <p>
+      <div className="mt-[30px] rounded-[10px] border border-[#0000001a] md:m-0 md:flex md:flex-[1_1_40%] md:flex-col md:justify-start lg:flex-[1_1_30%]">
+        <div className="flex items-center justify-between px-[30px]">
+          <h1 className="text-2xl font-semibold text-black">{data?.title || "  بارگذاری..."}</h1>
+          <p className="text-base font-normal text-[#282828]">
             {toPersianNumber(5)} روز و {toPersianNumber(4)} شب
           </p>
         </div>
-        <div className={styles.midLine}></div>
-        <div className={styles.priceDiv}>
-          <p>قیمت نهایی</p>
-          <div className={styles.price}>
-            <span>
+        <div className="mt-2.5 rounded-lg border border-dashed border-[#00000080] [border-image:repeating-linear-gradient(to_right,#00000080,transparent_7px_10px)_1]"></div>
+        <div className="mt-[15px] mb-5 flex justify-between px-[30px]">
+          <p className="mt-[18px] text-base font-normal text-[#282828]">قیمت نهایی</p>
+          <div className="flex items-center gap-[7px]">
+            <span className="text-2xl font-medium text-[#009eca] md:text-[22px]">
               {data?.price
                 ? toPersianNumber(convertToRial(data.price))
                 : "درحال بروزرسانی"}
             </span>
-            <p>تومان</p>
+            <p className="mt-[18px] text-sm font-normal text-[#282828cc]">
+              تومان
+            </p>
           </div>
         </div>
-        <div className={styles.btn}>
-          <button onClick={() => formRef.current.requestSubmit()}>
+        <div>
+          <button
+            onClick={() => formRef.current.requestSubmit()}
+            className="h-14 w-full rounded-[10px] border-none bg-[#28a745] text-2xl font-normal text-white hover:bg-[#6eff9e] md:h-[45px] md:text-xl"
+          >
             ثبت و خرید نهایی
           </button>
         </div>

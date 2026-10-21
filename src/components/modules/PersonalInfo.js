@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useGetUserInfo } from "@/hooks/queries";
-import styles from "@/styles/PersonalInfo.module.css";
 import Image from "next/image";
 import { toPersianNumber } from "@/utils/helper";
 import { formCheker } from "@/utils/validations";
@@ -13,6 +12,18 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { toast } from "react-toastify";
 import { useUpdateUserProfile } from "@/hooks/mutations";
+
+const heading = "pr-5 text-base font-normal text-black";
+const textInput =
+  "h-[55px] w-full rounded-[5px] border border-[#808080] bg-white pr-2.5 text-base text-[#00000080] outline-none lg:h-[45px] lg:w-[245px] lg:px-3 lg:py-2.5 lg:text-[15px]";
+const fieldError = "relative top-0 mt-1 text-right text-[13px] text-[#e74c3c]";
+const genderOption =
+  "m-0 cursor-pointer p-2.5 text-base text-[#00000080] hover:bg-[#f2f2f2]";
+const actionButton =
+  "w-full rounded-[5px] p-2 text-base font-semibold transition-all duration-200 ease-in lg:w-1/5 lg:px-0 lg:py-[5px]";
+const dataRow = "flex items-center justify-between";
+const dataLabel = "text-sm font-light text-black lg:text-[15px]";
+const dataValue = "inline-block text-right text-sm text-[#282828]";
 
 export default function PersonalInfo() {
   const { data } = useGetUserInfo();
@@ -89,34 +100,35 @@ export default function PersonalInfo() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.card}>
+    <div className="mx-auto mb-4 w-full max-w-[330px] rounded-[10px] border border-[#00000033] bg-white xs:max-w-[600px] md:max-w-[950px]">
+      <div className="xs:max-w-[600px] md:text-start lg:max-w-[1200px]">
         {isEditing ? (
-          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-            <h3>ویرایش اطلاعات شخصی</h3>
-            <div className={styles.wrapper}>
-              <div className={styles.formField}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <h3 className={`${heading} lg:px-[15px]`}>ویرایش اطلاعات شخصی</h3>
+            <div className="flex flex-col gap-[15px] px-5 pt-0 pb-5 lg:flex-row lg:flex-wrap lg:gap-5">
+              <div className="relative flex flex-col">
                 <input
                   type="text"
+                  className={textInput}
                   placeholder="نام و نام خانوادگی"
                   {...register("fullName")}
                 />
                 {errors.fullName && (
-                  <span className={styles.error}>
+                  <span className={fieldError}>
                     {errors.fullName.message}
                   </span>
                 )}
               </div>
-              <div className={styles.formField}>
-                <div className={styles.genderBox}>
+              <div className="relative flex flex-col">
+                <div className="relative w-full lg:w-[245px]">
                   <div
-                    className={styles.genderInput}
+                    className="flex cursor-pointer items-center justify-between rounded-[5px] border border-[#808080] px-2.5 py-[15px] text-base text-[#00000080] lg:h-[45px] lg:px-3 lg:py-2.5 lg:text-[15px]"
                     onClick={() => setIsOpen((prev) => !prev)}
                   >
-                    <span className={styles.show}>
+                    <span className="block text-black lg:hidden">
                       {selectedGender || "جنسیت"}
                     </span>
-                    <span className={styles.hide}>
+                    <span className="hidden text-black lg:block">
                       {selectedGender || "انتخاب"}
                     </span>
                     <Image
@@ -126,29 +138,40 @@ export default function PersonalInfo() {
                       alt="arrow"
                     />
                   </div>
-                  <div className={styles.topText}>
-                    <p>جنسیت</p>
+                  <div className="hidden lg:absolute lg:-top-5 lg:right-2.5 lg:block lg:bg-white lg:px-2.5">
+                    <p className="lg:text-[10px] lg:font-normal lg:text-[#00000080]">جنسیت</p>
                   </div>
                   {isOpen && (
-                    <div className={styles.dropdown}>
-                      <p onClick={() => handleSelectGender("مرد")}>مرد</p>
-                      <p onClick={() => handleSelectGender("زن")}>زن</p>
+                    <div className="absolute top-full right-0 left-0 z-10 mt-1 rounded-lg border border-[#ddd] bg-white">
+                      <p
+                        onClick={() => handleSelectGender("مرد")}
+                        className={genderOption}
+                      >
+                        مرد
+                      </p>
+                      <p
+                        onClick={() => handleSelectGender("زن")}
+                        className={genderOption}
+                      >
+                        زن
+                      </p>
                     </div>
                   )}
                   <input type="hidden" {...register("gender")} />
                 </div>
                 {errors.gender && (
-                  <span className={styles.error}>{errors.gender.message}</span>
+                  <span className={fieldError}>{errors.gender.message}</span>
                 )}
               </div>
-              <div className={styles.formField}>
+              <div className="relative flex flex-col">
                 <input
                   type="text"
+                  className={textInput}
                   placeholder="کد ملی"
                   {...register("nationalCode")}
                 />
                 {errors.nationalCode && (
-                  <span className={styles.error}>
+                  <span className={fieldError}>
                     {errors.nationalCode.message}
                   </span>
                 )}
@@ -166,7 +189,7 @@ export default function PersonalInfo() {
                     : null;
 
                   return (
-                    <div className={styles.formInputWrapper}>
+                    <div className="flex flex-col">
                       <DatePicker
                         value={selectedDate}
                         calendar={persian}
@@ -177,9 +200,9 @@ export default function PersonalInfo() {
                         render={(value, openCalendar) => (
                           <div
                             onClick={openCalendar}
-                            className={styles.dateInput}
+                            className="w-[287px] cursor-pointer rounded-[5px] border border-[#808080] bg-white px-[5px] py-[15px] text-base text-[#00000080] xs:w-full lg:h-[45px] lg:w-[245px] lg:px-3 lg:py-2.5 lg:text-[15px]"
                           >
-                            <div className={styles.placeholder}>
+                            <div className="flex items-center gap-1 text-base text-[#00000080]">
                               <Image
                                 src="/images/date.png"
                                 width={16}
@@ -192,7 +215,7 @@ export default function PersonalInfo() {
                         )}
                       />
                       {errors.birthDate && (
-                        <span className={styles.error}>
+                        <span className={fieldError}>
                           {errors.birthDate.message}
                         </span>
                       )}
@@ -201,18 +224,18 @@ export default function PersonalInfo() {
                 }}
               />
             </div>
-            <div className={styles.divider}></div>
-            <div className={styles.buttons}>
+            <div className="md:mb-2.5 md:h-px md:w-full md:border md:border-[#00000033]"></div>
+            <div className="flex gap-2.5 px-5 pt-0 pb-2.5 md:w-full md:justify-end lg:pr-0 lg:pl-[25px]">
               <button
                 type="submit"
-                className={styles.addBtn}
+                className={`${actionButton} border-none bg-[#28a745] text-white hover:bg-[#6eff9e] hover:text-white`}
                 disabled={mutation.isLoading}
               >
                 تایید
               </button>
               <button
                 type="button"
-                className={styles.cancleBtn}
+                className={`${actionButton} border-2 border-solid border-[#28a745] bg-white text-[#28a745] hover:bg-[#28a745] hover:text-white`}
                 onClick={() => setIsEditing((s) => !s)}
               >
                 انصراف
@@ -221,34 +244,41 @@ export default function PersonalInfo() {
           </form>
         ) : (
           <>
-            <div className={styles.topInput}>
-              <h3>اطلاعات شخصی</h3>
-              <div className={styles.editInfo}>
+            <div className="flex justify-between px-5">
+              <h3 className={heading}>اطلاعات شخصی</h3>
+              <div className="flex items-center gap-1.5">
                 <Image
                   src="/images/edit.png"
                   width={12}
                   height={12}
                   alt="edit"
                 />
-                <p onClick={() => setIsEditing((s) => !s)}>ویرایش اطلاعات</p>
+                <p
+                  onClick={() => setIsEditing((s) => !s)}
+                  className="text-[13px] font-normal text-[#009eca]"
+                >
+                  ویرایش اطلاعات
+                </p>
               </div>
             </div>
-            <div className={styles.mainInfo}>
-              <div className={styles.data}>
-                <p>نام و نام خانوادگی</p>
-                <span className={styles.bold}>
+            <div className="flex flex-col px-5">
+              <div className={`${dataRow} lg:gap-[25px]`}>
+                <p className={dataLabel}>نام و نام خانوادگی</p>
+                <span className={`${dataValue} font-semibold`}>
                   {data?.firstName && data?.lastName
                     ? `${data.firstName} ${data.lastName}`
                     : "—"}
                 </span>
               </div>
-              <div className={styles.data}>
-                <p>کدملی</p>
-                <span>{toPersianNumber(data?.nationalCode || "—")}</span>
+              <div className={`${dataRow} lg:gap-[47px]`}>
+                <p className={dataLabel}>کدملی</p>
+                <span className={`${dataValue} font-normal`}>
+                  {toPersianNumber(data?.nationalCode || "—")}
+                </span>
               </div>
-              <div className={styles.data}>
-                <p>جنسیت</p>
-                <span className={styles.bold}>
+              <div className={`${dataRow} lg:gap-20`}>
+                <p className={dataLabel}>جنسیت</p>
+                <span className={`${dataValue} font-semibold`}>
                   {data?.gender === "male"
                     ? "مرد"
                     : data?.gender === "female"
@@ -256,9 +286,11 @@ export default function PersonalInfo() {
                     : "—"}
                 </span>
               </div>
-              <div className={styles.data}>
-                <p>تاریخ تولد</p>
-                <span>{data?.birthDate || "—"}</span>
+              <div className={`${dataRow} lg:gap-[25px]`}>
+                <p className={dataLabel}>تاریخ تولد</p>
+                <span className={`${dataValue} font-normal`}>
+                  {data?.birthDate || "—"}
+                </span>
               </div>
             </div>
           </>

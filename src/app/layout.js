@@ -3,7 +3,6 @@ import Footer from "@/layout/footer";
 import { Suspense } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import styles from "@/styles/toastStyle.module.css";
 import "./globals.css";
 import Providers from "@/Providers/ReactQueryProvider";
 
@@ -67,13 +66,13 @@ export default function RootLayout({ children }) {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-      <body className="layout-body">
+      <body className="flex min-h-screen flex-col">
         <Providers>
           <Suspense fallback={null}>
             <Header />
           </Suspense>
 
-          <main className="main-content">{children}</main>
+          <main className="mx-auto w-full max-w-[1440px] flex-1 p-4 pt-[60px]">{children}</main>
 
           <Footer />
 
@@ -82,8 +81,8 @@ export default function RootLayout({ children }) {
             autoClose={3000}
             rtl={true}
             theme="dark"
-            toastClassName={styles.customToast}
-            progressClassName={styles.customProgress}
+            toastClassName="rounded-xl bg-[rgba(25,25,25,0.8)] font-[Vazirmatn] text-white backdrop-blur-[8px] [direction:rtl]"
+            progressClassName="bg-linear-to-r from-[#00c6ff] to-[#0072ff]"
           />
         </Providers>
       </body>

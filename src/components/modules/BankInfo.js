@@ -3,13 +3,20 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import styles from "@/styles/BankInfo.module.css";
 import { useGetUserInfo } from "@/hooks/queries";
 import Image from "next/image";
 import { toPersianNumber } from "@/utils/helper";
 import { bankChecker } from "@/utils/validations";
 
 import { useUpdateUserProfile } from "@/hooks/mutations";
+
+const heading = "text-base font-normal text-black";
+const inputWrapper = "flex flex-col gap-2.5 lg:flex-1 lg:px-3";
+const input =
+  "rounded-[5px] border border-[#00000080] px-[5px] py-2.5 text-sm font-normal text-[#00000080] outline-none lg:w-[95%] lg:py-[7px]";
+const fieldError = "text-right text-sm font-normal text-[#e74c3c]";
+const dataLabel = "text-sm font-light text-black";
+const dataValue = "inline-block text-right text-sm font-normal text-[#282828]";
 
 export default function BankInfo() {
   const { data } = useGetUserInfo();
@@ -40,53 +47,62 @@ export default function BankInfo() {
   };
 
   return (
-    <div className={styles.card}>
+    <div className="mx-auto mb-4 w-full max-w-[330px] rounded-[10px] border border-[#00000033] bg-white px-5 xs:max-w-[600px] lg:max-w-[1200px] lg:p-0">
       {isEditing ? (
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <h3>ویرایش اطلاعات حساب بانکی</h3>
-          <div className={styles.inputs}>
-            <div className={styles.inputWrapper}>
-              <input placeholder="شماره کارت" {...register("debitCard_code")} />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h3 className={`${heading} lg:px-[15px]`}>ویرایش اطلاعات حساب بانکی</h3>
+          <div className="flex flex-col gap-[15px] lg:flex-row lg:gap-0 lg:pb-5">
+            <div className={inputWrapper}>
+              <input
+                placeholder="شماره کارت"
+                className={input}
+                {...register("debitCard_code")}
+              />
               {errors.debitCard_code && (
-                <span className={styles.error}>
+                <span className={fieldError}>
                   {errors.debitCard_code.message}
                 </span>
               )}
             </div>
 
-            <div className={styles.inputWrapper}>
+            <div className={inputWrapper}>
               <input
                 placeholder="شماره حساب"
+                className={input}
                 {...register("accountIdentifier")}
               />
               {errors.accountIdentifier && (
-                <span className={styles.error}>
+                <span className={fieldError}>
                   {errors.accountIdentifier.message}
                 </span>
               )}
             </div>
 
-            <div className={styles.inputWrapper}>
-              <input placeholder="شماره شبا" {...register("shaba_code")} />
+            <div className={inputWrapper}>
+              <input
+                placeholder="شماره شبا"
+                className={input}
+                {...register("shaba_code")}
+              />
               {errors.shaba_code && (
-                <span className={styles.error}>
+                <span className={fieldError}>
                   {errors.shaba_code.message}
                 </span>
               )}
             </div>
           </div>
-          <div className={styles.divider}></div>
-          <div className={styles.buttons}>
+          <div className="lg:h-px lg:w-full lg:border lg:border-[#00000033]"></div>
+          <div className="flex gap-2.5 pt-2.5 pb-[15px] lg:w-full lg:justify-end lg:pb-2.5 lg:pl-[25px]">
             <button
               type="submit"
-              className={styles.addBtn}
+              className="w-full rounded-[5px] border-none bg-[#28a745] p-2 text-base font-semibold text-white transition-all duration-200 ease-in hover:bg-[#6eff9e] hover:text-white lg:w-1/5 lg:px-0 lg:py-[5px]"
               disabled={mutation.isLoading}
             >
               تایید
             </button>
             <button
               type="button"
-              className={styles.cancleBtn}
+              className="w-full rounded-[5px] border-2 border-solid border-[#28a745] bg-white p-2 text-base font-semibold text-[#28a745] transition-all duration-200 ease-in hover:bg-[#28a745] hover:text-white lg:w-1/5 lg:px-0 lg:py-[5px]"
               onClick={() => setIsEditing((s) => !s)}
             >
               انصراف
@@ -95,29 +111,34 @@ export default function BankInfo() {
         </form>
       ) : (
         <>
-          <div className={styles.topInput}>
-            <h3>اطلاعات حساب بانکی</h3>
-            <div className={styles.editInfo}>
+          <div className="flex justify-between lg:px-5">
+            <h3 className={heading}>اطلاعات حساب بانکی</h3>
+            <div className="flex items-center gap-1.5">
               <Image src="/images/edit.png" width={12} height={12} alt="edit" />
-              <p onClick={() => setIsEditing((s) => !s)}>ویرایش اطلاعات</p>
+              <p
+                onClick={() => setIsEditing((s) => !s)}
+                className="text-[13px] font-normal text-[#009eca]"
+              >
+                ویرایش اطلاعات
+              </p>
             </div>
           </div>
-          <div className={styles.mainInfo}>
-            <div className={styles.wrapperInfo}>
-              <div className={styles.data}>
-                <p>شماره کارت</p>
-                <span>
+          <div className="flex flex-col lg:pr-5">
+            <div className="lg:flex lg:flex-row-reverse lg:justify-end lg:gap-[70px]">
+              <div className="flex items-center justify-between lg:gap-5">
+                <p className={dataLabel}>شماره کارت</p>
+                <span className={dataValue}>
                   {toPersianNumber(data?.payment?.debitCard_code) || "—"}
                 </span>
               </div>
-              <div className={styles.data}>
-                <p>شماره شبا</p>
-                <span>{toPersianNumber(data?.payment?.shaba_code) || "—"}</span>
+              <div className="flex items-center justify-between lg:justify-normal lg:gap-[60px]">
+                <p className={dataLabel}>شماره شبا</p>
+                <span className={dataValue}>{toPersianNumber(data?.payment?.shaba_code) || "—"}</span>
               </div>
             </div>
-            <div className={styles.data}>
-              <p>شماره حساب</p>
-              <span>
+            <div className="flex items-center justify-between lg:justify-normal lg:gap-10">
+              <p className={dataLabel}>شماره حساب</p>
+              <span className={dataValue}>
                 {toPersianNumber(data?.payment?.accountIdentifier) || "—"}
               </span>
             </div>

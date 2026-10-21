@@ -3,13 +3,37 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import styles from "@/styles/Header.module.css";
 import { useEffect, useState } from "react";
 import LoginModal from "@/components/modules/LoginModal";
 import OtpModal from "@/components/modules/OtpModal";
 import { useSearchParams } from "next/navigation";
 import { useGetUserInfo } from "@/hooks/queries";
 import UserProfile from "@/atoms/userProfile";
+
+const navLinks = [
+  { href: "/", label: "صفحه اصلی", icon: "/images/home.png", alt: "home-img" },
+  {
+    href: "/#",
+    label: "خدمات گردشگری",
+    icon: "/images/airplane.png",
+    alt: "airplane-img",
+  },
+  {
+    href: "/#",
+    label: "درباره ما",
+    icon: "/images/volume-low.png",
+    alt: "volume-img",
+  },
+  {
+    href: "/#",
+    label: "تماس با ما",
+    icon: "/images/callkh.png",
+    alt: "call-img",
+  },
+];
+
+const activeIcon =
+  "invert-[44%] sepia-[94%] saturate-[10000%] hue-rotate-135 brightness-90 contrast-90";
 
 export default function Header() {
   const pathname = usePathname();
@@ -44,8 +68,8 @@ export default function Header() {
   }, [loginRequested]);
 
   return (
-    <header className={styles.topheader}>
-      <div className={styles.header}>
+    <header className="fixed top-0 left-0 z-[1000] w-full bg-white shadow-[0px_1px_4px_0px_#00000040]">
+      <div className="mx-auto flex w-full items-center justify-between px-[1.8rem] pt-[0.7rem] pb-[0.2rem] xs:px-12 md:hidden">
         <div>
           <Image
             src="/images/hamburger.png"
@@ -72,88 +96,82 @@ export default function Header() {
       {hamburger ? (
         <>
           <div
-            className={styles.overlay}
+            className="fixed top-0 left-0 z-[900] h-full w-full bg-black/20 backdrop-blur-[1px]"
             onClick={() => setHamburger((s) => !s)}
           ></div>
 
-          <div
-            className={`${styles.hamburger} ${hamburger ? styles.open : ""}`}
-          >
-            <div className={pathname === "/" ? `${styles.active}` : ""}>
-              <Image
-                src="/images/home.png"
-                width={16}
-                height={16}
-                alt="home-img"
-              />
-              <Link href="/">صفحه اصلی</Link>
-            </div>
-            <div className={pathname === "/#" ? `${styles.active}` : ""}>
-              <Image
-                src="/images/airplane.png"
-                width={16}
-                height={16}
-                alt="airplane-img"
-              />
-              <Link href="/#">خدمات گردشگری</Link>
-            </div>
-            <div className={pathname === "/#" ? `${styles.active}` : ""}>
-              <Image
-                src="/images/volume-low.png"
-                width={16}
-                height={16}
-                alt="volume-img"
-              />
-              <Link href="/#">درباره ما</Link>
-            </div>
-            <div className={pathname === "/#" ? `${styles.active}` : ""}>
-              <Image
-                src="/images/callkh.png"
-                width={16}
-                height={16}
-                alt="call-img"
-              />
-              <Link href="/#">تماس با ما</Link>
-            </div>
+          <div className="fixed top-0 right-0 z-[1000] flex h-full w-1/2 translate-x-0 flex-col rounded-xl bg-white pt-[30px] pr-2.5 transition-transform duration-300 ease-in-out">
+            {navLinks.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <div
+                  key={link.label}
+                  className="mb-5 flex items-center gap-2.5"
+                >
+                  <Image
+                    src={link.icon}
+                    width={16}
+                    height={16}
+                    alt={link.alt}
+                    className={active ? activeIcon : ""}
+                  />
+                  <Link
+                    href={link.href}
+                    className={`text-base no-underline ${
+                      active
+                        ? "font-semibold text-[#28a745]"
+                        : "font-normal text-[#282828]"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </>
       ) : null}
-      <div className={styles.webheader}>
-        <div className={styles.rightGroup}>
+      <div className="hidden md:flex md:h-[60px] md:items-center md:justify-between md:px-16 md:py-3 lg:mx-auto lg:max-w-[1200px]">
+        <div className="flex items-center gap-[3.3rem] md:gap-6 lg:gap-[3.3rem]">
           <Image
             src="/images/Torino-logo.png"
             width={100}
             height={30}
             alt="torino-img"
+            className="cursor-pointer object-contain"
           />
-          <ul>
-            <li className={pathname === "/" ? `${styles.active}` : ""}>
-              <Link href="/">صفحه اصلی</Link>
-            </li>
-            <li className={pathname === "/#" ? `${styles.active}` : ""}>
-              <Link href="/#">خدمات گردشگری</Link>
-            </li>
-            <li className={pathname === "/#" ? `${styles.active}` : ""}>
-              <Link href="/#">درباره ما</Link>
-            </li>
-            <li className={pathname === "/#" ? `${styles.active}` : ""}>
-              <Link href="/#"> تماس با ما</Link>
-            </li>
+          <ul className="m-0 flex list-none gap-8 p-0">
+            {navLinks.map((link) => (
+              <li key={link.label}>
+                <Link
+                  href={link.href}
+                  className={`text-base font-normal no-underline transition-colors duration-300 hover:text-[#1ea34a] md:text-[15px] lg:text-base ${
+                    pathname === link.href ? "text-[#28a745]" : "text-[#282828]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         {user ? (
           <UserProfile data={user} />
         ) : (
-          <button className={styles.authbtn} onClick={() => setIsOn((s) => !s)}>
+          <button
+            className="flex h-[30px] cursor-pointer items-center gap-1.5 rounded-lg border-2 border-solid border-[#1ea34a] bg-transparent text-sm font-semibold text-[#1ea34a] transition-all duration-300 hover:bg-[#6eff9e] hover:text-white md:px-2.5 md:py-[15px]"
+            onClick={() => setIsOn((s) => !s)}
+          >
             <Image
               src="/images/profile.png"
               width={24}
               height={24}
               alt="profile-img"
+              className="size-5 md:size-6"
             />
-            <span className="text">ورود</span>
-            <span className="divider">|</span>
-            <span className="text">ثبت نام</span>
+            <span>ورود</span>
+            <span>|</span>
+            <span>ثبت نام</span>
           </button>
         )}
       </div>

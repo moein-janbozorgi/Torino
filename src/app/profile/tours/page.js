@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import Loader from "@/components/tempelates/Loader";
 import TourCard from "@/components/modules/TourCard";
 import { useEffect } from "react";
-import styles from "@/styles/MytourPage.module.css";
 
 
 
@@ -24,7 +23,7 @@ export default function MyToursPage() {
     return <p style={{ textAlign: "center" }}>شما هنوز توری رزرو نکرده‌اید.</p>;
 
   return (
-    <div className={styles.wrapper}>
+    <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-5 lg:rounded-[10px] lg:border lg:border-[#00000033] lg:px-5 lg:py-2.5">
       {data.map((tour, index) => (
         <TourCard key={`${tour.id}-${index}`} tour={tour} />
       ))}

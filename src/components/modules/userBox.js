@@ -1,7 +1,6 @@
 "useclient";
 import { toPersianNumber } from "@/utils/helper";
 import { useLogout } from "@/hooks/mutations";
-import styles from "@/styles/Userbox.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -16,30 +15,37 @@ function Userbox({ data, setOpen }) {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.phone}>
-        <div className={styles.circle}></div>
+    <div className="absolute top-[50px] -left-2.5 z-[1001] flex w-40 flex-col rounded-[11px] bg-white">
+      <div className="flex cursor-pointer items-center gap-2.5 pr-3">
+        <div className="size-7 rounded-full bg-[#d9d9d9]"></div>
         <Image
           src="/images/profilegray.png"
           alt="prof"
           width={16}
           height={16}
+          className="absolute top-[18px] right-[18px]"
         />
-        <p>{toPersianNumber(data?.mobile)}</p>
+        <p className="relative top-0.5 text-sm font-medium text-[#10411b]">{toPersianNumber(data?.mobile)}</p>
       </div>
-      <div className={styles.info}>
+      <div className="flex items-center pr-3.5">
         <Image
           src="/images/profileblack.png"
           alt="prof"
           width={16}
           height={16}
         />
-        <button onClick={routeHandler}>اطلاعات حساب کاربری</button>
+        <button
+          onClick={routeHandler}
+          className="border-none bg-white text-xs font-normal text-[#282828]"
+        >اطلاعات حساب کاربری</button>
       </div>
-      <div className={styles.divider}></div>
-      <div className={styles.logout} onClick={handleLogout}>
+      <div className="mt-2.5 border border-[#0000001f]"></div>
+      <div
+        className="flex cursor-pointer items-center gap-2.5 pr-3"
+        onClick={handleLogout}
+      >
         <Image src="/images/logout.png" alt="logout" width={16} height={16} />
-        <p>خروج از حساب کاربری</p>
+        <p className="text-xs font-normal text-[#d40000]">خروج از حساب کاربری</p>
       </div>
     </div>
   );

@@ -23,7 +23,14 @@ function Reserve({ id }) {
     }
   };
 
-  return <button onClick={sendHandler}>رزرو و خرید</button>;
+  return (
+    <button
+      onClick={sendHandler}
+      className="h-[42px] w-[154px] rounded-[10px] border-none bg-[#28a745] text-center text-xl font-normal text-white transition-all duration-200 ease-in hover:bg-[#6eff9e]"
+    >
+      رزرو و خرید
+    </button>
+  );
 }
 
 export default Reserve;

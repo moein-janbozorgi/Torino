@@ -1,75 +1,162 @@
-:root {
+/* Tailwind without preflight: the UI was built on browser defaults. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
   --color-primary: #28a745;
   --color-secondary: #10411b;
   --color-complementary: #009eca;
   --color-text: #282828;
   --font-main: "Vazirmatn", sans-serif;
+
+  /* Named sizes set font-size only, like the original CSS (which never set line-height). */
+  --text-xs--line-height: normal;
+  --text-sm--line-height: normal;
+  --text-base--line-height: normal;
+  --text-lg--line-height: normal;
+  --text-xl--line-height: normal;
+  --text-2xl--line-height: normal;
+  --text-4xl--line-height: normal;
+  --text-5xl--line-height: normal;
+
+  /* Breakpoints the original stylesheets used; defaults cleared to keep units consistent. */
+  --breakpoint-*: initial;
+  --breakpoint-xs: 391px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+
+  --animate-fade-in: fade-in 0.3s ease;
+  --animate-pop-up: pop-up 0.3s ease;
+  --animate-drop-in: drop-in 0.2s ease;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes pop-up {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes drop-in {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    direction: rtl;
+  }
+
+  html,
+  body,
+  input,
+  textarea,
+  button,
+  select,
+  a {
+    font-family: var(--font-main);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background-color: #fff;
+    color: var(--color-text);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(71, 182, 27);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(72, 211, 29);
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-  direction: rtl;
-}
+/* Third-party widget internals (react-multi-date-picker, react-toastify) can't take utility classes. */
+@layer components {
+  .rmdp-calendar {
+    font-family: "Vazirmatn";
+    font-size: 16px;
+    color: #333;
+  }
 
-html,
-body,
-input,
-textarea,
-button,
-select,
-a {
-  font-family: var(--font-main);
-}
+  .rmdp-header {
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
 
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  background-color: #fff;
-  color: var(--color-text);
-}
+  .rmdp-weekday {
+    color: #555;
+    font-weight: 500;
+  }
 
-.layout-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+  .rmdp-day {
+    width: 33px;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #000000;
+  }
 
-.main-content {
-  flex: 1;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 1rem;
-  padding-top: 60px;
-}
+  .rmdp-day.rmdp-selected {
+    background-color: #0070f3;
+    color: #fff;
+  }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
+  .Toastify__close-button {
+    color: #fff;
+  }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+  .Toastify__toast-container {
+    padding: 12px;
+  }
 }
-
-::-webkit-scrollbar-thumb {
-  background: rgb(71, 182, 27);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(72, 211, 29);
-}
-
 @font-face {
   font-family: "Vazirmatn";
   src: url("/fonts/Vazirmatn-Thin.woff2") format("woff2");

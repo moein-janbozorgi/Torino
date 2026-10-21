@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
-import styles from "@/styles/CheckoutPage.module.css";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+
+const option =
+  "m-0 cursor-pointer p-2.5 text-base font-normal text-[#00000080] hover:bg-[#f2f2f2]";
 
 export default function GenderSelect({ register, setValue }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState("");
+  const boxRef = useRef(null);
 
   const handleSelect = (value) => {
     setSelected(value);
@@ -14,7 +17,7 @@ export default function GenderSelect({ register, setValue }) {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (!e.target.closest(`.${styles.genderBox}`)) {
+      if (!boxRef.current?.contains(e.target)) {
         setIsOpen(false);
       }
     };
@@ -23,9 +26,12 @@ export default function GenderSelect({ register, setValue }) {
   }, []);
 
   return (
-    <div className={styles.genderBox}>
+    <div
+      ref={boxRef}
+      className="relative w-full xs:w-[250px] md:w-40 lg:w-[220px]"
+    >
       <div
-        className={styles.genderInput}
+        className="flex cursor-pointer items-center justify-between rounded-[5px] border border-[#808080] px-2.5 py-[15px] text-base font-normal text-[#00000080]"
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <span>{selected || "جنسیت"}</span>
@@ -38,9 +44,13 @@ export default function GenderSelect({ register, setValue }) {
       </div>
 
       {isOpen && (
-        <div className={styles.dropdown}>
-          <p onClick={() => handleSelect("مرد")}>مرد</p>
-          <p onClick={() => handleSelect("زن")}>زن</p>
+        <div className="absolute top-full right-0 left-0 z-10 mt-1 rounded-lg border border-[#ddd] bg-white">
+          <p onClick={() => handleSelect("مرد")} className={option}>
+            مرد
+          </p>
+          <p onClick={() => handleSelect("زن")} className={option}>
+            زن
+          </p>
         </div>
       )}
       <input type="hidden" {...register("gender")} />
