@@ -142,7 +142,7 @@ export default function Header() {
           </div>
         </>
       ) : null}
-      <div className="hidden md:flex md:h-[60px] md:items-center md:justify-between md:px-16 md:py-3 lg:mx-auto lg:max-w-[1200px]">
+      <div className="hidden md:flex md:h-[60px] md:items-center md:justify-between md:px-8 md:py-3 lg:px-16 lg:mx-auto lg:max-w-[1200px]">
         <div className="flex items-center gap-[3.3rem] md:gap-6 lg:gap-[3.3rem]">
           <Image
             src="/images/Torino-logo.png"
@@ -151,12 +151,12 @@ export default function Header() {
             alt="torino-img"
             className="cursor-pointer object-contain dark:invert dark:hue-rotate-180"
           />
-          <ul className="m-0 flex list-none gap-8 p-0">
+          <ul className="m-0 flex list-none gap-4 p-0 lg:gap-8">
             {navLinks.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className={`text-base font-normal no-underline transition-colors duration-300 hover:text-[#0f766e] md:text-[15px] lg:text-base ${
+                  className={`whitespace-nowrap text-base font-normal no-underline transition-colors duration-300 hover:text-[#0f766e] md:text-[15px] lg:text-base ${
                     pathname === link.href ? "text-[#0d9488]" : "text-text"
                   }`}
                 >

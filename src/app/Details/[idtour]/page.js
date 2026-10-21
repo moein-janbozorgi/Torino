@@ -134,7 +134,7 @@ export default async function Page({ params }) {
               </div>
             </div>
           </div>
-          <div className="flex gap-[50px] text-center xs:justify-between md:justify-start md:gap-0">
+          <div className="flex justify-between gap-2 text-center md:justify-start md:gap-0">
             {options.map((option, i) => (
               <div
                 key={option.label}
@@ -144,7 +144,7 @@ export default async function Page({ params }) {
                     : ""
                 } ${option.boxClass ?? "flex"}`}
               >
-                <div className="-mb-[15px] flex items-center justify-center gap-[5px]">
+                <div className="-mb-[15px] flex items-center justify-center gap-[5px] whitespace-nowrap">
                   <Image src={option.icon} width={14} height={14} alt="medal" className="dark:invert" />
                   <p className={optionText}>{option.label}</p>
                 </div>

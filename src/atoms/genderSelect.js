@@ -28,7 +28,7 @@ export default function GenderSelect({ register, setValue }) {
   return (
     <div
       ref={boxRef}
-      className="relative w-full xs:w-[250px] md:w-40 lg:w-[220px]"
+      className="relative w-full"
     >
       <div
         className="flex cursor-pointer items-center justify-between rounded-[5px] border border-muted px-2.5 py-[15px] text-base font-normal text-muted"
