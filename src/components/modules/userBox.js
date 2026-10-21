@@ -25,7 +25,7 @@ function Userbox({ data, setOpen }) {
           height={16}
           className="absolute top-[18px] right-[18px] dark:invert"
         />
-        <p className="relative top-0.5 text-sm font-medium text-[#10411b] dark:text-[#28a745]">{toPersianNumber(data?.mobile)}</p>
+        <p className="relative top-0.5 text-sm font-medium text-[#134e4a] dark:text-[#0d9488]">{toPersianNumber(data?.mobile)}</p>
       </div>
       <div className="flex items-center pr-3.5">
         <Image

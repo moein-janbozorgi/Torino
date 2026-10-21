@@ -15,7 +15,7 @@ function UserProfile({ data }) {
         alt="profile"
         className="mb-0.5"
       />
-      <p className="text-sm font-medium text-[#28a745]">{toPersianNumber(data?.mobile)}</p>
+      <p className="text-sm font-medium text-[#0d9488]">{toPersianNumber(data?.mobile)}</p>
       <Image
         src="/images/arrowdown.png"
         width={16}

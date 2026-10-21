@@ -13,7 +13,7 @@ function Loader() {
         backgroundColor: "#fff",
       }}
     >
-      <FadeLoader color="#2feb53" height={20} width={3} />
+      <FadeLoader color="#14b8a6" height={20} width={3} />
     </div>
   );
 }

@@ -77,7 +77,7 @@ function LoginModal({ setIsOn, setOtp, setPhone }) {
             <div>
               <input
                 type="text"
-                className="w-full rounded-md border border-line px-[5px] py-5 text-[15px] font-light focus:border-[#166534] focus:outline-none lg:w-[95%] lg:px-1.5 lg:py-2.5"
+                className="w-full rounded-md border border-line px-[5px] py-5 text-[15px] font-light focus:border-[#115e59] focus:outline-none lg:w-[95%] lg:px-1.5 lg:py-2.5"
                 placeholder={toPersianNumber("4253***0912")}
                 {...register("mobile")}
               />
@@ -88,7 +88,7 @@ function LoginModal({ setIsOn, setOtp, setPhone }) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-[1.8rem] h-[3.4rem] w-full cursor-pointer rounded-md border border-[#166534] bg-[#28a745] text-lg font-medium text-white transition-[background,transform] duration-200 hover:bg-[#6eff9e] hover:text-white disabled:cursor-not-allowed disabled:opacity-60 lg:h-12 lg:w-[98%]"
+              className="mt-[1.8rem] h-[3.4rem] w-full cursor-pointer rounded-md border border-[#115e59] bg-[#0d9488] text-lg font-medium text-white transition-[background,transform] duration-200 hover:bg-[#0f766e] hover:text-white disabled:cursor-not-allowed disabled:opacity-60 lg:h-12 lg:w-[98%]"
             >
               ارسال کد تایید
             </button>

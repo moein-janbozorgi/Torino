@@ -11,7 +11,7 @@ import { useGetUserInfo } from "@/hooks/queries";
 import UserProfile from "@/atoms/userProfile";
 import ThemeToggle from "@/atoms/ThemeToggle";
 
-// `mono` icons are near-black and get inverted in dark mode; home.png is already green.
+// `mono` icons are near-black and get inverted in dark mode; home.png is already brand-colored.
 const navLinks = [
   { href: "/", label: "صفحه اصلی", icon: "/images/home.png", alt: "home-img" },
   {
@@ -130,7 +130,7 @@ export default function Header() {
                     href={link.href}
                     className={`text-base no-underline ${
                       active
-                        ? "font-semibold text-[#28a745]"
+                        ? "font-semibold text-[#0d9488]"
                         : "font-normal text-text"
                     }`}
                   >
@@ -156,8 +156,8 @@ export default function Header() {
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className={`text-base font-normal no-underline transition-colors duration-300 hover:text-[#1ea34a] md:text-[15px] lg:text-base ${
-                    pathname === link.href ? "text-[#28a745]" : "text-text"
+                  className={`text-base font-normal no-underline transition-colors duration-300 hover:text-[#0f766e] md:text-[15px] lg:text-base ${
+                    pathname === link.href ? "text-[#0d9488]" : "text-text"
                   }`}
                 >
                   {link.label}
@@ -172,7 +172,7 @@ export default function Header() {
             <UserProfile data={user} />
           ) : (
             <button
-              className="flex h-[30px] cursor-pointer items-center gap-1.5 rounded-lg border-2 border-solid border-[#1ea34a] bg-transparent text-sm font-semibold text-[#1ea34a] transition-all duration-300 hover:bg-[#6eff9e] hover:text-white md:px-2.5 md:py-[15px]"
+              className="flex h-[30px] cursor-pointer items-center gap-1.5 rounded-lg border-2 border-solid border-[#0f766e] bg-transparent text-sm font-semibold text-[#0f766e] transition-all duration-300 hover:bg-[#0f766e] hover:text-white md:px-2.5 md:py-[15px]"
               onClick={() => setIsOn((s) => !s)}
             >
               <Image

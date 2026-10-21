@@ -155,7 +155,7 @@ function OtpModal({ setOtp, phone, setIsOn }) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-4 mb-2.5 h-[3.4rem] w-[95%] cursor-pointer rounded-md border border-[#166534] bg-[#28a745] text-lg font-medium text-white transition-[background,transform] duration-200 hover:bg-[#6eff9e] hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-4 mb-2.5 h-[3.4rem] w-[95%] cursor-pointer rounded-md border border-[#115e59] bg-[#0d9488] text-lg font-medium text-white transition-[background,transform] duration-200 hover:bg-[#0f766e] hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
             >
               ورود به تورینو
             </button>

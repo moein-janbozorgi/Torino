@@ -180,7 +180,7 @@ export default function Basket() {
         <div>
           <button
             onClick={() => formRef.current.requestSubmit()}
-            className="h-14 w-full rounded-[10px] border-none bg-[#28a745] text-2xl font-normal text-white hover:bg-[#6eff9e] md:h-[45px] md:text-xl"
+            className="h-14 w-full rounded-[10px] border-none bg-[#0d9488] text-2xl font-normal text-white hover:bg-[#0f766e] md:h-[45px] md:text-xl"
           >
             ثبت و خرید نهایی
           </button>

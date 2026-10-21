@@ -30,7 +30,7 @@ Dark mode is a `.dark` class on `<html>`, set before paint by an inline script i
 `localStorage.theme`, else the OS preference) and flipped by `src/atoms/ThemeToggle.js`. Use the neutral
 tokens from `globals.css` — `bg-surface`, `bg-surface-2`, `text-fg`, `text-text`, `text-muted`,
 `border-line` / `bg-line` — instead of hex neutrals or `bg-white`/`text-black`, which won't switch.
-Brand greens/blue stay as hex. Near-black monochrome icon PNGs need `dark:invert`.
+Brand turquoise/blue stay as hex. Near-black monochrome icon PNGs need `dark:invert`.
 
 Component layering (follow the existing placement when adding files):
 `src/atoms/` single-purpose widgets → `src/components/modules/` feature blocks →

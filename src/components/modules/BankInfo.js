@@ -95,14 +95,14 @@ export default function BankInfo() {
           <div className="flex gap-2.5 pt-2.5 pb-[15px] lg:w-full lg:justify-end lg:pb-2.5 lg:pl-[25px]">
             <button
               type="submit"
-              className="w-full rounded-[5px] border-none bg-[#28a745] p-2 text-base font-semibold text-white transition-all duration-200 ease-in hover:bg-[#6eff9e] hover:text-white lg:w-1/5 lg:px-0 lg:py-[5px]"
+              className="w-full rounded-[5px] border-none bg-[#0d9488] p-2 text-base font-semibold text-white transition-all duration-200 ease-in hover:bg-[#0f766e] hover:text-white lg:w-1/5 lg:px-0 lg:py-[5px]"
               disabled={mutation.isLoading}
             >
               تایید
             </button>
             <button
               type="button"
-              className="w-full rounded-[5px] border-2 border-solid border-[#28a745] bg-surface p-2 text-base font-semibold text-[#28a745] transition-all duration-200 ease-in hover:bg-[#28a745] hover:text-white lg:w-1/5 lg:px-0 lg:py-[5px]"
+              className="w-full rounded-[5px] border-2 border-solid border-[#0d9488] bg-surface p-2 text-base font-semibold text-[#0d9488] transition-all duration-200 ease-in hover:bg-[#0d9488] hover:text-white lg:w-1/5 lg:px-0 lg:py-[5px]"
               onClick={() => setIsEditing((s) => !s)}
             >
               انصراف

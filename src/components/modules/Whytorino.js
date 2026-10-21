@@ -70,7 +70,7 @@ export default function Whytorino() {
           />
 
           <span className={`${headingText} text-text`}>چرا</span>
-          <p className={`${headingText} text-[#28a745]`}>تورینو</p>
+          <p className={`${headingText} text-[#0d9488]`}>تورینو</p>
           <span className={`${headingText} text-text`}>؟</span>
         </div>
         <div className="-mt-[35px] mr-2.5 hidden xs:block">

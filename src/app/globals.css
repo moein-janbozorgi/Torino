@@ -7,8 +7,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #28a745;
-  --color-secondary: #10411b;
+  --color-primary: #0d9488;
+  --color-secondary: #134e4a;
   --color-complementary: #009eca;
   --color-text: #282828;
 
@@ -134,12 +134,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgb(71, 182, 27);
+    background: #0d9488;
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(72, 211, 29);
+    background: #14b8a6;
   }
 }
 

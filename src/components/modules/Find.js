@@ -184,7 +184,7 @@ function Find({ onSearch, data }) {
     <div className="mx-auto mb-[45px] max-w-[390px] px-4 xs:mb-[60px] xs:max-w-[720px] xs:px-8 md:mb-20 md:max-w-[800px] md:px-12">
       <div className="w-full lg:mx-auto lg:max-w-[1200px]">
         <div className="flex items-center justify-center gap-[7px] lg:mb-2.5">
-          <span className="text-base font-semibold text-[#28a745] xs:text-[15px] md:text-[22px] lg:text-[28px]">تورینو</span>
+          <span className="text-base font-semibold text-[#0d9488] xs:text-[15px] md:text-[22px] lg:text-[28px]">تورینو</span>
           <p className="text-base font-semibold text-fg/65 xs:text-[15px] md:text-[22px] lg:text-[28px]">
             برگزار کننده بهترین تور های داخلی و خارجی</p>
         </div>
@@ -319,7 +319,7 @@ function Find({ onSearch, data }) {
                 </div>
               )}
             />
-            <button type="submit" className="mt-[15px] h-[47px] w-full rounded-2xl border-none bg-[#28a745] text-xl font-normal text-white transition-all duration-200 ease-in hover:bg-[#6eff9e] hover:text-white md:mx-auto md:h-[50px] md:w-[55%] lg:m-0 lg:w-1/5 lg:shrink-0 lg:shadow-none">
+            <button type="submit" className="mt-[15px] h-[47px] w-full rounded-2xl border-none bg-[#0d9488] text-xl font-normal text-white transition-all duration-200 ease-in hover:bg-[#0f766e] hover:text-white md:mx-auto md:h-[50px] md:w-[55%] lg:m-0 lg:w-1/5 lg:shrink-0 lg:shadow-none">
               جستجو
             </button>
           </div>

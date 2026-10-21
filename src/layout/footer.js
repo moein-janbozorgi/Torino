@@ -5,7 +5,7 @@ import { toPersianNumber } from "@/utils/helper";
 const item = "my-2";
 const firstItem = "mt-2 mb-2.5 lg:mb-5";
 const link =
-  "text-base font-normal text-text no-underline transition-colors duration-300 hover:text-[#1ea34a] xs:text-sm lg:text-lg";
+  "text-base font-normal text-text no-underline transition-colors duration-300 hover:text-[#0f766e] xs:text-sm lg:text-lg";
 const firstLink =
   "text-[22px] font-semibold text-text no-underline transition-colors duration-300 xs:text-lg xs:font-medium lg:text-[22px]";
 const badgeGroup =
