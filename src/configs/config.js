@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from "@/utils/cookieHelper";
+import { getCookie, removeCookie, setCookie } from "@/utils/cookieHelper";
 
 import axios from "axios";
 
@@ -38,28 +38,33 @@ api.interceptors.response.use(
     if ((status === 401 || status === 403) && !originalRequest?._retry) {
       originalRequest._retry = true;
 
-      const res = await getNewTokens();
-      if (res?.status === 200) {
-        setCookie("accessToken", res?.data?.accessToken, 30);
+      const accessToken = await getNewTokens();
+      if (accessToken) {
+        setCookie("accessToken", accessToken, 30);
         return api(originalRequest);
       }
+      // Refresh token is missing or rejected: the session is over.
+      removeCookie();
     }
     return Promise.reject(error?.response?.data ?? error);
   }
 );
 
-const getNewTokens = async () => {
-  const refreshToken = getCookie("refreshToken");
-  if (!refreshToken) return;
+// Parallel 401s share one in-flight refresh instead of each firing their own.
+let refreshPromise = null;
 
-  try {
-    const response = axios.post(`${BASE_URL}/auth/refresh-token`, {
-      refreshToken,
+const getNewTokens = () => {
+  const refreshToken = getCookie("refreshToken");
+  if (!refreshToken) return null;
+
+  refreshPromise ??= axios
+    .post(`${BASE_URL}/auth/refresh-token`, { refreshToken })
+    .then((res) => res.data?.accessToken)
+    .catch(() => null)
+    .finally(() => {
+      refreshPromise = null;
     });
-    return response;
-  } catch (error) {
-    return error;
-  }
+  return refreshPromise;
 };
 
 export { api };

@@ -6,7 +6,7 @@ import {
   formatJalaliText,
   toPersianNumber,
 } from "@/utils/helper";
-import Loader from "@/components/tempelates/Loader";
+import { notFound } from "next/navigation";
 import { serverFetch } from "@/hooks/HttpsReq";
 import Reserve from "@/atoms/reserve";
 
@@ -29,7 +29,10 @@ export default async function Page({ params }) {
   const data = await serverFetch(`/tour/${idtour}`, {}, { cache: "no-store" });
 
 
-  if (!data) return <Loader />;
+  // A bad id comes back as an error body, not false, so check for a real tour.
+  if (!data?.id) notFound();
+
+  const nights = Math.round((new Date(data.endDate) - new Date(data.startDate)) / 86400000);
 
   // The first three boxes only show from lg; the rest are nudged to line up.
   const options = [
@@ -87,7 +90,7 @@ export default async function Page({ params }) {
               <div className="flex items-center justify-between md:flex-col md:items-start">
                 <h1 className="text-2xl font-bold text-fg md:m-0 md:p-0 lg:text-[28px]">{data.title}</h1>
                 <p className="text-[15px] font-normal text-text lg:text-lg">
-                  {toPersianNumber(5)} روز و {toPersianNumber(4)} شب
+                  {toPersianNumber(nights + 1)} روز و {toPersianNumber(nights)} شب
                 </p>
               </div>
               <div className="flex justify-between md:mr-[5px] md:justify-start md:gap-[25px]">

@@ -20,7 +20,7 @@ export const useSendOtp = (onSuccessCallback) => {
       toast.success(`کد تایید شما ${toPersianNumber(response.code)}`, {
         autoClose: 3000,
       });
-      if (onSuccessCallback) onSuccessCallback(response.data);
+      if (onSuccessCallback) onSuccessCallback(response);
     },
     onError: () => {
       toast.error(GENERIC_ERROR);
@@ -42,9 +42,9 @@ export const useCheckOtp = (onSuccessCallback) => {
         autoClose: 1000,
       });
 
-      queryClient.invalidateQueries(queryKeys.userInfo);
+      queryClient.invalidateQueries({ queryKey: queryKeys.userInfo });
 
-      if (onSuccessCallback) onSuccessCallback(response.data);
+      if (onSuccessCallback) onSuccessCallback(response);
     },
     onError: () => {
       toast.error(GENERIC_ERROR);
@@ -65,7 +65,7 @@ export const useSubmitPassenger = (onSuccessCallback) => {
     mutationFn,
     onSuccess: (data) => {
       toast.success("تور با موفقیت رزرو شد");
-      queryClient.invalidateQueries(queryKeys.basket);
+      queryClient.invalidateQueries({ queryKey: queryKeys.basket });
       if (onSuccessCallback) onSuccessCallback(data);
     },
     onError: () => {
@@ -100,7 +100,7 @@ export const useUpdateUserProfile = (onSuccessCallback) => {
   return useMutation({
     mutationFn,
     onSuccess: (data) => {
-      queryClient.invalidateQueries(queryKeys.userInfo);
+      queryClient.invalidateQueries({ queryKey: queryKeys.userInfo });
 
       toast.success("دیتا با موفقیت تغییر یافت");
 
@@ -127,10 +127,9 @@ export const useLogout = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
   const handleLogout = () => {
-    removeCookie("accessToken", "refreshToken");
-    api.defaults.headers.common["Authorization"];
+    removeCookie();
     queryClient.setQueryData(queryKeys.userInfo, null);
-    queryClient.invalidateQueries(queryKeys.userInfo);
+    queryClient.invalidateQueries({ queryKey: queryKeys.userInfo });
     toast.success("شما با موفقیت خارج شدید");
     router.push("/?login=true");
   };
