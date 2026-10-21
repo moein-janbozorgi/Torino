@@ -83,7 +83,7 @@ export default async function Page({ params }) {
                 width={330}
                 height={220}
                 alt="tour"
-                className="w-full rounded-b-xl md:h-[200px] md:w-[250px] md:rounded-xl lg:h-[230px] lg:w-[300px]"
+                className="h-auto w-full rounded-b-xl md:h-[200px] md:w-[250px] md:rounded-xl lg:h-[230px] lg:w-[300px]"
               />
             </div>
             <div className="md:flex md:flex-1 md:flex-col">

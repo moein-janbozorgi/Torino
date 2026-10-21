@@ -58,7 +58,7 @@ export default function ProfileLayout({ children }) {
                   href={link.href}
                   className={`flex items-center gap-[7px] text-sm no-underline transition-colors duration-300 ${
                     active
-                      ? "font-semibold text-[#0d9488]"
+                      ? "font-semibold text-primary"
                       : "font-normal text-text"
                   }`}
                 >
@@ -76,7 +76,7 @@ export default function ProfileLayout({ children }) {
                 <li
                   key={link.href}
                   className={`relative flex flex-1 cursor-pointer items-center justify-center gap-[7px] py-2.5 text-center transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:transition-colors after:duration-300 after:content-[''] ${
-                    active ? "after:bg-[#0d9488]" : "after:bg-line"
+                    active ? "after:bg-[#0f766e]" : "after:bg-line"
                   }`}
                 >
                   <Image
@@ -90,7 +90,7 @@ export default function ProfileLayout({ children }) {
                     href={link.href}
                     className={`flex items-center gap-[7px] text-xs no-underline transition-colors duration-300 ${
                       active
-                        ? "font-medium text-[#0d9488]"
+                        ? "font-medium text-primary"
                         : "font-normal text-muted"
                     }`}
                   >

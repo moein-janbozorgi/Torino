@@ -30,7 +30,7 @@ Dark mode is a `.dark` class on `<html>`, set before paint by an inline script i
 `localStorage.theme`, else the OS preference) and flipped by `src/atoms/ThemeToggle.js`. Use the neutral
 tokens from `globals.css` — `bg-surface`, `bg-surface-2`, `text-fg`, `text-text`, `text-muted`,
 `border-line` / `bg-line` — instead of hex neutrals or `bg-white`/`text-black`, which won't switch.
-Brand turquoise/blue stay as hex. Near-black monochrome icon PNGs need `dark:invert`.
+Brand text/borders use the theme-aware `text-primary` / `border-primary` (#0f766e light, #2dd4bf dark, readable on both); filled buttons are `bg-[#0f766e]` hover `bg-[#115e59]`; other brand/blue shades stay as hex. Near-black monochrome icon PNGs need `dark:invert`.
 
 Component layering (follow the existing placement when adding files):
 `src/atoms/` single-purpose widgets → `src/components/modules/` feature blocks →
@@ -88,7 +88,7 @@ Gregorian ISO) and pushes the URL via `history.pushState`. From there:
 
 ### Persian / RTL conventions
 
-The UI is Persian-only and RTL (`<html lang="fa" dir="rtl">`, Vazirmatn woff2 files preloaded in the root
+The UI is Persian-only and RTL (`<html lang="fa" dir="rtl">`, the variable `Vazirmatn[wght].woff2` font preloaded in the root
 layout). When rendering data:
 
 - Wrap every number shown to users in `toPersianNumber()`.

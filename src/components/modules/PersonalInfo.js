@@ -230,14 +230,14 @@ export default function PersonalInfo() {
             <div className="flex gap-2.5 px-5 pt-0 pb-2.5 md:w-full md:justify-end lg:pr-0 lg:pl-[25px]">
               <button
                 type="submit"
-                className={`${actionButton} border-none bg-[#0d9488] text-white hover:bg-[#0f766e] hover:text-white`}
+                className={`${actionButton} border-none bg-[#0f766e] text-white hover:bg-[#115e59] hover:text-white`}
                 disabled={mutation.isLoading}
               >
                 تایید
               </button>
               <button
                 type="button"
-                className={`${actionButton} border-2 border-solid border-[#0d9488] bg-surface text-[#0d9488] hover:bg-[#0d9488] hover:text-white`}
+                className={`${actionButton} border-2 border-solid border-primary bg-surface text-primary hover:bg-[#0f766e] hover:text-white`}
                 onClick={() => setIsEditing((s) => !s)}
               >
                 انصراف

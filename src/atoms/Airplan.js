@@ -1,13 +1,19 @@
+import Image from "next/image";
+
 function Airplan() {
   return (
-    <div className="relative right-1/2 left-1/2 -mx-[50vw] w-screen overflow-hidden">
-      {/* {eslint-disable-next-line @next/next/no-img-element} */}
-      <img
+    // Full-bleed: break out of <main>'s max-width and padding to span the viewport.
+    // Equal negative margins work the same in RTL; body's overflow-x:hidden clips the scrollbar's width.
+    <div className="mx-[calc(50%-50vw)] overflow-hidden">
+      <Image
         src="/images/airplan.webp"
         alt="airplan"
-        className="block h-[119px] w-screen object-cover md:h-[200px] lg:h-[350px]"
+        width={1439}
+        height={350}
+        sizes="100vw"
         loading="eager"
         fetchPriority="high"
+        className="block h-[119px] w-full object-cover md:h-[200px] lg:h-auto"
       />
     </div>
   );

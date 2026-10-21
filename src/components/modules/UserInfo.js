@@ -72,7 +72,7 @@ export default function UserInfo() {
             </div>
             <button
               type="submit"
-              className="w-[30%] rounded-[5px] border-none bg-[#0d9488] px-0 py-[5px] text-base font-normal text-white transition-all duration-200 ease-in hover:bg-[#0f766e] hover:text-white lg:w-2/5"
+              className="w-[30%] rounded-[5px] border-none bg-[#0f766e] px-0 py-[5px] text-base font-normal text-white transition-all duration-200 ease-in hover:bg-[#115e59] hover:text-white lg:w-2/5"
               disabled={mutation.isLoading}
             >
               تایید

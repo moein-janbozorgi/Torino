@@ -27,7 +27,7 @@ function TourCard({ tour }) {
     <div className="relative mx-auto mb-5 w-[330px] max-w-full rounded-[10px] border border-line min-[392px]:w-[480px] md:w-[580px] lg:w-full">
       <div>
         {new Date(tour.endDate) < today ? (
-          <p className={`${status} bg-[#0d94884d] text-[#0d9488]`}>به اتمام رسیده</p>
+          <p className={`${status} bg-[#0d94884d] text-primary`}>به اتمام رسیده</p>
         ) : (
           <p className={`${status} bg-[#d1b9004d] text-[#d1b900]`}>در حال برگزاری</p>
         )}

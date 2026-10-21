@@ -75,30 +75,33 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 z-[1000] w-full bg-surface shadow-[0px_1px_4px_0px_#00000040] dark:shadow-[0px_1px_0px_0px_#ffffff26]">
       <div className="mx-auto flex w-full items-center justify-between px-[1.8rem] pt-[0.7rem] pb-[0.2rem] xs:px-12 md:hidden">
-        <div>
+        <button
+          type="button"
+          aria-label="منو"
+          className="flex size-11 cursor-pointer items-center justify-center border-none bg-transparent p-0"
+          onClick={() => setHamburger((s) => !s)}
+        >
           <Image
             src="/images/hamburger.png"
             width={25}
             height={20}
-            alt="menu"
-            onClick={() => setHamburger((s) => !s)}
+            alt=""
             className="dark:invert"
           />
-        </div>
+        </button>
         <div className="flex items-center gap-3">
           <ThemeToggle />
           {user ? (
             <UserProfile data={user} />
           ) : (
-            <div>
-              <Image
-                src="/images/loginarrow.png"
-                width={40}
-                height={40}
-                alt="arrow"
-                onClick={() => setIsOn((s) => !s)}
-              />
-            </div>
+            <button
+              type="button"
+              aria-label="ورود | ثبت نام"
+              className="flex size-11 cursor-pointer items-center justify-center border-none bg-transparent p-0"
+              onClick={() => setIsOn((s) => !s)}
+            >
+              <Image src="/images/loginarrow.png" width={40} height={40} alt="" />
+            </button>
           )}
         </div>
       </div>
@@ -130,7 +133,7 @@ export default function Header() {
                     href={link.href}
                     className={`text-base no-underline ${
                       active
-                        ? "font-semibold text-[#0d9488]"
+                        ? "font-semibold text-primary"
                         : "font-normal text-text"
                     }`}
                   >
@@ -156,8 +159,8 @@ export default function Header() {
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className={`whitespace-nowrap text-base font-normal no-underline transition-colors duration-300 hover:text-[#0f766e] md:text-[15px] lg:text-base ${
-                    pathname === link.href ? "text-[#0d9488]" : "text-text"
+                  className={`whitespace-nowrap text-base font-normal no-underline transition-colors duration-300 hover:text-primary md:text-[15px] lg:text-base ${
+                    pathname === link.href ? "text-primary" : "text-text"
                   }`}
                 >
                   {link.label}
@@ -172,7 +175,7 @@ export default function Header() {
             <UserProfile data={user} />
           ) : (
             <button
-              className="flex h-[30px] cursor-pointer items-center gap-1.5 rounded-lg border-2 border-solid border-[#0f766e] bg-transparent text-sm font-semibold text-[#0f766e] transition-all duration-300 hover:bg-[#0f766e] hover:text-white md:px-2.5 md:py-[15px]"
+              className="flex h-[30px] cursor-pointer items-center gap-1.5 rounded-lg border-2 border-solid border-primary bg-transparent text-sm font-semibold text-primary transition-all duration-300 hover:bg-[#115e59] hover:text-white md:px-2.5 md:py-[15px]"
               onClick={() => setIsOn((s) => !s)}
             >
               <Image

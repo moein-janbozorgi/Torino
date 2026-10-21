@@ -27,52 +27,10 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <link rel="shortcut icon" href="/images/Torino.png" />
-      <link rel="preload" href="/images/airplan.webp" as="image" />
+      {/* One variable font covers every weight, instead of a file per weight. */}
       <link
         rel="preload"
-        href="/fonts/Vazirmatn-Regular.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        href="/fonts/Vazirmatn-Medium.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        href="/fonts/Vazirmatn-Bold.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        href="/fonts/Vazirmatn-ExtraBold.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        href="/fonts/Vazirmatn-SemiBold.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        href="/fonts/Vazirmatn-Thin.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        href="/fonts/Vazirmatn-Light.woff2"
+        href="/fonts/Vazirmatn[wght].woff2"
         as="font"
         type="font/woff2"
         crossOrigin="anonymous"

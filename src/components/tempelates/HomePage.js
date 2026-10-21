@@ -4,7 +4,7 @@ import Tours from "../modules/Tours";
 import Call from "../modules/Call";
 import Whytorino from "../modules/Whytorino";
 import Last from "../modules/Last";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { api } from "@/configs/config";
 import { useSearchParams } from "next/navigation";
 import Airplan from "@/atoms/Airplan";
@@ -13,9 +13,16 @@ function HomePage({ initialTours, allTours}) {
   const clientSearchParams = useSearchParams();
   const [filteredTours, setFilteredTours] = useState(initialTours || []);
   const [isLoading, setIsLoading] = useState(false);
-
+  // The server already rendered tours for the initial URL; refetching on mount
+  // only swapped them for a loader and shifted the page.
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
     const fetchTours = async () => {
       setIsLoading(true); // شروع لودینگ
       const query = clientSearchParams.toString();

@@ -18,6 +18,7 @@ function Last() {
             width={64}
             height={64}
             alt="price-title"
+            className="object-contain"
           />
           <div className={itemText}>
             <p className={title}>بصرفه ترین قیمت</p>
@@ -30,6 +31,7 @@ function Last() {
             width={64}
             height={64}
             alt="contact-title"
+            className="object-contain"
           />
           <div className={itemText}>
             <p className={title}>پشتیبانی</p>
@@ -45,6 +47,7 @@ function Last() {
             width={64}
             height={64}
             alt="rezayat-title"
+            className="object-contain"
           />
           <div className={itemText}>
             <p className={title}>رضایت کاربران</p>

@@ -41,7 +41,7 @@ function Tours({ data, isLoading }) {
               <div className="flex items-center justify-between px-2.5 xs:py-[5px] lg:py-0.5">
                 <Link
                   href={`/Details/${tour.id}`}
-                  className="inline-block rounded bg-[#0d9488] px-10 py-1 text-[15px] font-normal text-white no-underline hover:bg-[#0f766e] hover:text-white md:px-[30px] lg:px-[25px] lg:py-0.5"
+                  className="inline-block rounded bg-[#0f766e] px-10 py-1 text-[15px] font-normal text-white no-underline hover:bg-[#115e59] hover:text-white md:px-[30px] lg:px-[25px] lg:py-0.5"
                 >رزرو</Link>
                 <div className="flex items-center gap-1.5 text-xs font-normal text-text/80 md:gap-[3px] md:text-[10px]">
                   <span className="text-base font-normal text-[#009eca] md:text-[15px]">{toPersianNumber(convertToRial(tour.price))}</span>

@@ -5,13 +5,13 @@ import Link from "next/link";
 function Call() {
   return (
     <div className="mx-auto mt-[100px] mb-5 w-full max-w-[327px] xs:flex xs:max-w-[730px] xs:px-8 md:mt-[70px] md:mb-10 md:max-w-[990px] md:px-12 lg:max-w-[1150px]">
-      <div className="relative h-[130px] rounded-t-[10px] border-x border-t border-[#0f766e] bg-[#0d9488] px-2.5 py-3 xs:top-0 xs:right-1.5 xs:z-2 xs:h-[172px] xs:w-[70%] xs:rounded-[10px] xs:border-b lg:h-[200px]">
+      <div className="relative h-[130px] rounded-t-[10px] border-x border-t border-[#0f766e] bg-[#0f766e] px-2.5 py-3 xs:top-0 xs:right-1.5 xs:z-2 xs:h-[172px] xs:w-[70%] xs:rounded-[10px] xs:border-b lg:h-[200px]">
         <div className="z-2 flex flex-col gap-1.5 text-white md:px-[5px] lg:px-10 lg:py-2.5">
           <div className="flex items-center gap-1 md:gap-[9px]">
             <p className="m-0 text-[22px] font-normal text-white xs:text-[28px] md:text-[34px] lg:text-5xl">
               خرید تلفنی از
             </p>
-            <span className="text-[22px] font-extrabold text-[#134e4a] xs:text-[28px] md:text-[34px] lg:text-5xl">
+            <span className="text-[22px] font-extrabold text-[#99f6e4] xs:text-[28px] md:text-[34px] lg:text-5xl">
               تورینو
             </span>
           </div>
@@ -34,7 +34,7 @@ function Call() {
         <div>
           <Link
             href="#"
-            className="inline-block rounded-lg bg-[#134e4a] px-[30px] py-1.5 text-sm font-semibold text-white no-underline transition-colors duration-200 hover:bg-[#0f766e]"
+            className="inline-block rounded-lg bg-[#134e4a] px-[30px] py-1.5 text-sm font-semibold text-white no-underline transition-colors duration-200 hover:bg-[#115e59]"
           >اطلاعات بیشتر</Link>
         </div>
       </div>

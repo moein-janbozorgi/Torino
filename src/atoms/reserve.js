@@ -26,7 +26,7 @@ function Reserve({ id }) {
   return (
     <button
       onClick={sendHandler}
-      className="h-[42px] w-[154px] rounded-[10px] border-none bg-[#0d9488] text-center text-xl font-normal text-white transition-all duration-200 ease-in hover:bg-[#0f766e]"
+      className="h-[42px] w-[154px] rounded-[10px] border-none bg-[#0f766e] text-center text-xl font-normal text-white transition-all duration-200 ease-in hover:bg-[#115e59]"
     >
       رزرو و خرید
     </button>
