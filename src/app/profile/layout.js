@@ -11,14 +11,14 @@ const links = [
     label: "پروفایل",
     icon: "/images/pblackfull.png",
     alt: "profile",
-    boxClass: "pb-[15px] border-b border-[#00000033]",
+    boxClass: "pb-[15px] border-b border-line",
   },
   {
     href: "/profile/tours",
     label: "تور های من",
     icon: "/images/sun.png",
     alt: "sun",
-    boxClass: "py-[15px] border-b border-[#00000033]",
+    boxClass: "py-[15px] border-b border-line",
   },
   {
     href: "/profile/transactions",
@@ -38,7 +38,7 @@ export default function ProfileLayout({ children }) {
   return (
     <AuthProvider>
       <div className="md:mx-auto md:mt-20 md:mb-[100px] md:flex md:w-full md:max-w-[1200px] md:items-start md:gap-[30px] md:px-8 lg:px-16">
-        <aside className="hidden rounded-[10px] border border-[#00000033] bg-white px-2.5 py-[15px] md:flex md:flex-[0_0_240px] md:flex-col lg:flex-[0_0_220px]">
+        <aside className="hidden rounded-[10px] border border-line bg-surface px-2.5 py-[15px] md:flex md:flex-[0_0_240px] md:flex-col lg:flex-[0_0_220px]">
           {links.map((link, i) => {
             const active = pathname === link.href;
             return (
@@ -52,14 +52,14 @@ export default function ProfileLayout({ children }) {
                   height={16}
                   alt={link.alt}
                   priority={i === 0}
-                  className={active ? activeIcon : ""}
+                  className={active ? activeIcon : "dark:invert"}
                 />
                 <Link
                   href={link.href}
                   className={`flex items-center gap-[7px] text-sm no-underline transition-colors duration-300 ${
                     active
                       ? "font-semibold text-[#28a745]"
-                      : "font-normal text-[#282828]"
+                      : "font-normal text-text"
                   }`}
                 >
                   {link.label}
@@ -76,7 +76,7 @@ export default function ProfileLayout({ children }) {
                 <li
                   key={link.href}
                   className={`relative flex flex-1 cursor-pointer items-center justify-center gap-[7px] py-2.5 text-center transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:transition-colors after:duration-300 after:content-[''] ${
-                    active ? "after:bg-[#009e60]" : "after:bg-[#ddd]"
+                    active ? "after:bg-[#009e60]" : "after:bg-line"
                   }`}
                 >
                   <Image
@@ -84,14 +84,14 @@ export default function ProfileLayout({ children }) {
                     width={16}
                     height={16}
                     alt={link.alt}
-                    className={active ? activeIcon : ""}
+                    className={active ? activeIcon : "dark:invert"}
                   />
                   <Link
                     href={link.href}
                     className={`flex items-center gap-[7px] text-xs no-underline transition-colors duration-300 ${
                       active
                         ? "font-medium text-[#009e60]"
-                        : "font-normal text-[#888]"
+                        : "font-normal text-muted"
                     }`}
                   >
                     {link.label}

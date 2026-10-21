@@ -70,19 +70,19 @@ function OtpModal({ setOtp, phone, setIsOn }) {
 
   return (
     <div className="fixed inset-0 z-10 flex size-full animate-fade-in items-center justify-center bg-black/45 backdrop-blur-[2px]">
-      <div className="relative w-[350px] animate-pop-up rounded-[20px] bg-white text-center lg:ml-2.5 lg:w-[450px]">
+      <div className="relative w-[350px] animate-pop-up rounded-[20px] bg-surface text-center lg:ml-2.5 lg:w-[450px]">
         <Image
           src="/images/arrowleft.png"
           width={24}
           height={24}
           alt="close-btn"
-          className="absolute top-[13px] left-[15px] cursor-pointer opacity-80 transition-opacity duration-200 hover:opacity-100"
+          className="absolute top-[13px] left-[15px] cursor-pointer opacity-80 transition-opacity duration-200 hover:opacity-100 dark:invert"
           onClick={backHandler}
         />
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="p-[30px]">
-            <h1 className="mt-[25px] text-[22px] font-semibold text-[#282828]">کد تایید را وارد کنید.</h1>
-            <p className="text-sm font-normal text-[#282828]">
+            <h1 className="mt-[25px] text-[22px] font-semibold text-text">کد تایید را وارد کنید.</h1>
+            <p className="text-sm font-normal text-text">
               کد تایید به شماره {toPersianNumber(phone)} ارسال شد</p>
             <OtpInput
               value={otp}
@@ -135,18 +135,18 @@ function OtpModal({ setOtp, phone, setIsOn }) {
             <div className="flex justify-center">
               {seconds > 0 ? (
                 <div className="flex items-center justify-center gap-[3px]">
-                  <span className="text-[13px] font-light text-[#282828]">
+                  <span className="text-[13px] font-light text-text">
                     {toPersianNumber(Math.floor(seconds / 60))}:
                     {toPersianNumber(String(seconds % 60).padStart(2, "0"))}
                   </span>
-                  <p className="text-[13px] font-light text-[#282828]">
+                  <p className="text-[13px] font-light text-text">
                     تا ارسال مجدد کد
                   </p>
                 </div>
               ) : (
                 <p
                   onClick={resendHandler}
-                  className="text-sm font-normal text-[#282828]"
+                  className="text-sm font-normal text-text"
                 >
                   ارسال دوباره کد
                 </p>

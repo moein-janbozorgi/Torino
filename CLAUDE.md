@@ -26,6 +26,12 @@ holds the theme (colors, the `xs` 391px / `md` 768px / `lg` 992px breakpoints, a
 and overrides for third-party widget internals. Preflight is deliberately not imported: the UI relies on
 browser default margins and form-control styles. Repeated class strings live in constants at the top of the file.
 
+Dark mode is a `.dark` class on `<html>`, set before paint by an inline script in `layout.js` (saved
+`localStorage.theme`, else the OS preference) and flipped by `src/atoms/ThemeToggle.js`. Use the neutral
+tokens from `globals.css` — `bg-surface`, `bg-surface-2`, `text-fg`, `text-text`, `text-muted`,
+`border-line` / `bg-line` — instead of hex neutrals or `bg-white`/`text-black`, which won't switch.
+Brand greens/blue stay as hex. Near-black monochrome icon PNGs need `dark:invert`.
+
 Component layering (follow the existing placement when adding files):
 `src/atoms/` single-purpose widgets → `src/components/modules/` feature blocks →
 `src/components/tempelates/` page compositions (note: directory is misspelled "tempelates") →

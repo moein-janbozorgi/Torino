@@ -15,7 +15,7 @@ function Notfound() {
         <h1 className="-mt-2.5 mb-[30px] text-2xl font-semibold text-text md:text-[28px] lg:mb-[70px] lg:text-4xl">صفحه مورد نظر یافت نشد!</h1>
         <Link
           href="/"
-          className="rounded-2xl bg-[#d8ffe1] px-5 py-2.5 text-xl font-normal text-[#28a745] no-underline transition-all duration-100 ease-in hover:bg-[#6eff9e] hover:text-white md:text-[22px] lg:text-[28px]"
+          className="rounded-2xl bg-[#d8ffe1] dark:bg-[#28a74526] px-5 py-2.5 text-xl font-normal text-[#28a745] no-underline transition-all duration-100 ease-in hover:bg-[#6eff9e] hover:text-white md:text-[22px] lg:text-[28px]"
         >بازگشت به صفحه اصلی</Link>
         </div>
       </div>

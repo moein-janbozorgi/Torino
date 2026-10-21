@@ -11,11 +11,11 @@ import { serverFetch } from "@/hooks/HttpsReq";
 import Reserve from "@/atoms/reserve";
 
 const descItem = "flex items-center gap-2.5 md:flex-none md:gap-[5px]";
-const descText = "text-[13px] font-normal text-[#7d7d7d] lg:text-[15px]";
+const descText = "text-[13px] font-normal text-muted lg:text-[15px]";
 const descIcon = "lg:size-[18px]";
-const optionText = "text-sm font-medium text-[#282828]";
+const optionText = "text-sm font-medium text-text";
 const priceValue = "text-2xl font-medium text-[#009eca]";
-const priceUnit = "mt-[15px] text-[10px] font-normal text-[#282828cc]";
+const priceUnit = "mt-[15px] text-[10px] font-normal text-text/80";
 
 export const metadata = {
   title: "Torino details",
@@ -70,7 +70,7 @@ export default async function Page({ params }) {
   ];
 
   return (
-    <div className="mx-auto my-10 w-full max-w-[330px] xs:max-w-[500px] md:mt-[100px] md:mb-[70px] md:w-[calc(100%-100px)] md:max-w-[900px] md:rounded-[10px] md:border md:border-[#00000033] lg:w-[calc(100%-240px)] lg:max-w-[1200px]">
+    <div className="mx-auto my-10 w-full max-w-[330px] xs:max-w-[500px] md:mt-[100px] md:mb-[70px] md:w-[calc(100%-100px)] md:max-w-[900px] md:rounded-[10px] md:border md:border-line lg:w-[calc(100%-240px)] lg:max-w-[1200px]">
       <div className="xs:p-5 md:w-full md:px-[15px] md:pt-5 md:pb-0">
         <div>
           <div className="md:flex md:gap-5">
@@ -85,8 +85,8 @@ export default async function Page({ params }) {
             </div>
             <div className="md:flex md:flex-1 md:flex-col">
               <div className="flex items-center justify-between md:flex-col md:items-start">
-                <h1 className="text-2xl font-bold text-black md:m-0 md:p-0 lg:text-[28px]">{data.title}</h1>
-                <p className="text-[15px] font-normal text-[#282828] lg:text-lg">
+                <h1 className="text-2xl font-bold text-fg md:m-0 md:p-0 lg:text-[28px]">{data.title}</h1>
+                <p className="text-[15px] font-normal text-text lg:text-lg">
                   {toPersianNumber(5)} روز و {toPersianNumber(4)} شب
                 </p>
               </div>
@@ -97,7 +97,7 @@ export default async function Page({ params }) {
                     width={14}
                     height={14}
                     alt="user"
-                    className={descIcon}
+                    className={`${descIcon} dark:invert`}
                   />
                   <p className={descText}>تورلیدر از مبدا</p>
                 </div>
@@ -107,7 +107,7 @@ export default async function Page({ params }) {
                     width={14}
                     height={14}
                     alt="map"
-                    className={descIcon}
+                    className={`${descIcon} dark:invert`}
                   />
                   <p className={descText}>برنامه سفر</p>
                 </div>
@@ -117,7 +117,7 @@ export default async function Page({ params }) {
                     width={14}
                     height={14}
                     alt="medal"
-                    className={descIcon}
+                    className={`${descIcon} dark:invert`}
                   />
                   <p className={descText}>تضمین کیفیت</p>
                 </div>
@@ -137,12 +137,12 @@ export default async function Page({ params }) {
                 key={option.label}
                 className={`relative flex-col md:justify-center md:px-5 lg:flex-1 ${
                   i < options.length - 1
-                    ? "lg:after:absolute lg:after:top-[15%] lg:after:bottom-[15%] lg:after:left-0 lg:after:h-[70%] lg:after:w-px lg:after:bg-[#ccc] lg:after:content-['']"
+                    ? "lg:after:absolute lg:after:top-[15%] lg:after:bottom-[15%] lg:after:left-0 lg:after:h-[70%] lg:after:w-px lg:after:bg-line lg:after:content-['']"
                     : ""
                 } ${option.boxClass ?? "flex"}`}
               >
                 <div className="-mb-[15px] flex items-center justify-center gap-[5px]">
-                  <Image src={option.icon} width={14} height={14} alt="medal" />
+                  <Image src={option.icon} width={14} height={14} alt="medal" className="dark:invert" />
                   <p className={optionText}>{option.label}</p>
                 </div>
                 <p className={optionText}>{option.value}</p>

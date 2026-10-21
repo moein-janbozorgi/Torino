@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 import GenderSelect from "@/atoms/genderSelect";
 
 const textInput =
-  "h-[55px] w-full appearance-none rounded-[5px] border border-[#808080] bg-white pr-2.5 text-base font-normal text-[#00000080] outline-none xs:w-[250px] md:w-40 lg:w-[220px]";
+  "h-[55px] w-full appearance-none rounded-[5px] border border-muted bg-surface pr-2.5 text-base font-normal text-muted outline-none xs:w-[250px] md:w-40 lg:w-[220px]";
 const fieldError = "mt-[5px] text-xs font-normal text-[#e74c3c] lg:text-sm";
 
 export default function Basket() {
@@ -56,7 +56,7 @@ export default function Basket() {
 
   return (
     <div className="mx-auto mt-10 mb-[50px] flex w-full max-w-[1200px] flex-col gap-5 px-5 xs:max-w-[400px] xs:px-8 md:max-w-[950px] md:flex-row md:items-start md:justify-between md:px-12 lg:max-w-[1200px] lg:px-14">
-      <div className="rounded-[10px] border border-[#00000033] px-5 pt-0 pb-[15px] xs:px-10 md:flex md:flex-[1_1_60%] md:flex-col md:gap-5 md:px-5 lg:flex-[1_1_70%]">
+      <div className="rounded-[10px] border border-line px-5 pt-0 pb-[15px] xs:px-10 md:flex md:flex-[1_1_60%] md:flex-col md:gap-5 md:px-5 lg:flex-[1_1_70%]">
         <div className="flex items-center gap-2.5">
           <Image
             src="/images/pblackfull.png"
@@ -64,8 +64,9 @@ export default function Basket() {
             height={24}
             alt="profile"
             priority={true}
+            className="dark:invert"
           />
-          <h1 className="text-2xl font-normal text-black">مشخصات مسافر</h1>
+          <h1 className="text-2xl font-normal text-fg">مشخصات مسافر</h1>
         </div>
         <form
           className="flex flex-col gap-[25px] md:flex-row md:flex-wrap md:gap-5"
@@ -126,17 +127,18 @@ export default function Basket() {
                     render={(value, openCalendar) => (
                       <div
                         onClick={openCalendar}
-                        className="w-[270px] appearance-none rounded-[5px] border border-[#808080] bg-white px-[5px] py-[15px] text-base font-normal text-[#00000080] outline-none xs:max-w-[250px] md:w-40 lg:w-[220px]"
+                        className="w-[270px] appearance-none rounded-[5px] border border-muted bg-surface px-[5px] py-[15px] text-base font-normal text-muted outline-none xs:max-w-[250px] md:w-40 lg:w-[220px]"
                       >
-                        <div className="flex items-center gap-1 text-base font-normal text-[#00000080]">
+                        <div className="flex items-center gap-1 text-base font-normal text-muted">
                           <Image
                             src="/images/date.png"
                             width={16}
                             height={16}
                             alt="date"
                             priority={true}
+                            className="dark:invert"
                           />
-                          <span className="flex items-center justify-center text-center text-base font-normal text-[#00000080]">
+                          <span className="flex items-center justify-center text-center text-base font-normal text-muted">
                             {field.value ? field.value : "تاریخ تولد"}
                           </span>
                         </div>
@@ -154,23 +156,23 @@ export default function Basket() {
           />
         </form>
       </div>
-      <div className="mt-[30px] rounded-[10px] border border-[#0000001a] md:m-0 md:flex md:flex-[1_1_40%] md:flex-col md:justify-start lg:flex-[1_1_30%]">
+      <div className="mt-[30px] rounded-[10px] border border-line md:m-0 md:flex md:flex-[1_1_40%] md:flex-col md:justify-start lg:flex-[1_1_30%]">
         <div className="flex items-center justify-between px-[30px]">
-          <h1 className="text-2xl font-semibold text-black">{data?.title || "  بارگذاری..."}</h1>
-          <p className="text-base font-normal text-[#282828]">
+          <h1 className="text-2xl font-semibold text-fg">{data?.title || "  بارگذاری..."}</h1>
+          <p className="text-base font-normal text-text">
             {toPersianNumber(5)} روز و {toPersianNumber(4)} شب
           </p>
         </div>
-        <div className="mt-2.5 rounded-lg border border-dashed border-[#00000080] [border-image:repeating-linear-gradient(to_right,#00000080,transparent_7px_10px)_1]"></div>
+        <div className="mt-2.5 rounded-lg border border-dashed border-line [border-image:repeating-linear-gradient(to_right,#00000080,transparent_7px_10px)_1]"></div>
         <div className="mt-[15px] mb-5 flex justify-between px-[30px]">
-          <p className="mt-[18px] text-base font-normal text-[#282828]">قیمت نهایی</p>
+          <p className="mt-[18px] text-base font-normal text-text">قیمت نهایی</p>
           <div className="flex items-center gap-[7px]">
             <span className="text-2xl font-medium text-[#009eca] md:text-[22px]">
               {data?.price
                 ? toPersianNumber(convertToRial(data.price))
                 : "درحال بروزرسانی"}
             </span>
-            <p className="mt-[18px] text-sm font-normal text-[#282828cc]">
+            <p className="mt-[18px] text-sm font-normal text-text/80">
               تومان
             </p>
           </div>

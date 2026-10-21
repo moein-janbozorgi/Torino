@@ -3,11 +3,21 @@
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 
+/* Dark mode follows a .dark class on <html> (set by the script in layout.js), not the media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary: #28a745;
   --color-secondary: #10411b;
   --color-complementary: #009eca;
   --color-text: #282828;
+
+  /* Neutral tokens; redefined under .dark below. */
+  --color-surface: #fff;
+  --color-surface-2: #f2f2f2;
+  --color-fg: #000;
+  --color-muted: #00000080;
+  --color-line: #00000033;
   --font-main: "Vazirmatn", sans-serif;
 
   /* Named sizes set font-size only, like the original CSS (which never set line-height). */
@@ -63,10 +73,30 @@
 }
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --color-text: #d6d6d6;
+    --color-surface: #121212;
+    --color-surface-2: #1e1e1e;
+    --color-fg: #ededed;
+    --color-muted: #ffffff80;
+    --color-line: #ffffff26;
+  }
+
   *,
   *::before,
   *::after {
     box-sizing: border-box;
+  }
+
+  /* Without preflight, unstyled inputs get the UA's gray dark-scheme fill. */
+  .dark :is(input, textarea, select) {
+    background-color: var(--color-surface);
+    color: var(--color-fg);
   }
 
   html {
@@ -91,7 +121,7 @@
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    background-color: #fff;
+    background-color: var(--color-surface);
     color: var(--color-text);
   }
 
@@ -118,7 +148,26 @@
   .rmdp-calendar {
     font-family: "Vazirmatn";
     font-size: 16px;
-    color: #333;
+    color: var(--color-text);
+  }
+
+  .dark .rmdp-wrapper {
+    background-color: var(--color-surface-2);
+    box-shadow: 0 0 0 1px var(--color-line);
+  }
+
+  .dark .rmdp-header-values,
+  .dark .rmdp-week-day {
+    color: var(--color-fg);
+  }
+
+  .dark .rmdp-arrow {
+    border-color: var(--color-fg);
+  }
+
+  .dark .rmdp-day.rmdp-disabled span,
+  .dark .rmdp-day.rmdp-deactive span {
+    color: var(--color-muted);
   }
 
   .rmdp-header {
@@ -128,7 +177,7 @@
   }
 
   .rmdp-weekday {
-    color: #555;
+    color: var(--color-muted);
     font-weight: 500;
   }
 
@@ -141,7 +190,7 @@
     margin: 5px;
     border-radius: 8px;
     font-size: 16px;
-    color: #000000;
+    color: var(--color-fg);
   }
 
   .rmdp-day.rmdp-selected {

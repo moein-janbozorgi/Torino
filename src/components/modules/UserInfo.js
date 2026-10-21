@@ -30,9 +30,9 @@ export default function UserInfo() {
   };
 
   return (
-    <div className="mx-auto mb-4 w-full max-w-[330px] rounded-[10px] border border-[#00000033] bg-white px-5 xs:max-w-[600px] lg:max-w-[1200px]">
+    <div className="mx-auto mb-4 w-full max-w-[330px] rounded-[10px] border border-line bg-surface px-5 xs:max-w-[600px] lg:max-w-[1200px]">
       <div className="flex justify-between">
-        <h3 className="text-base font-normal text-black">اطلاعات حساب کاربری</h3>
+        <h3 className="text-base font-normal text-fg">اطلاعات حساب کاربری</h3>
         {data?.email ? (
           <div className="flex items-center gap-1.5">
             <Image src="/images/edit.png" width={12} height={12} alt="edit" />
@@ -47,8 +47,8 @@ export default function UserInfo() {
       </div>
       <div className="lg:flex lg:justify-between">
         <div className="flex items-center justify-between lg:gap-[30px] lg:px-2.5">
-          <p className="text-sm font-light text-black">شماره موبایل</p>
-          <span className="text-sm font-normal text-[#282828]">
+          <p className="text-sm font-light text-fg">شماره موبایل</p>
+          <span className="text-sm font-normal text-text">
             {toPersianNumber(data?.mobile)}
           </span>
         </div>
@@ -60,7 +60,7 @@ export default function UserInfo() {
             <div className="flex flex-col lg:relative lg:flex-1">
               <input
                 {...register("email")}
-                className="w-full rounded-[5px] border border-[#00000080] p-2 text-xs font-normal text-[#00000080] outline-none lg:w-[200px]"
+                className="w-full rounded-[5px] border border-line p-2 text-xs font-normal text-muted outline-none lg:w-[200px]"
                 type="text"
                 placeholder="آدرس ایمیل"
               />
@@ -81,8 +81,8 @@ export default function UserInfo() {
         ) : (
           <div className="flex justify-between lg:gap-[100px]">
             <div className="flex w-full items-center justify-between lg:gap-[70px]">
-              <p className="text-sm font-light text-black">ایمیل</p>
-              <span className="text-[#282828] [overflow-wrap:anywhere] [word-break:break-word]">{data?.email || ""}</span>
+              <p className="text-sm font-light text-fg">ایمیل</p>
+              <span className="text-text [overflow-wrap:anywhere] [word-break:break-word]">{data?.email || ""}</span>
             </div>
             {!data?.email ? (
               <div className="flex items-center gap-[5px]">

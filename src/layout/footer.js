@@ -14,8 +14,8 @@ const badge = "md:h-[45px] md:w-10 lg:h-[55px] lg:w-[50px]";
 
 export default function Footer() {
   return (
-    <footer className="w-full px-8 xs:mx-auto xs:px-12 md:px-16 lg:mx-auto lg:my-2.5 lg:flex lg:max-w-[1200px] lg:flex-col lg:justify-between lg:text-xl lg:text-[#333]">
-      <div className="mt-8 w-full border-t border-dashed border-[#00000040] lg:m-0 lg:border lg:border-solid lg:border-[#00000022]"></div>
+    <footer className="w-full px-8 xs:mx-auto xs:px-12 md:px-16 lg:mx-auto lg:my-2.5 lg:flex lg:max-w-[1200px] lg:flex-col lg:justify-between lg:text-xl lg:text-text">
+      <div className="mt-8 w-full border-t border-dashed border-line lg:m-0 lg:border lg:border-solid lg:border-line"></div>
       <div className="md:flex md:justify-between">
         <div className="flex justify-between md:gap-[35px] lg:gap-20">
           <div>
@@ -106,16 +106,16 @@ export default function Footer() {
               width={100}
               height={30}
               alt="torino"
-              className="md:h-[35px] md:w-[126px] lg:h-11 lg:w-[146px]"
+              className="md:h-[35px] md:w-[126px] lg:h-11 lg:w-[146px] dark:invert dark:hue-rotate-180"
             />
-            <p className="mt-2 text-center text-xs font-light text-black md:text-base lg:text-lg lg:font-normal">
+            <p className="mt-2 text-center text-xs font-light text-fg md:text-base lg:text-lg lg:font-normal">
               تلفن پشتیبانی: {toPersianNumber("8574-021")}
             </p>
           </div>
         </div>
       </div>
-      <div className="mt-[7px] h-px w-full bg-[#00000040]"></div>
-      <p className="m-[3px] text-center text-xs font-light lg:mx-0 lg:mt-3 lg:mb-0 lg:text-[15px] lg:font-normal lg:text-black">کلیه حقوق این وب سایت متعلق به تورینو میباشد.</p>
+      <div className="mt-[7px] h-px w-full bg-line"></div>
+      <p className="m-[3px] text-center text-xs font-light lg:mx-0 lg:mt-3 lg:mb-0 lg:text-[15px] lg:font-normal lg:text-fg">کلیه حقوق این وب سایت متعلق به تورینو میباشد.</p>
     </footer>
   );
 }

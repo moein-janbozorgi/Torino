@@ -11,10 +11,21 @@ export const metadata = {
   description: "تورینو وب‌سایت گردشگری",
 };
 
+// Runs before first paint so a dark-mode user never sees a white flash.
+// A saved choice (ThemeToggle) wins; otherwise follow the OS setting, live.
+const themeScript = `try{var m=matchMedia("(prefers-color-scheme: dark)"),t=localStorage.getItem("theme");if(t==="dark"||(!t&&m.matches))document.documentElement.classList.add("dark");m.addEventListener("change",function(e){localStorage.getItem("theme")||document.documentElement.classList.toggle("dark",e.matches)})}catch(e){}`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl" data-scroll-behavior="smooth">
-      <head />
+    <html
+      lang="fa"
+      dir="rtl"
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <link rel="shortcut icon" href="/images/Torino.png" />
       <link rel="preload" href="/images/airplan.webp" as="image" />
       <link

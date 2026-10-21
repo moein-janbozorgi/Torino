@@ -10,13 +10,13 @@ import { bankChecker } from "@/utils/validations";
 
 import { useUpdateUserProfile } from "@/hooks/mutations";
 
-const heading = "text-base font-normal text-black";
+const heading = "text-base font-normal text-fg";
 const inputWrapper = "flex flex-col gap-2.5 lg:flex-1 lg:px-3";
 const input =
-  "rounded-[5px] border border-[#00000080] px-[5px] py-2.5 text-sm font-normal text-[#00000080] outline-none lg:w-[95%] lg:py-[7px]";
+  "rounded-[5px] border border-line px-[5px] py-2.5 text-sm font-normal text-muted outline-none lg:w-[95%] lg:py-[7px]";
 const fieldError = "text-right text-sm font-normal text-[#e74c3c]";
-const dataLabel = "text-sm font-light text-black";
-const dataValue = "inline-block text-right text-sm font-normal text-[#282828]";
+const dataLabel = "text-sm font-light text-fg";
+const dataValue = "inline-block text-right text-sm font-normal text-text";
 
 export default function BankInfo() {
   const { data } = useGetUserInfo();
@@ -47,7 +47,7 @@ export default function BankInfo() {
   };
 
   return (
-    <div className="mx-auto mb-4 w-full max-w-[330px] rounded-[10px] border border-[#00000033] bg-white px-5 xs:max-w-[600px] lg:max-w-[1200px] lg:p-0">
+    <div className="mx-auto mb-4 w-full max-w-[330px] rounded-[10px] border border-line bg-surface px-5 xs:max-w-[600px] lg:max-w-[1200px] lg:p-0">
       {isEditing ? (
         <form onSubmit={handleSubmit(onSubmit)}>
           <h3 className={`${heading} lg:px-[15px]`}>ویرایش اطلاعات حساب بانکی</h3>
@@ -91,7 +91,7 @@ export default function BankInfo() {
               )}
             </div>
           </div>
-          <div className="lg:h-px lg:w-full lg:border lg:border-[#00000033]"></div>
+          <div className="lg:h-px lg:w-full lg:border lg:border-line"></div>
           <div className="flex gap-2.5 pt-2.5 pb-[15px] lg:w-full lg:justify-end lg:pb-2.5 lg:pl-[25px]">
             <button
               type="submit"
@@ -102,7 +102,7 @@ export default function BankInfo() {
             </button>
             <button
               type="button"
-              className="w-full rounded-[5px] border-2 border-solid border-[#28a745] bg-white p-2 text-base font-semibold text-[#28a745] transition-all duration-200 ease-in hover:bg-[#28a745] hover:text-white lg:w-1/5 lg:px-0 lg:py-[5px]"
+              className="w-full rounded-[5px] border-2 border-solid border-[#28a745] bg-surface p-2 text-base font-semibold text-[#28a745] transition-all duration-200 ease-in hover:bg-[#28a745] hover:text-white lg:w-1/5 lg:px-0 lg:py-[5px]"
               onClick={() => setIsEditing((s) => !s)}
             >
               انصراف

@@ -12,9 +12,9 @@ import {
 } from "@/utils/helper";
 
 const th =
-  "px-3 py-[15px] text-center text-xs font-normal text-[#282828cc] md:text-black lg:text-base";
+  "px-3 py-[15px] text-center text-xs font-normal text-text/80 md:text-fg lg:text-base";
 const cell =
-  "px-2.5 py-[15px] text-[13px] font-light text-[#282828] lg:px-0 lg:pt-2.5 lg:pb-[5px] lg:text-sm";
+  "px-2.5 py-[15px] text-[13px] font-light text-text lg:px-0 lg:pt-2.5 lg:pb-[5px] lg:text-sm";
 const firstCell = "text-[9px] xs:text-xs lg:text-sm";
 
 export default function TransactionsPage() {
@@ -30,8 +30,8 @@ export default function TransactionsPage() {
   if (isLoading) return <Loader />;
 
   return (
-    <table className="mx-auto w-full max-w-[330px] border-separate border-spacing-0 overflow-hidden rounded-[10px] border border-[#00000040] [direction:rtl] xs:max-w-[600px] md:max-w-[900px] lg:max-w-[960px]">
-      <thead className="bg-[#e6e6e6]">
+    <table className="mx-auto w-full max-w-[330px] border-separate border-spacing-0 overflow-hidden rounded-[10px] border border-line [direction:rtl] xs:max-w-[600px] md:max-w-[900px] lg:max-w-[960px]">
+      <thead className="bg-fg/10">
         <tr>
           <th className={th}>تاریخ‌ و ساعت</th>
           <th className={th}>مبلغ‌(تومان)</th>
@@ -44,7 +44,7 @@ export default function TransactionsPage() {
           data.map((item) => <TransactionsCard data={item} key={item.id} />)
         ) : (
           <tr>
-            <td colSpan={3} className="border-b-0 py-3.5 text-center text-sm font-normal text-[#282828]">
+            <td colSpan={3} className="border-b-0 py-3.5 text-center text-sm font-normal text-text">
               داده‌ای وجود ندارد
             </td>
           </tr>
@@ -57,12 +57,12 @@ export default function TransactionsPage() {
 function TransactionsCard({ data }) {
   return (
     <>
-      <tr className="bg-white text-center transition-colors duration-200 ease-in-out hover:bg-[#f9f9f9]">
+      <tr className="bg-surface text-center transition-colors duration-200 ease-in-out hover:bg-surface-2">
         <td className={`${cell} ${firstCell}`}>{formatPersianDate(data.createdAt)}</td>
         <td className={cell}>
           {toPersianNumber(convertToRial(data.amount))}
         </td>
-        <td className="hidden px-2.5 py-[15px] text-sm font-light text-black md:block">ثبت نام در تور گردشگری</td>
+        <td className="hidden px-2.5 py-[15px] text-sm font-light text-fg md:block">ثبت نام در تور گردشگری</td>
         <td className={cell}>
           {toPersianNumber(idToNumber(data.id, 8))}
         </td>

@@ -9,7 +9,9 @@ import OtpModal from "@/components/modules/OtpModal";
 import { useSearchParams } from "next/navigation";
 import { useGetUserInfo } from "@/hooks/queries";
 import UserProfile from "@/atoms/userProfile";
+import ThemeToggle from "@/atoms/ThemeToggle";
 
+// `mono` icons are near-black and get inverted in dark mode; home.png is already green.
 const navLinks = [
   { href: "/", label: "صفحه اصلی", icon: "/images/home.png", alt: "home-img" },
   {
@@ -17,18 +19,21 @@ const navLinks = [
     label: "خدمات گردشگری",
     icon: "/images/airplane.png",
     alt: "airplane-img",
+    mono: true,
   },
   {
     href: "/#",
     label: "درباره ما",
     icon: "/images/volume-low.png",
     alt: "volume-img",
+    mono: true,
   },
   {
     href: "/#",
     label: "تماس با ما",
     icon: "/images/callkh.png",
     alt: "call-img",
+    mono: true,
   },
 ];
 
@@ -68,7 +73,7 @@ export default function Header() {
   }, [loginRequested]);
 
   return (
-    <header className="fixed top-0 left-0 z-[1000] w-full bg-white shadow-[0px_1px_4px_0px_#00000040]">
+    <header className="fixed top-0 left-0 z-[1000] w-full bg-surface shadow-[0px_1px_4px_0px_#00000040] dark:shadow-[0px_1px_0px_0px_#ffffff26]">
       <div className="mx-auto flex w-full items-center justify-between px-[1.8rem] pt-[0.7rem] pb-[0.2rem] xs:px-12 md:hidden">
         <div>
           <Image
@@ -77,21 +82,25 @@ export default function Header() {
             height={20}
             alt="menu"
             onClick={() => setHamburger((s) => !s)}
+            className="dark:invert"
           />
         </div>
-        {user ? (
-          <UserProfile data={user} />
-        ) : (
-          <div>
-            <Image
-              src="/images/loginarrow.png"
-              width={40}
-              height={40}
-              alt="arrow"
-              onClick={() => setIsOn((s) => !s)}
-            />
-          </div>
-        )}
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          {user ? (
+            <UserProfile data={user} />
+          ) : (
+            <div>
+              <Image
+                src="/images/loginarrow.png"
+                width={40}
+                height={40}
+                alt="arrow"
+                onClick={() => setIsOn((s) => !s)}
+              />
+            </div>
+          )}
+        </div>
       </div>
       {hamburger ? (
         <>
@@ -100,7 +109,7 @@ export default function Header() {
             onClick={() => setHamburger((s) => !s)}
           ></div>
 
-          <div className="fixed top-0 right-0 z-[1000] flex h-full w-1/2 translate-x-0 flex-col rounded-xl bg-white pt-[30px] pr-2.5 transition-transform duration-300 ease-in-out">
+          <div className="fixed top-0 right-0 z-[1000] flex h-full w-1/2 translate-x-0 flex-col rounded-xl bg-surface pt-[30px] pr-2.5 transition-transform duration-300 ease-in-out">
             {navLinks.map((link) => {
               const active = pathname === link.href;
               return (
@@ -113,14 +122,16 @@ export default function Header() {
                     width={16}
                     height={16}
                     alt={link.alt}
-                    className={active ? activeIcon : ""}
+                    className={
+                      active ? activeIcon : link.mono ? "dark:invert" : ""
+                    }
                   />
                   <Link
                     href={link.href}
                     className={`text-base no-underline ${
                       active
                         ? "font-semibold text-[#28a745]"
-                        : "font-normal text-[#282828]"
+                        : "font-normal text-text"
                     }`}
                   >
                     {link.label}
@@ -138,7 +149,7 @@ export default function Header() {
             width={100}
             height={30}
             alt="torino-img"
-            className="cursor-pointer object-contain"
+            className="cursor-pointer object-contain dark:invert dark:hue-rotate-180"
           />
           <ul className="m-0 flex list-none gap-8 p-0">
             {navLinks.map((link) => (
@@ -146,7 +157,7 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className={`text-base font-normal no-underline transition-colors duration-300 hover:text-[#1ea34a] md:text-[15px] lg:text-base ${
-                    pathname === link.href ? "text-[#28a745]" : "text-[#282828]"
+                    pathname === link.href ? "text-[#28a745]" : "text-text"
                   }`}
                 >
                   {link.label}
@@ -155,25 +166,28 @@ export default function Header() {
             ))}
           </ul>
         </div>
-        {user ? (
-          <UserProfile data={user} />
-        ) : (
-          <button
-            className="flex h-[30px] cursor-pointer items-center gap-1.5 rounded-lg border-2 border-solid border-[#1ea34a] bg-transparent text-sm font-semibold text-[#1ea34a] transition-all duration-300 hover:bg-[#6eff9e] hover:text-white md:px-2.5 md:py-[15px]"
-            onClick={() => setIsOn((s) => !s)}
-          >
-            <Image
-              src="/images/profile.png"
-              width={24}
-              height={24}
-              alt="profile-img"
-              className="size-5 md:size-6"
-            />
-            <span>ورود</span>
-            <span>|</span>
-            <span>ثبت نام</span>
-          </button>
-        )}
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+          {user ? (
+            <UserProfile data={user} />
+          ) : (
+            <button
+              className="flex h-[30px] cursor-pointer items-center gap-1.5 rounded-lg border-2 border-solid border-[#1ea34a] bg-transparent text-sm font-semibold text-[#1ea34a] transition-all duration-300 hover:bg-[#6eff9e] hover:text-white md:px-2.5 md:py-[15px]"
+              onClick={() => setIsOn((s) => !s)}
+            >
+              <Image
+                src="/images/profile.png"
+                width={24}
+                height={24}
+                alt="profile-img"
+                className="size-5 md:size-6"
+              />
+              <span>ورود</span>
+              <span>|</span>
+              <span>ثبت نام</span>
+            </button>
+          )}
+        </div>
       </div>
 
       {on ? (

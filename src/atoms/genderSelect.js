@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const option =
-  "m-0 cursor-pointer p-2.5 text-base font-normal text-[#00000080] hover:bg-[#f2f2f2]";
+  "m-0 cursor-pointer p-2.5 text-base font-normal text-muted hover:bg-surface-2";
 
 export default function GenderSelect({ register, setValue }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +31,7 @@ export default function GenderSelect({ register, setValue }) {
       className="relative w-full xs:w-[250px] md:w-40 lg:w-[220px]"
     >
       <div
-        className="flex cursor-pointer items-center justify-between rounded-[5px] border border-[#808080] px-2.5 py-[15px] text-base font-normal text-[#00000080]"
+        className="flex cursor-pointer items-center justify-between rounded-[5px] border border-muted px-2.5 py-[15px] text-base font-normal text-muted"
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <span>{selected || "جنسیت"}</span>
@@ -40,11 +40,12 @@ export default function GenderSelect({ register, setValue }) {
           width={12}
           height={12}
           alt="arrow"
+          className="dark:invert"
         />
       </div>
 
       {isOpen && (
-        <div className="absolute top-full right-0 left-0 z-10 mt-1 rounded-lg border border-[#ddd] bg-white">
+        <div className="absolute top-full right-0 left-0 z-10 mt-1 rounded-lg border border-line bg-surface">
           <p onClick={() => handleSelect("مرد")} className={option}>
             مرد
           </p>

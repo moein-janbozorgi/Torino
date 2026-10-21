@@ -20,7 +20,7 @@ function CustomDatePicker({ register, setValue, name }) {
         <span>
           {selected ? selected.toString() : ""}
         </span>
-        <Image src="/images/date.png" width={16} height={16} alt="date" />
+        <Image src="/images/date.png" width={16} height={16} alt="date" className="dark:invert" />
       </div>
       {isOpen && (
         <div>

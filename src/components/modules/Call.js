@@ -26,10 +26,10 @@ function Call() {
           />
         </div>
       </div>
-      <div className="flex items-center justify-evenly gap-2 rounded-b-[10px] border-x border-b border-[#00000040] bg-white py-3 xs:relative xs:w-[30%] xs:flex-col xs:justify-center xs:rounded-l-[10px] xs:rounded-r-none xs:border-t">
-        <div className="flex items-center gap-1.5 text-base font-bold text-[#282828]">
+      <div className="flex items-center justify-evenly gap-2 rounded-b-[10px] border-x border-b border-line bg-surface py-3 xs:relative xs:w-[30%] xs:flex-col xs:justify-center xs:rounded-l-[10px] xs:rounded-r-none xs:border-t">
+        <div className="flex items-center gap-1.5 text-base font-bold text-text">
           <span className="lg:text-[22px]"> {toPersianNumber("021-1840")}</span>
-          <Image src="/images/call.png" width={20} height={20} alt="call-img" />
+          <Image src="/images/call.png" width={20} height={20} alt="call-img" className="dark:invert" />
         </div>
         <div>
           <Link

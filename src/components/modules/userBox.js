@@ -15,17 +15,17 @@ function Userbox({ data, setOpen }) {
   };
 
   return (
-    <div className="absolute top-[50px] -left-2.5 z-[1001] flex w-40 flex-col rounded-[11px] bg-white">
+    <div className="absolute top-[50px] -left-2.5 z-[1001] flex w-40 flex-col rounded-[11px] bg-surface">
       <div className="flex cursor-pointer items-center gap-2.5 pr-3">
-        <div className="size-7 rounded-full bg-[#d9d9d9]"></div>
+        <div className="size-7 rounded-full bg-line"></div>
         <Image
           src="/images/profilegray.png"
           alt="prof"
           width={16}
           height={16}
-          className="absolute top-[18px] right-[18px]"
+          className="absolute top-[18px] right-[18px] dark:invert"
         />
-        <p className="relative top-0.5 text-sm font-medium text-[#10411b]">{toPersianNumber(data?.mobile)}</p>
+        <p className="relative top-0.5 text-sm font-medium text-[#10411b] dark:text-[#28a745]">{toPersianNumber(data?.mobile)}</p>
       </div>
       <div className="flex items-center pr-3.5">
         <Image
@@ -33,13 +33,14 @@ function Userbox({ data, setOpen }) {
           alt="prof"
           width={16}
           height={16}
+          className="dark:invert"
         />
         <button
           onClick={routeHandler}
-          className="border-none bg-white text-xs font-normal text-[#282828]"
+          className="border-none bg-surface text-xs font-normal text-text"
         >اطلاعات حساب کاربری</button>
       </div>
-      <div className="mt-2.5 border border-[#0000001f]"></div>
+      <div className="mt-2.5 border border-line"></div>
       <div
         className="flex cursor-pointer items-center gap-2.5 pr-3"
         onClick={handleLogout}

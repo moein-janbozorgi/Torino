@@ -13,17 +13,17 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import { toast } from "react-toastify";
 import { useUpdateUserProfile } from "@/hooks/mutations";
 
-const heading = "pr-5 text-base font-normal text-black";
+const heading = "pr-5 text-base font-normal text-fg";
 const textInput =
-  "h-[55px] w-full rounded-[5px] border border-[#808080] bg-white pr-2.5 text-base text-[#00000080] outline-none lg:h-[45px] lg:w-[245px] lg:px-3 lg:py-2.5 lg:text-[15px]";
+  "h-[55px] w-full rounded-[5px] border border-muted bg-surface pr-2.5 text-base text-muted outline-none lg:h-[45px] lg:w-[245px] lg:px-3 lg:py-2.5 lg:text-[15px]";
 const fieldError = "relative top-0 mt-1 text-right text-[13px] text-[#e74c3c]";
 const genderOption =
-  "m-0 cursor-pointer p-2.5 text-base text-[#00000080] hover:bg-[#f2f2f2]";
+  "m-0 cursor-pointer p-2.5 text-base text-muted hover:bg-surface-2";
 const actionButton =
   "w-full rounded-[5px] p-2 text-base font-semibold transition-all duration-200 ease-in lg:w-1/5 lg:px-0 lg:py-[5px]";
 const dataRow = "flex items-center justify-between";
-const dataLabel = "text-sm font-light text-black lg:text-[15px]";
-const dataValue = "inline-block text-right text-sm text-[#282828]";
+const dataLabel = "text-sm font-light text-fg lg:text-[15px]";
+const dataValue = "inline-block text-right text-sm text-text";
 
 export default function PersonalInfo() {
   const { data } = useGetUserInfo();
@@ -100,7 +100,7 @@ export default function PersonalInfo() {
   };
 
   return (
-    <div className="mx-auto mb-4 w-full max-w-[330px] rounded-[10px] border border-[#00000033] bg-white xs:max-w-[600px] md:max-w-[950px]">
+    <div className="mx-auto mb-4 w-full max-w-[330px] rounded-[10px] border border-line bg-surface xs:max-w-[600px] md:max-w-[950px]">
       <div className="xs:max-w-[600px] md:text-start lg:max-w-[1200px]">
         {isEditing ? (
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -122,13 +122,13 @@ export default function PersonalInfo() {
               <div className="relative flex flex-col">
                 <div className="relative w-full lg:w-[245px]">
                   <div
-                    className="flex cursor-pointer items-center justify-between rounded-[5px] border border-[#808080] px-2.5 py-[15px] text-base text-[#00000080] lg:h-[45px] lg:px-3 lg:py-2.5 lg:text-[15px]"
+                    className="flex cursor-pointer items-center justify-between rounded-[5px] border border-muted px-2.5 py-[15px] text-base text-muted lg:h-[45px] lg:px-3 lg:py-2.5 lg:text-[15px]"
                     onClick={() => setIsOpen((prev) => !prev)}
                   >
-                    <span className="block text-black lg:hidden">
+                    <span className="block text-fg lg:hidden">
                       {selectedGender || "جنسیت"}
                     </span>
-                    <span className="hidden text-black lg:block">
+                    <span className="hidden text-fg lg:block">
                       {selectedGender || "انتخاب"}
                     </span>
                     <Image
@@ -136,13 +136,14 @@ export default function PersonalInfo() {
                       width={12}
                       height={12}
                       alt="arrow"
+                      className="dark:invert"
                     />
                   </div>
-                  <div className="hidden lg:absolute lg:-top-5 lg:right-2.5 lg:block lg:bg-white lg:px-2.5">
-                    <p className="lg:text-[10px] lg:font-normal lg:text-[#00000080]">جنسیت</p>
+                  <div className="hidden lg:absolute lg:-top-5 lg:right-2.5 lg:block lg:bg-surface lg:px-2.5">
+                    <p className="lg:text-[10px] lg:font-normal lg:text-muted">جنسیت</p>
                   </div>
                   {isOpen && (
-                    <div className="absolute top-full right-0 left-0 z-10 mt-1 rounded-lg border border-[#ddd] bg-white">
+                    <div className="absolute top-full right-0 left-0 z-10 mt-1 rounded-lg border border-line bg-surface">
                       <p
                         onClick={() => handleSelectGender("مرد")}
                         className={genderOption}
@@ -200,14 +201,15 @@ export default function PersonalInfo() {
                         render={(value, openCalendar) => (
                           <div
                             onClick={openCalendar}
-                            className="w-[287px] cursor-pointer rounded-[5px] border border-[#808080] bg-white px-[5px] py-[15px] text-base text-[#00000080] xs:w-full lg:h-[45px] lg:w-[245px] lg:px-3 lg:py-2.5 lg:text-[15px]"
+                            className="w-[287px] cursor-pointer rounded-[5px] border border-muted bg-surface px-[5px] py-[15px] text-base text-muted xs:w-full lg:h-[45px] lg:w-[245px] lg:px-3 lg:py-2.5 lg:text-[15px]"
                           >
-                            <div className="flex items-center gap-1 text-base text-[#00000080]">
+                            <div className="flex items-center gap-1 text-base text-muted">
                               <Image
                                 src="/images/date.png"
                                 width={16}
                                 height={16}
                                 alt="date"
+                                className="dark:invert"
                               />
                               <span>{field.value || "تاریخ تولد"}</span>
                             </div>
@@ -224,7 +226,7 @@ export default function PersonalInfo() {
                 }}
               />
             </div>
-            <div className="md:mb-2.5 md:h-px md:w-full md:border md:border-[#00000033]"></div>
+            <div className="md:mb-2.5 md:h-px md:w-full md:border md:border-line"></div>
             <div className="flex gap-2.5 px-5 pt-0 pb-2.5 md:w-full md:justify-end lg:pr-0 lg:pl-[25px]">
               <button
                 type="submit"
@@ -235,7 +237,7 @@ export default function PersonalInfo() {
               </button>
               <button
                 type="button"
-                className={`${actionButton} border-2 border-solid border-[#28a745] bg-white text-[#28a745] hover:bg-[#28a745] hover:text-white`}
+                className={`${actionButton} border-2 border-solid border-[#28a745] bg-surface text-[#28a745] hover:bg-[#28a745] hover:text-white`}
                 onClick={() => setIsEditing((s) => !s)}
               >
                 انصراف

@@ -4,13 +4,13 @@ import Image from "next/image";
 const item = "flex items-center gap-2.5 lg:w-[300px]";
 const itemText = "mb-5 flex flex-col xs:mb-0";
 const title =
-  "text-sm font-medium text-[#282828] xs:text-[15px] md:text-base lg:text-[26px]";
+  "text-sm font-medium text-text xs:text-[15px] md:text-base lg:text-[26px]";
 const desc =
-  "-mt-3 text-xs font-light xs:leading-[1.6] md:text-sm lg:-mt-[25px] lg:text-lg lg:text-[#282828]";
+  "-mt-3 text-xs font-light xs:leading-[1.6] md:text-sm lg:-mt-[25px] lg:text-lg lg:text-text";
 
 function Last() {
   return (
-    <div className="mx-auto mt-10 w-full max-w-[327px] border-t border-[#00000040] xs:mx-auto xs:mt-[30px] xs:max-w-[730px] xs:px-8 md:max-w-[990px] md:px-10 lg:mx-auto lg:mt-0 lg:mb-2.5 lg:max-w-[1150px]">
+    <div className="mx-auto mt-10 w-full max-w-[327px] border-t border-line xs:mx-auto xs:mt-[30px] xs:max-w-[730px] xs:px-8 md:max-w-[990px] md:px-10 lg:mx-auto lg:mt-0 lg:mb-2.5 lg:max-w-[1150px]">
       <div className="mt-5 xs:flex xs:items-center xs:justify-between xs:gap-6">
         <div className={item}>
           <Image

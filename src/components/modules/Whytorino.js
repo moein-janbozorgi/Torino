@@ -11,7 +11,7 @@ const slotClasses = [
   "right-[120px] z-1 h-[162px] w-[142px] -translate-x-1/2 scale-[0.85] lg:h-[182px]",
 ];
 const headingText = "text-2xl font-extrabold xs:text-[28px] md:text-[30px] lg:text-[40px]";
-const arrowButton = "border-none bg-white hover:scale-[1.2]";
+const arrowButton = "border-none bg-surface hover:scale-[1.2]";
 
 export default function Whytorino() {
   const [order, setOrder] = useState([0, 1, 2, 3]);
@@ -69,13 +69,13 @@ export default function Whytorino() {
             className="hidden xs:block lg:size-[45px]"
           />
 
-          <span className={`${headingText} text-[#282828]`}>چرا</span>
+          <span className={`${headingText} text-text`}>چرا</span>
           <p className={`${headingText} text-[#28a745]`}>تورینو</p>
-          <span className={`${headingText} text-[#282828]`}>؟</span>
+          <span className={`${headingText} text-text`}>؟</span>
         </div>
         <div className="-mt-[35px] mr-2.5 hidden xs:block">
-          <h1 className="text-2xl font-medium text-[#282828] xs:text-xl md:text-2xl">تور طبیعت گردی و تاریخی</h1>
-          <p className="block w-full text-justify text-xl leading-[35px] font-normal break-words whitespace-normal text-[#282828] [word-spacing:5px] xs:text-xs md:text-[15px] md:leading-[30px] md:[word-spacing:3px]">
+          <h1 className="text-2xl font-medium text-text xs:text-xl md:text-2xl">تور طبیعت گردی و تاریخی</h1>
+          <p className="block w-full text-justify text-xl leading-[35px] font-normal break-words whitespace-normal text-text [word-spacing:5px] xs:text-xs md:text-[15px] md:leading-[30px] md:[word-spacing:3px]">
             اگر دوست داشته باشید که یک جاذبه طبیعی را از نزدیک ببینید و در دل
             طبیعت چادر بزنید یا در یک اقامتگاه بوم گردی اتاق بگیرید، باید تورهای
             طبیعت‌گردی را خریداری کنید. اما اگر بخواهید از جاذبه‌های گردشگری و
@@ -107,6 +107,7 @@ export default function Whytorino() {
               width={24}
               height={24}
               alt="arrow-img"
+              className="dark:invert"
             />
           </button>
           <p className="text-xl font-medium">
@@ -118,6 +119,7 @@ export default function Whytorino() {
               width={24}
               height={24}
               alt="arrow-img"
+              className="dark:invert"
             />
           </button>
         </div>
