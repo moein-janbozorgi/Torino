@@ -4,7 +4,7 @@ import {
   convertToRial,
   convertVehicle,
   formatJalaliText,
-  randomNineDigit,
+  idToNumber,
   toPersianNumber,
 } from "@/utils/helper";
 import Image from "next/image";
@@ -57,7 +57,7 @@ function TourCard({ tour }) {
         <div className={styles.bottomMain}>
           <div className={styles.numTour}>
             <p>شماره تور</p>
-            <span>{toPersianNumber(randomNineDigit())}</span>
+            <span>{toPersianNumber(idToNumber(tour.id, 9))}</span>
           </div>
           <div className={styles.divider}></div>
           <div className={styles.bottomLeft}>

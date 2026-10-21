@@ -117,22 +117,13 @@ export function formatJalaliText(isoDate) {
   return [weekDay, day, month, year].join(" ");
 }
 
-export function randomNineDigit() {
-  const min = 100_000_000;
-  const max = 999_999_999;
-
-  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
-    const array = new Uint32Array(1);
-    crypto.getRandomValues(array);
-
-    return (min + (array[0] % (max - min + 1))).toString();
-  }
-
-  return Math.floor(Math.random() * (max - min + 1) + min).toString();
-}
-
-export function generateRandom8DigitNumber() {
-  return Math.floor(10000000 + Math.random() * 90000000);
+// Stable display number derived from a record id (same id → same number),
+// since the backend has no numeric reference of its own.
+export function idToNumber(id, digits) {
+  let hash = 0;
+  for (const ch of String(id)) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
+  const min = 10 ** (digits - 1);
+  return (min + (hash % (9 * min))).toString();
 }
 
 export function formatPersianDate(isoString) {

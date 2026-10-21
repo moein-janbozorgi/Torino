@@ -8,7 +8,7 @@ import styles from "@/styles/TransactionsPage.module.css";
 import {
   convertToRial,
   formatPersianDate,
-  generateRandom8DigitNumber,
+  idToNumber,
   toPersianNumber,
 } from "@/utils/helper";
 
@@ -60,7 +60,7 @@ function TransactionsCard({ data }) {
         </td>
         <td className={styles.hide}>ثبت نام در تور گردشگری</td>
         <td className={styles.cell}>
-          {toPersianNumber(generateRandom8DigitNumber())}
+          {toPersianNumber(idToNumber(data.id, 8))}
         </td>
       </tr>
     </>
